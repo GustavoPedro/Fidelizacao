@@ -36,7 +36,7 @@ public class FrmMenu extends javax.swing.JFrame {
         MbMenu = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         MiCadastrarCliente = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        MiPesquisarClientes = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         MiCadastrarFuncionario = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
@@ -85,8 +85,15 @@ public class FrmMenu extends javax.swing.JFrame {
         });
         jMenu1.add(MiCadastrarCliente);
 
-        jMenuItem2.setText("Pesquisar");
-        jMenu1.add(jMenuItem2);
+        MiPesquisarClientes.setText("Pesquisar");
+        MiPesquisarClientes.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                MiPesquisarClientesActionPerformed(evt);
+            }
+        });
+        jMenu1.add(MiPesquisarClientes);
 
         MbMenu.add(jMenu1);
 
@@ -193,6 +200,14 @@ public class FrmMenu extends javax.swing.JFrame {
         frmCadastroEmpresa.setPosicao();
     }//GEN-LAST:event_MiCadastrarEmpresaActionPerformed
 
+    private void MiPesquisarClientesActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_MiPesquisarClientesActionPerformed
+    {//GEN-HEADEREND:event_MiPesquisarClientesActionPerformed
+        FrmPesquisarClientes frmPesquisarClientes = new FrmPesquisarClientes();
+        DpContainer.add(frmPesquisarClientes);
+        frmPesquisarClientes.setVisible(true);
+        frmPesquisarClientes.setPosicao();
+    }//GEN-LAST:event_MiPesquisarClientesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -235,11 +250,11 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem MiCadastrarCliente;
     private javax.swing.JMenuItem MiCadastrarEmpresa;
     private javax.swing.JMenuItem MiCadastrarFuncionario;
+    private javax.swing.JMenuItem MiPesquisarClientes;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem8;
