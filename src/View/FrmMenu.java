@@ -171,21 +171,21 @@ public class FrmMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void MiCadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MiCadastrarClienteActionPerformed
-        FrmCadastroCliente frmCadastrarCliente = new FrmCadastroCliente();
+        IFrmCadastroCliente frmCadastrarCliente = new IFrmCadastroCliente();
         DpContainer.add(frmCadastrarCliente);
         frmCadastrarCliente.setVisible(true);
         frmCadastrarCliente.setPosicao();
     }//GEN-LAST:event_MiCadastrarClienteActionPerformed
 
     private void MiCadastrarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MiCadastrarFuncionarioActionPerformed
-        FrmCadastroFuncionario frmCadastroFuncionario = new FrmCadastroFuncionario();
+        IFrmCadastroFuncionario frmCadastroFuncionario = new IFrmCadastroFuncionario();
         DpContainer.add(frmCadastroFuncionario);
         frmCadastroFuncionario.setVisible(true);
         frmCadastroFuncionario.setPosicao();
     }//GEN-LAST:event_MiCadastrarFuncionarioActionPerformed
 
     private void MiCadastrarCartaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MiCadastrarCartaoActionPerformed
-        FrmCadastrarCartao frmCadastrarCartao = new FrmCadastrarCartao();
+        IFrmCadastrarCartao frmCadastrarCartao = new IFrmCadastrarCartao();
         DpContainer.add(frmCadastrarCartao);
         frmCadastrarCartao.setVisible(true);
         frmCadastrarCartao.setPosicao();
@@ -194,7 +194,7 @@ public class FrmMenu extends javax.swing.JFrame {
 
     private void MiCadastrarEmpresaActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_MiCadastrarEmpresaActionPerformed
     {//GEN-HEADEREND:event_MiCadastrarEmpresaActionPerformed
-        FrmCadastroEmpresa frmCadastroEmpresa = new FrmCadastroEmpresa();
+        IFrmCadastroEmpresa frmCadastroEmpresa = new IFrmCadastroEmpresa();
         DpContainer.add(frmCadastroEmpresa);
         frmCadastroEmpresa.setVisible(true);
         frmCadastroEmpresa.setPosicao();
@@ -202,7 +202,7 @@ public class FrmMenu extends javax.swing.JFrame {
 
     private void MiPesquisarClientesActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_MiPesquisarClientesActionPerformed
     {//GEN-HEADEREND:event_MiPesquisarClientesActionPerformed
-        FrmPesquisarClientes frmPesquisarClientes = new FrmPesquisarClientes();
+        IFrmPesquisarClientes frmPesquisarClientes = new IFrmPesquisarClientes();
         DpContainer.add(frmPesquisarClientes);
         frmPesquisarClientes.setVisible(true);
         frmPesquisarClientes.setPosicao();

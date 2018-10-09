@@ -20,7 +20,7 @@ public class FrmInserirValorEmCartao extends javax.swing.JFrame
     public FrmInserirValorEmCartao()
     {
         initComponents();
-        VerificarCbx();
+        verificarCbx();
 
     }
 
@@ -42,7 +42,7 @@ public class FrmInserirValorEmCartao extends javax.swing.JFrame
     }
 
     //Verifica se a caixa de seleção está com seu valor igual ao valor ou selo
-    private void VerificarCbx()
+    private void verificarCbx()
     {
         if (cbxTipoCartao.getSelectedItem() == "Valor")
         {
@@ -168,7 +168,7 @@ public class FrmInserirValorEmCartao extends javax.swing.JFrame
 
     private void cbxTipoCartaoActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_cbxTipoCartaoActionPerformed
     {//GEN-HEADEREND:event_cbxTipoCartaoActionPerformed
-        VerificarCbx();            // TODO add your handling code here:
+        verificarCbx();            // TODO add your handling code here:
     }//GEN-LAST:event_cbxTipoCartaoActionPerformed
 
     private void btnQuantidadeAumentarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnQuantidadeAumentarActionPerformed
