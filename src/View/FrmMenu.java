@@ -179,10 +179,7 @@ public class FrmMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_MiCadastrarFuncionarioActionPerformed
 
     private void MiCadastrarCartaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MiCadastrarCartaoActionPerformed
-        IFrmCadastrarCartao frmCadastrarCartao = new IFrmCadastrarCartao();
-        DpContainer.add(frmCadastrarCartao);
-        frmCadastrarCartao.setVisible(true);
-        frmCadastrarCartao.setPosicao();
+        
 
     }//GEN-LAST:event_MiCadastrarCartaoActionPerformed
 

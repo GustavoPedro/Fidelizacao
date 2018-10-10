@@ -158,7 +158,7 @@ public class IFrmCadastroCliente extends javax.swing.JInternalFrame {
 
     private void btnGerarCartaoActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnGerarCartaoActionPerformed
     {//GEN-HEADEREND:event_btnGerarCartaoActionPerformed
-        FrmGestaoCartao frmGestaoCartao = new FrmGestaoCartao();
+        FrmCadastrarCartaoPorValor frmGestaoCartao = new FrmCadastrarCartaoPorValor();
         frmGestaoCartao.show();
     }//GEN-LAST:event_btnGerarCartaoActionPerformed
 

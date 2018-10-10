@@ -11,16 +11,15 @@ import java.awt.Dimension;
  *
  * @author gusta
  */
-public class IFrmPesquisarClientes extends javax.swing.JInternalFrame
-{
+public class IFrmPesquisarClientes extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form FrmPesquisarClientes
      */
-    public IFrmPesquisarClientes()
-    {
+    public IFrmPesquisarClientes() {
         initComponents();
     }
+
     public void setPosicao() {
         Dimension d = this.getDesktopPane().getSize();
         this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
@@ -33,8 +32,7 @@ public class IFrmPesquisarClientes extends javax.swing.JInternalFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -42,30 +40,27 @@ public class IFrmPesquisarClientes extends javax.swing.JInternalFrame
         jLabel5 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        btnAlterar = new javax.swing.JButton();
+        btnCadastrarCliente = new javax.swing.JButton();
+
+        setClosable(true);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][]
-            {
+            new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null}
             },
-            new String []
-            {
+            new String [] {
                 "Nome", "CPF", "Telefone", "Data de Nascimento"
             }
-        )
-        {
-            boolean[] canEdit = new boolean []
-            {
+        ) {
+            boolean[] canEdit = new boolean [] {
                 false, false, false, false
             };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex)
-            {
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
@@ -75,9 +70,19 @@ public class IFrmPesquisarClientes extends javax.swing.JInternalFrame
 
         jButton3.setText("Pesquisar");
 
-        jButton5.setText("Alterar");
+        btnAlterar.setText("Alterar");
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarActionPerformed(evt);
+            }
+        });
 
-        jButton6.setText("Cadastrar");
+        btnCadastrarCliente.setText("Cadastrar");
+        btnCadastrarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarClienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -97,9 +102,9 @@ public class IFrmPesquisarClientes extends javax.swing.JInternalFrame
                         .addGap(0, 170, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton5)
+                        .addComponent(btnAlterar)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton6)))
+                        .addComponent(btnCadastrarCliente)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -115,8 +120,8 @@ public class IFrmPesquisarClientes extends javax.swing.JInternalFrame
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6))
+                    .addComponent(btnAlterar)
+                    .addComponent(btnCadastrarCliente))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
@@ -136,11 +141,21 @@ public class IFrmPesquisarClientes extends javax.swing.JInternalFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+        FrmGestaoCliente frmGestaoCliente = new FrmGestaoCliente(CRUD.Alterar);
+        frmGestaoCliente.show();
+    }//GEN-LAST:event_btnAlterarActionPerformed
+
+    private void btnCadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarClienteActionPerformed
+        FrmGestaoCliente frmGestaoCliente = new FrmGestaoCliente(CRUD.Cadastrar);
+        frmGestaoCliente.show();
+    }//GEN-LAST:event_btnCadastrarClienteActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAlterar;
+    private javax.swing.JButton btnCadastrarCliente;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

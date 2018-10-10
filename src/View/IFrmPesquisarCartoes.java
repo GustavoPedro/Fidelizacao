@@ -5,24 +5,17 @@
  */
 package View;
 
-import java.awt.Dimension;
-
 /**
  *
- * @author gusta
+ * @author 31825961
  */
-public class IFrmPesquisarFuncionarios extends javax.swing.JInternalFrame {
+public class IFrmPesquisarCartoes extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form FrmPesquisarFuncionarios
+     * Creates new form IFrmPesquisarCartoes
      */
-    public IFrmPesquisarFuncionarios() {
+    public IFrmPesquisarCartoes() {
         initComponents();
-    }
-
-    public void setPosicao() {
-        Dimension d = this.getDesktopPane().getSize();
-        this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
     }
 
     /**
@@ -40,26 +33,21 @@ public class IFrmPesquisarFuncionarios extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        btnAlterar = new javax.swing.JButton();
-        btnCadastrarFuncionario = new javax.swing.JButton();
-
-        setClosable(true);
-        setPreferredSize(new java.awt.Dimension(895, 475));
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Nome", "Empresa"
+                "Nome Cliente", "Funcionario", "Total"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -71,27 +59,10 @@ public class IFrmPesquisarFuncionarios extends javax.swing.JInternalFrame {
         jLabel5.setText("Pesquisar:");
 
         jButton3.setText("Pesquisar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
 
-        jButton4.setText("Deletar");
+        jButton5.setText("Emitir relatório");
 
-        btnAlterar.setText("Alterar");
-        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAlterarActionPerformed(evt);
-            }
-        });
-
-        btnCadastrarFuncionario.setText("Cadastrar");
-        btnCadastrarFuncionario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastrarFuncionarioActionPerformed(evt);
-            }
-        });
+        jButton6.setText("Cadastrar em cartao");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -108,16 +79,14 @@ public class IFrmPesquisarFuncionarios extends javax.swing.JInternalFrame {
                                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 607, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton3)))
-                        .addGap(0, 148, Short.MAX_VALUE)))
+                        .addGap(0, 170, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton6)
+                        .addGap(8, 8, 8)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton4)
-                .addGap(18, 18, 18)
-                .addComponent(btnAlterar)
-                .addGap(18, 18, 18)
-                .addComponent(btnCadastrarFuncionario)
-                .addGap(41, 41, 41))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,55 +98,39 @@ public class IFrmPesquisarFuncionarios extends javax.swing.JInternalFrame {
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3))
                 .addGap(23, 23, 23)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(btnAlterar)
-                    .addComponent(btnCadastrarFuncionario))
-                .addGap(29, 29, 29))
+                    .addComponent(jButton5)
+                    .addComponent(jButton6))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        FrmGestaoFuncionario frmGestaoFuncionario = new FrmGestaoFuncionario(CRUD.Alterar);
-        frmGestaoFuncionario.show();
-        frmGestaoFuncionario.setVisible(true);
-    }//GEN-LAST:event_btnAlterarActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void btnCadastrarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarFuncionarioActionPerformed
-        FrmGestaoFuncionario frmGestaoFuncionario = new FrmGestaoFuncionario(CRUD.Cadastrar);
-        frmGestaoFuncionario.show();
-    }//GEN-LAST:event_btnCadastrarFuncionarioActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAlterar;
-    private javax.swing.JButton btnCadastrarFuncionario;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
-
 }
