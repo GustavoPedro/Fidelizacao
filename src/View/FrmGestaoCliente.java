@@ -5,6 +5,8 @@
  */
 package View;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author gusta
@@ -32,7 +34,7 @@ public class FrmGestaoCliente extends javax.swing.JFrame
             this.setTitle("Alterar Dados de Cliente");
         } else
         {
-             btnGerarCartao.setText("Cadastrar");
+            btnGerarCartao.setText("Cadastrar");
             this.setTitle("Cadastrar Dados de Cliente");
         }
     }
@@ -164,8 +166,16 @@ public class FrmGestaoCliente extends javax.swing.JFrame
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGerarCartaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerarCartaoActionPerformed
-        FrmCadastrarCartaoPorValor frmGestaoCartao = new FrmCadastrarCartaoPorValor();
-        frmGestaoCartao.show();
+        if (JOptionPane.showConfirmDialog(null, "Deseja inserir algum valor no cartão do cliente") == 0)
+        {
+            FrmCadastrarCartaoPorValor frmGestaoCartao = new FrmCadastrarCartaoPorValor();
+            frmGestaoCartao.show();
+        } else
+        {
+            this.dispose();
+        }
+
+
     }//GEN-LAST:event_btnGerarCartaoActionPerformed
 
     /**
