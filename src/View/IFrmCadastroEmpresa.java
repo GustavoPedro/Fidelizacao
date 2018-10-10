@@ -14,12 +14,24 @@ import java.awt.Dimension;
 public class IFrmCadastroEmpresa extends javax.swing.JInternalFrame
 {
 
+    private CRUD crud;
+
     /**
      * Creates new form FrmCadastroEmpresa
      */
     public IFrmCadastroEmpresa()
     {
         initComponents();
+    }
+
+    public IFrmCadastroEmpresa(CRUD crud)
+    {
+        initComponents();
+        this.crud = crud;
+        if (this.crud == CRUD.Alterar)
+        {
+            btnCadastrarEmpresa.setText("Alterar");
+        }
     }
 
     public void setPosicao()
@@ -46,7 +58,7 @@ public class IFrmCadastroEmpresa extends javax.swing.JInternalFrame
         jLabel3 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnCadastrarEmpresa = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("Cadastrar Empresa");
@@ -67,7 +79,7 @@ public class IFrmCadastroEmpresa extends javax.swing.JInternalFrame
 
         jButton1.setText("Cancelar");
 
-        jButton2.setText("Cadastrar");
+        btnCadastrarEmpresa.setText("Cadastrar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -85,7 +97,7 @@ public class IFrmCadastroEmpresa extends javax.swing.JInternalFrame
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(195, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(btnCadastrarEmpresa)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addGap(22, 22, 22))
@@ -108,7 +120,7 @@ public class IFrmCadastroEmpresa extends javax.swing.JInternalFrame
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(btnCadastrarEmpresa))
                 .addContainerGap())
         );
 
@@ -128,8 +140,8 @@ public class IFrmCadastroEmpresa extends javax.swing.JInternalFrame
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCadastrarEmpresa;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
