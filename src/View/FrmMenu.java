@@ -28,8 +28,7 @@ public class FrmMenu extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
         DpContainer = new javax.swing.JDesktopPane();
@@ -39,7 +38,7 @@ public class FrmMenu extends javax.swing.JFrame {
         MiPesquisarClientes = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         MiCadastrarFuncionario = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        MiPesquisarFuncionario = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         MiCadastrarEmpresa = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
@@ -76,20 +75,16 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenu1.setText("Cliente");
 
         MiCadastrarCliente.setText("Cadastrar");
-        MiCadastrarCliente.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        MiCadastrarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MiCadastrarClienteActionPerformed(evt);
             }
         });
         jMenu1.add(MiCadastrarCliente);
 
         MiPesquisarClientes.setText("Pesquisar");
-        MiPesquisarClientes.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        MiPesquisarClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MiPesquisarClientesActionPerformed(evt);
             }
         });
@@ -100,27 +95,28 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenu2.setText("Funcionario");
 
         MiCadastrarFuncionario.setText("Cadastrar");
-        MiCadastrarFuncionario.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        MiCadastrarFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MiCadastrarFuncionarioActionPerformed(evt);
             }
         });
         jMenu2.add(MiCadastrarFuncionario);
 
-        jMenuItem4.setText("Pesquisar");
-        jMenu2.add(jMenuItem4);
+        MiPesquisarFuncionario.setText("Pesquisar");
+        MiPesquisarFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MiPesquisarFuncionarioActionPerformed(evt);
+            }
+        });
+        jMenu2.add(MiPesquisarFuncionario);
 
         MbMenu.add(jMenu2);
 
         jMenu3.setText("Empresa");
 
         MiCadastrarEmpresa.setText("Cadastrar");
-        MiCadastrarEmpresa.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        MiCadastrarEmpresa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MiCadastrarEmpresaActionPerformed(evt);
             }
         });
@@ -134,10 +130,8 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenu4.setText("Cartão");
 
         MiCadastrarCartao.setText("Cadastrar");
-        MiCadastrarCartao.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        MiCadastrarCartao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MiCadastrarCartaoActionPerformed(evt);
             }
         });
@@ -194,7 +188,7 @@ public class FrmMenu extends javax.swing.JFrame {
 
     private void MiCadastrarEmpresaActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_MiCadastrarEmpresaActionPerformed
     {//GEN-HEADEREND:event_MiCadastrarEmpresaActionPerformed
-        IFrmCadastroEmpresa frmCadastroEmpresa = new IFrmCadastroEmpresa();
+        IFrmGestaoEmpresa frmCadastroEmpresa = new IFrmGestaoEmpresa();
         DpContainer.add(frmCadastroEmpresa);
         frmCadastroEmpresa.setVisible(true);
         frmCadastroEmpresa.setPosicao();
@@ -207,6 +201,13 @@ public class FrmMenu extends javax.swing.JFrame {
         frmPesquisarClientes.setVisible(true);
         frmPesquisarClientes.setPosicao();
     }//GEN-LAST:event_MiPesquisarClientesActionPerformed
+
+    private void MiPesquisarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MiPesquisarFuncionarioActionPerformed
+        IFrmPesquisarFuncionarios iFrmPesquisarFuncionarios = new IFrmPesquisarFuncionarios();
+        DpContainer.add(iFrmPesquisarFuncionarios);
+        iFrmPesquisarFuncionarios.setVisible(true);
+        iFrmPesquisarFuncionarios.setPosicao();
+    }//GEN-LAST:event_MiPesquisarFuncionarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -251,11 +252,11 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem MiCadastrarEmpresa;
     private javax.swing.JMenuItem MiCadastrarFuncionario;
     private javax.swing.JMenuItem MiPesquisarClientes;
+    private javax.swing.JMenuItem MiPesquisarFuncionario;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
