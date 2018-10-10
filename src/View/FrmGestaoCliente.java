@@ -9,23 +9,32 @@ package View;
  *
  * @author gusta
  */
-public class FrmGestaoCliente extends javax.swing.JFrame {
+public class FrmGestaoCliente extends javax.swing.JFrame
+{
 
     private CRUD crud;
 
     /**
      * Creates new form FrmGestaoCliente
      */
-    public FrmGestaoCliente() {
+    public FrmGestaoCliente()
+    {
         initComponents();
     }
 
-    public FrmGestaoCliente(CRUD crud) {
+    public FrmGestaoCliente(CRUD crud)
+    {
         initComponents();
         this.crud = crud;
-        if (crud == CRUD.Alterar) {
+        if (crud == CRUD.Alterar)
+        {
             btnGerarCartao.setText("Alterar");
-        }        
+            this.setTitle("Alterar Dados de Cliente");
+        } else
+        {
+             btnGerarCartao.setText("Cadastrar");
+            this.setTitle("Cadastrar Dados de Cliente");
+        }
     }
 
     /**
@@ -162,7 +171,6 @@ public class FrmGestaoCliente extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGerarCartao;

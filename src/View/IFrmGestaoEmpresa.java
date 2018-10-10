@@ -20,6 +20,7 @@ public class IFrmGestaoEmpresa extends javax.swing.JInternalFrame
     public IFrmGestaoEmpresa()
     {
         initComponents();
+       
     }
 
     public void setPosicao()
@@ -35,7 +36,8 @@ public class IFrmGestaoEmpresa extends javax.swing.JInternalFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -54,9 +56,11 @@ public class IFrmGestaoEmpresa extends javax.swing.JInternalFrame
 
         jLabel2.setText("CNPJ:");
 
-        try {
+        try
+        {
             jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###/####-##")));
-        } catch (java.text.ParseException ex) {
+        } catch (java.text.ParseException ex)
+        {
             ex.printStackTrace();
         }
 

@@ -5,6 +5,8 @@
  */
 package View;
 
+import java.awt.Dimension;
+
 /**
  *
  * @author 31825961
@@ -17,6 +19,12 @@ public class IFrmPesquisarCartoes extends javax.swing.JInternalFrame {
     public IFrmPesquisarCartoes() {
         initComponents();
     }
+     public void setPosicao()
+    {
+        Dimension d = this.getDesktopPane().getSize();
+        this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -25,7 +33,8 @@ public class IFrmPesquisarCartoes extends javax.swing.JInternalFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -37,20 +46,25 @@ public class IFrmPesquisarCartoes extends javax.swing.JInternalFrame {
         jButton6 = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object [][]
+            {
                 {null, null, null},
                 {null, null, null},
                 {null, null, null}
             },
-            new String [] {
+            new String []
+            {
                 "Nome Cliente", "Funcionario", "Total"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
+        )
+        {
+            boolean[] canEdit = new boolean []
+            {
                 false, false, false
             };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
+            public boolean isCellEditable(int rowIndex, int columnIndex)
+            {
                 return canEdit [columnIndex];
             }
         });
@@ -133,4 +147,6 @@ public class IFrmPesquisarCartoes extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
+
+    
 }

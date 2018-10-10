@@ -11,12 +11,14 @@ import javax.swing.JInternalFrame;
  *
  * @author gusta
  */
-public class FrmMenu extends javax.swing.JFrame {
+public class FrmMenu extends javax.swing.JFrame
+{
 
     /**
      * Creates new form FrmMenu
      */
-    public FrmMenu() {
+    public FrmMenu()
+    {
         initComponents();
         setExtendedState(MAXIMIZED_BOTH);
     }
@@ -44,9 +46,8 @@ public class FrmMenu extends javax.swing.JFrame {
         MiCadastrarEmpresa = new javax.swing.JMenuItem();
         MiAlterarEmpresa = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
-        MiCadastrarCartao = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
+        MiPesquisarCartoes = new javax.swing.JMenuItem();
+        MiPesquisarPontos = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -154,21 +155,25 @@ public class FrmMenu extends javax.swing.JFrame {
             }
         });
 
-        MiCadastrarCartao.setText("Cadastrar");
-        MiCadastrarCartao.addActionListener(new java.awt.event.ActionListener()
+        MiPesquisarCartoes.setText("Gestão Cartões");
+        MiPesquisarCartoes.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                MiCadastrarCartaoActionPerformed(evt);
+                MiPesquisarCartoesActionPerformed(evt);
             }
         });
-        jMenu4.add(MiCadastrarCartao);
+        jMenu4.add(MiPesquisarCartoes);
 
-        jMenuItem8.setText("Pesquisar");
-        jMenu4.add(jMenuItem8);
-
-        jMenuItem9.setText("Pesquisar Pontos");
-        jMenu4.add(jMenuItem9);
+        MiPesquisarPontos.setText("Pesquisar Pontos");
+        MiPesquisarPontos.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                MiPesquisarPontosActionPerformed(evt);
+            }
+        });
+        jMenu4.add(MiPesquisarPontos);
 
         MbMenu.add(jMenu4);
 
@@ -205,13 +210,6 @@ public class FrmMenu extends javax.swing.JFrame {
         frmCadastroFuncionario.setPosicao();
     }//GEN-LAST:event_MiCadastrarFuncionarioActionPerformed
 
-    private void MiCadastrarCartaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MiCadastrarCartaoActionPerformed
-        FrmCadastroCartaoPorQuantidade c = new FrmCadastroCartaoPorQuantidade();
-        c.show();
-        c.setVisible(true);
-
-    }//GEN-LAST:event_MiCadastrarCartaoActionPerformed
-
     private void MiCadastrarEmpresaActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_MiCadastrarEmpresaActionPerformed
     {//GEN-HEADEREND:event_MiCadastrarEmpresaActionPerformed
         IFrmGestaoEmpresa frmCadastroEmpresa = new IFrmGestaoEmpresa();
@@ -237,38 +235,52 @@ public class FrmMenu extends javax.swing.JFrame {
 
     private void jMenu4ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jMenu4ActionPerformed
     {//GEN-HEADEREND:event_jMenu4ActionPerformed
-        
+
     }//GEN-LAST:event_jMenu4ActionPerformed
 
     private void MiAlterarEmpresaActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_MiAlterarEmpresaActionPerformed
     {//GEN-HEADEREND:event_MiAlterarEmpresaActionPerformed
         IFrmCadastroEmpresa gestaoEmpresa = new IFrmCadastroEmpresa(CRUD.Alterar);
-         DpContainer.add(gestaoEmpresa);
+        DpContainer.add(gestaoEmpresa);
         gestaoEmpresa.setVisible(true);
         gestaoEmpresa.setPosicao();
     }//GEN-LAST:event_MiAlterarEmpresaActionPerformed
 
+    private void MiPesquisarCartoesActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_MiPesquisarCartoesActionPerformed
+    {//GEN-HEADEREND:event_MiPesquisarCartoesActionPerformed
+        IFrmPesquisarCartoes iFrmPesquisarCartoes = new IFrmPesquisarCartoes();
+        DpContainer.add(iFrmPesquisarCartoes);
+        iFrmPesquisarCartoes.setVisible(true);
+        iFrmPesquisarCartoes.setPosicao();
+    }//GEN-LAST:event_MiPesquisarCartoesActionPerformed
+
+    private void MiPesquisarPontosActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_MiPesquisarPontosActionPerformed
+    {//GEN-HEADEREND:event_MiPesquisarPontosActionPerformed
+        IFrmPesquisarPontos iFrmPesquisarPontos = new IFrmPesquisarPontos();
+        DpContainer.add(iFrmPesquisarPontos);
+        iFrmPesquisarPontos.setVisible(true);
+        iFrmPesquisarPontos.setPosicao();
+    }//GEN-LAST:event_MiPesquisarPontosActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane DpContainer;
     private javax.swing.JMenuBar MbMenu;
     private javax.swing.JMenuItem MiAlterarEmpresa;
-    private javax.swing.JMenuItem MiCadastrarCartao;
     private javax.swing.JMenuItem MiCadastrarCliente;
     private javax.swing.JMenuItem MiCadastrarEmpresa;
     private javax.swing.JMenuItem MiCadastrarFuncionario;
+    private javax.swing.JMenuItem MiPesquisarCartoes;
     private javax.swing.JMenuItem MiPesquisarClientes;
     private javax.swing.JMenuItem MiPesquisarFuncionario;
+    private javax.swing.JMenuItem MiPesquisarPontos;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

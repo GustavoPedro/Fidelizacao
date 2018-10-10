@@ -5,6 +5,8 @@
  */
 package View;
 
+import java.awt.Dimension;
+
 /**
  *
  * @author gusta
@@ -18,6 +20,12 @@ public class IFrmPesquisarPontos extends javax.swing.JInternalFrame
     public IFrmPesquisarPontos()
     {
         initComponents();
+    }
+
+    public void setPosicao()
+    {
+        Dimension d = this.getDesktopPane().getSize();
+        this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
     }
 
     /**
@@ -36,6 +44,9 @@ public class IFrmPesquisarPontos extends javax.swing.JInternalFrame
         jLabel5 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
+
+        setClosable(true);
+        setTitle("Ver Histórico Geral");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][]

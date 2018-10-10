@@ -41,7 +41,7 @@ public class FrmCadastroCartaoPorQuantidade extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         try
         {
