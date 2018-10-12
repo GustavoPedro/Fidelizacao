@@ -5,7 +5,13 @@
  */
 package View;
 
+
+import java.sql.Connection;
 import javax.swing.JInternalFrame;
+import Connection.ConexaoBanco;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -21,6 +27,18 @@ public class FrmMenu extends javax.swing.JFrame
     {
         initComponents();
         setExtendedState(MAXIMIZED_BOTH);
+        ConexaoBanco con = new ConexaoBanco();
+        try
+        {
+            con.getConexao();
+        } catch (ClassNotFoundException ex)
+        {
+            Logger.getLogger(FrmMenu.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(FrmMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     /**

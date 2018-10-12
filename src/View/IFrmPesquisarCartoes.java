@@ -45,6 +45,8 @@ public class IFrmPesquisarCartoes extends javax.swing.JInternalFrame {
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
 
+        setClosable(true);
+
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][]
             {
