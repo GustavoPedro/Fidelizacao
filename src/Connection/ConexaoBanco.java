@@ -8,6 +8,8 @@ package Connection;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -16,14 +18,20 @@ import java.sql.SQLException;
 public class ConexaoBanco
 {
 
-    public Connection getConexao() throws ClassNotFoundException, SQLException
+    public Connection getConexao() 
     {
         
-        Class.forName("com.mysql.cj.jdbc.Driver");        
-        DriverManager.getConnection("jdbc:mysql://localhost:3306/fidelizacao?useTimezone=true&serverTimezone=UTC&useSSL=false","root","7227234888Gg");
-        System.out.println("Connectou");
-        return null;
-        
+        try        
+        {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fidelizacao?useTimezone=true&serverTimezone=UTC&useSSL=false","root","7227234888Gg");
+            System.out.println("Connectou");
+            return con;
+            
+        } catch (ClassNotFoundException | SQLException ex)
+        {
+            throw new RuntimeException("Erro",ex);
+        }
     }
     
 }
