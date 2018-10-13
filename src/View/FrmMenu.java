@@ -27,18 +27,8 @@ public class FrmMenu extends javax.swing.JFrame
     {
         initComponents();
         setExtendedState(MAXIMIZED_BOTH);
-        ConexaoBanco con = new ConexaoBanco();
-        try
-        {
-            con.getConexao();
-        } catch (ClassNotFoundException ex)
-        {
-            Logger.getLogger(FrmMenu.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex)
-        {
-            Logger.getLogger(FrmMenu.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
+        
+        
     }
 
     /**
