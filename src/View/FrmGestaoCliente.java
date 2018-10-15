@@ -173,10 +173,8 @@ public class FrmGestaoCliente extends javax.swing.JFrame
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGerarCartaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerarCartaoActionPerformed
-
        
-       
-        ClienteBEAN clienteBean = new ClienteBEAN(txbNomeCompleto.getText(), txbCpf.getText(), txbTelefone.getText(), "1999-11-30");
+        ClienteBEAN clienteBean = new ClienteBEAN(txbNomeCompleto.getText(), txbCpf.getText(), txbTelefone.getText(), Control.DataConversoes.inverterData(txbDataNascimento.getText()));
 
         ClienteControl clienteControl = new ClienteControl();
         clienteControl.inserirCliente(clienteBean);

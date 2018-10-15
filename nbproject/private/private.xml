@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/gusta/OneDrive/Documentos/Fidelizacao/src/View/IFrmCadastroCliente.java</file>
-            <file>file:/C:/Users/gusta/OneDrive/Documentos/Fidelizacao/src/View/FrmMenu.java</file>
+            <file>file:/C:/Users/gusta/OneDrive/Documentos/Fidelizacao/src/Model/bean/ClienteBEAN.java</file>
+            <file>file:/C:/Users/gusta/OneDrive/Documentos/Fidelizacao/src/View/FrmGestaoCliente.java</file>
+            <file>file:/C:/Users/gusta/OneDrive/Documentos/Fidelizacao/src/Model/dao/ClienteDAO.java</file>
+            <file>file:/C:/Users/gusta/OneDrive/Documentos/Fidelizacao/src/Control/ClienteControl.java</file>
         </group>
     </open-files>
 </project-private>
