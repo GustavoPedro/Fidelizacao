@@ -4,9 +4,6 @@
  * and open the template in the editor.
  */
 package Model.bean;
-
-import java.util.Date;
-
 /**
  *
  * @author gusta

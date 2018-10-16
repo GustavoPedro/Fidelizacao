@@ -51,4 +51,9 @@ public class ClienteDAO
         }
     }
 
+    public void atualizarCliente(ClienteBEAN cliente)
+    {
+        
+    }
+
 }

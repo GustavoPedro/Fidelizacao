@@ -7,7 +7,7 @@ package Control;
 
 import Model.bean.ClienteBEAN;
 import Model.dao.ClienteDAO;
-
+import java.util.List;
 
 /**
  *
@@ -16,10 +16,19 @@ import Model.dao.ClienteDAO;
 public class ClienteControl
 {
 
-    public void inserirCliente(ClienteBEAN cliente)
+    public boolean inserirCliente(ClienteBEAN cliente)
     {
-        
         ClienteDAO clienteDAO = new ClienteDAO();
-        clienteDAO.inserirCliente(cliente);
+        return clienteDAO.inserirCliente(cliente);
+    }
+
+    public void alterarCliente(ClienteBEAN cliente)
+    {
+        ClienteDAO clienteDAO = new ClienteDAO();
+        clienteDAO.atualizarCliente(cliente);
+    }
+    public List<ClienteBEAN> selecionarClientes()
+    {
+        return null;
     }
 }

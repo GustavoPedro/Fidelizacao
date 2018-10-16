@@ -17,12 +17,12 @@ public class DataConversoes
 
     public static String inverterData(String data)
     {
-
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         try
         {
-            Date date = formato.parse(data);
-            return Integer.toString(date.getYear()) + '-' + Integer.toString(date.getMonth()) + '-' + Integer.toString(date.getDay());
+            Date date = formato.parse(data);            
+            
+            return Integer.toString(date.getYear() + 1900) + '-' + Integer.toString(date.getMonth() + 1) + '-' + Integer.toString(date.getDate());
         } catch (ParseException ex)
         {
            return "Erro ao converter data";

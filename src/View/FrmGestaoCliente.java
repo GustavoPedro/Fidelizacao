@@ -7,11 +7,6 @@ package View;
 
 import Control.ClienteControl;
 import Model.bean.ClienteBEAN;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -173,22 +168,25 @@ public class FrmGestaoCliente extends javax.swing.JFrame
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGerarCartaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerarCartaoActionPerformed
-       
+
         ClienteBEAN clienteBean = new ClienteBEAN(txbNomeCompleto.getText(), txbCpf.getText(), txbTelefone.getText(), Control.DataConversoes.inverterData(txbDataNascimento.getText()));
 
         ClienteControl clienteControl = new ClienteControl();
-        clienteControl.inserirCliente(clienteBean);
 
-        if (JOptionPane.showConfirmDialog(null, "Deseja inserir algum valor no cartão do cliente") == 0)
+        if (clienteControl.inserirCliente(clienteBean) == true)
         {
-            FrmCadastrarCartaoPorValor frmGestaoCartao = new FrmCadastrarCartaoPorValor();
-            frmGestaoCartao.show();
+            if (JOptionPane.showConfirmDialog(null, "Cadastro realizado com sucesso! \n Deseja inserir algum valor no cartão do cliente","Cadastro realizado",JOptionPane.YES_NO_OPTION) == 0)
+            {
+                FrmCadastrarCartaoPorValor frmGestaoCartao = new FrmCadastrarCartaoPorValor(txbNomeCompleto.getText());
+                frmGestaoCartao.show();
+            } else
+            {
+                this.dispose();
+            }
         } else
         {
-            this.dispose();
+            JOptionPane.showMessageDialog(this, "Não foi possível cadastrar cliente","Erro ao cadastrar",JOptionPane.ERROR_MESSAGE);
         }
-
-
     }//GEN-LAST:event_btnGerarCartaoActionPerformed
 
     /**
