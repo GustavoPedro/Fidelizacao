@@ -11,5 +11,16 @@ package Model.bean;
  */
 public class FuncionarioSessaoBEAN
 {
-    
+
+    private static String nome;
+
+    public static String getNome()
+    {
+        return nome;
+    }
+
+    public static void setNome(String Nome)
+    {
+        nome = Nome;
+    }
 }

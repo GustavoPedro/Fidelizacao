@@ -5,11 +5,19 @@
  */
 package Control;
 
+import Model.bean.FuncionarioBEAN;
+import Model.dao.FuncionarioDAO;
+
 /**
  *
  * @author gusta
  */
 public class FuncionarioControl
 {
-    
+
+    public boolean login(FuncionarioBEAN funcionario)
+    {
+        FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+        return funcionarioDAO.loginFuncionario(funcionario);
+    }
 }

@@ -18,6 +18,11 @@ public class FuncionarioBEAN
      private int idEmpresa;
     private String login;
     private String senha;
+    
+    public FuncionarioBEAN()
+    {
+        
+    }
 
     public void setIdFuncionario(int idFuncionario)
     {

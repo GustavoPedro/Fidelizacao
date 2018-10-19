@@ -7,6 +7,7 @@ package Model.dao;
 
 import Connection.ConexaoBanco;
 import Model.bean.FuncionarioBEAN;
+import Model.bean.FuncionarioSessaoBEAN;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -48,31 +49,31 @@ public class FuncionarioDAO
         }
     }
 
-    public void loginFuncionario(FuncionarioBEAN funcionario)
+    public boolean loginFuncionario(FuncionarioBEAN funcionario)
     {
-        String sql = "select*from funcionario ";
+        String sql = "select nome from funcionario where Login = ? and Senha = ?";
         PreparedStatement stmt = null;
         ResultSet res = null;
         try
         {
             // create the java statement
             stmt = con.prepareStatement(sql);
-            res = stmt.executeQuery();
+            stmt.setString(1, funcionario.getLogin());
+            stmt.setString(2, funcionario.getSenha());
+            res = stmt.executeQuery();            
             while (res.next())
             {
-
+                FuncionarioSessaoBEAN.setNome(res.getString("Nome"));
+                return true;
             }
-
+            return false;
         } catch (SQLException ex)
         {
-            throw new RuntimeException(ex.toString());
+            System.err.println(ex.toString());
+            return false;
         } finally
         {
             ConexaoBanco.closeConnection(con, stmt, res);
         }
-
-        // execute the query, and get a java resultset
-        // iterate through the java resultset
-        // print the results
     }
 }
