@@ -22,6 +22,10 @@ public class IFrmCadastroCliente extends javax.swing.JInternalFrame {
         initComponents();    
         
     }
+
+    IFrmCadastroCliente(CRUD crud) {
+        initComponents();
+    }
     public void setPosicao(){
         Dimension d = this.getDesktopPane().getSize();
         this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
@@ -34,8 +38,7 @@ public class IFrmCadastroCliente extends javax.swing.JInternalFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
         jFormattedTextField2 = new javax.swing.JFormattedTextField();
@@ -55,11 +58,9 @@ public class IFrmCadastroCliente extends javax.swing.JInternalFrame {
         setForeground(java.awt.Color.white);
         setTitle("Cadastrar Cliente");
 
-        try
-        {
+        try {
             jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex)
-        {
+        } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
 
@@ -73,20 +74,16 @@ public class IFrmCadastroCliente extends javax.swing.JInternalFrame {
 
         jButton1.setText("Cancelar");
 
-        btnGerarCartao.setText("Criar Cartao");
-        btnGerarCartao.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnGerarCartao.setText("Cadastrar");
+        btnGerarCartao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGerarCartaoActionPerformed(evt);
             }
         });
 
-        try
-        {
+        try {
             jFormattedTextField3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
-        } catch (java.text.ParseException ex)
-        {
+        } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
 
