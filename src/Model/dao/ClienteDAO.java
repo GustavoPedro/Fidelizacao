@@ -47,7 +47,7 @@ public class ClienteDAO
             return false;
         } finally
         {
-            ConexaoBanco.closeConection(con, stmt);
+            ConexaoBanco.closeConnection(con, stmt);
         }
     }
 

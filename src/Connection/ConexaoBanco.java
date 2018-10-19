@@ -36,7 +36,7 @@ public class ConexaoBanco
         }
     }
 
-    public static void closeConection(Connection con)
+    public static void closeConnection(Connection con)
     {
         if (con != null)
         {
@@ -51,7 +51,7 @@ public class ConexaoBanco
         }
     }
 
-    public static void closeConection(Connection con, PreparedStatement stmt)
+    public static void closeConnection(Connection con, PreparedStatement stmt)
     {
         if (stmt != null)
         {
@@ -64,9 +64,9 @@ public class ConexaoBanco
                 throw new RuntimeException("Erro", ex);
             }
         }
-        closeConection(con);
+        closeConnection(con);
     }
-    public static void closeConection(Connection con, PreparedStatement stmt,ResultSet res)
+    public static void closeConnection(Connection con, PreparedStatement stmt,ResultSet res)
     {
         if (res != null)
         {
@@ -79,7 +79,7 @@ public class ConexaoBanco
                 throw new RuntimeException("Erro", ex);
             }
         }
-        closeConection(con,stmt);
+        closeConnection(con,stmt);
     }
 
 }
