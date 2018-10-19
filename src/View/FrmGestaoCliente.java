@@ -170,8 +170,8 @@ public class FrmGestaoCliente extends javax.swing.JFrame
     private void btnGerarCartaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerarCartaoActionPerformed
 
         ClienteBEAN clienteBean = new ClienteBEAN(txbNomeCompleto.getText(), txbCpf.getText(), txbTelefone.getText(), Control.DataConversoes.inverterData(txbDataNascimento.getText()));
-
-        ClienteControl clienteControl = new ClienteControl();
+        ClienteControl clienteControl = new ClienteControl();        
+        
 
         if (clienteControl.inserirCliente(clienteBean) == true)
         {

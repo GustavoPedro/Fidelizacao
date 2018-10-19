@@ -49,6 +49,7 @@ public class FuncionarioDAO
         }
     }
 
+    // Executa o login do funcionario e configura o nome e o id do funcionario para o uso durante o programa
     public boolean loginFuncionario(FuncionarioBEAN funcionario)
     {
         String sql = "select nome from funcionario where Login = ? and Senha = ?";
@@ -64,6 +65,7 @@ public class FuncionarioDAO
             while (res.next())
             {
                 FuncionarioSessaoBEAN.setNome(res.getString("Nome"));
+                FuncionarioSessaoBEAN.setIdFuncionario(res.getInt("IdFuncionario"));
                 return true;
             }
             return false;

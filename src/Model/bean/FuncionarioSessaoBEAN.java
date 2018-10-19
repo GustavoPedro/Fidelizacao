@@ -13,6 +13,7 @@ public class FuncionarioSessaoBEAN
 {
 
     private static String nome;
+    private static int idFuncionario;
 
     public static String getNome()
     {
@@ -23,4 +24,15 @@ public class FuncionarioSessaoBEAN
     {
         nome = Nome;
     }
+
+    public static int getIdFuncionario()
+    {
+        return idFuncionario;
+    }
+
+    public static void setIdFuncionario(int idFuncionario)
+    {
+        FuncionarioSessaoBEAN.idFuncionario = idFuncionario;
+    }
+    
 }

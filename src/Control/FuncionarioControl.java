@@ -14,7 +14,6 @@ import Model.dao.FuncionarioDAO;
  */
 public class FuncionarioControl
 {
-
     public boolean login(FuncionarioBEAN funcionario)
     {
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();

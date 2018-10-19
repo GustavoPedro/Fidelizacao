@@ -5,13 +5,16 @@
  */
 package View;
 
+import Control.EmpresaControl;
+import Model.bean.FuncionarioSessaoBEAN;
+
 /**
  *
  * @author gusta
  */
 public class FrmCadastrarCartaoPorValor extends javax.swing.JFrame
 {
-
+    
     /**
      * Creates new form FrmGestaoCartao
      */
@@ -23,9 +26,13 @@ public class FrmCadastrarCartaoPorValor extends javax.swing.JFrame
     public FrmCadastrarCartaoPorValor(String text)
     {
         initComponents();
+        String funcNome = FuncionarioSessaoBEAN.getNome();
         cbxCliente.addItem(text);
         cbxCliente.setSelectedItem(text);
         cbxCliente.enable(false);
+        cbxFuncionario.addItem(funcNome);
+        cbxFuncionario.setSelectedItem(funcNome);
+        cbxFuncionario.enable(false);
     }
 
     /**
@@ -121,8 +128,6 @@ public class FrmCadastrarCartaoPorValor extends javax.swing.JFrame
         }
 
         jLabel1.setText("Data Vencimento");
-
-        cbxFuncionario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel2.setText("Funcionário");
 
