@@ -24,6 +24,7 @@ public class ClienteTableModel extends AbstractTableModel
         "Codigo Cliente", "Nome", "Cpf", "Telefone", "DataNasc"
     };
 
+    
     @Override
     public String getColumnName(int coluna)
     {
@@ -60,6 +61,10 @@ public class ClienteTableModel extends AbstractTableModel
                 return clientesList.get(linha).getDataNasc();
         }
         return null;
+    }
+    public void createDatas(List<ClienteBEAN> clientes)
+    {
+        this.clientesList = clientes;
     }
 
 }

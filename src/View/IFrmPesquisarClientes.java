@@ -23,8 +23,12 @@ public class IFrmPesquisarClientes extends javax.swing.JInternalFrame
     public IFrmPesquisarClientes()
     {
         initComponents();
+        
         ClienteTableModel clienteModel = new ClienteTableModel();
-        tblClientes.setModel(clienteModel);
+        ClienteControl clienteControl = new ClienteControl();
+        List<ClienteBEAN> clientes = clienteControl.buscarClientes();
+        clienteModel.createDatas(clientes);
+        tblClientes.setModel(clienteModel);        
     }
 
     public void setPosicao()

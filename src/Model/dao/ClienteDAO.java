@@ -62,7 +62,7 @@ public class ClienteDAO
     public List<ClienteBEAN> buscarClientes()
     {
         List<ClienteBEAN> clientesList = new ArrayList<>();
-        String sql = "select nome from funcionario where Login = ? and Senha = ?";
+        String sql = "select * from cliente";
         PreparedStatement stmt = null;
         ResultSet res = null;
         try
@@ -74,6 +74,7 @@ public class ClienteDAO
             {                
                 ClienteBEAN cliente = new ClienteBEAN();
                 cliente.setIdCliente(res.getInt("idCliente"));
+                cliente.setNome("Nome");
                 cliente.setCpf(res.getString("Cpf"));
                 cliente.setTelefone(res.getString("Telefone"));
                 cliente.setDataNasc(res.getString("DataNasc"));
