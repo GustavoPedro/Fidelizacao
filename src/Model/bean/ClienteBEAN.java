@@ -15,6 +15,7 @@ public class ClienteBEAN
     private String cpf;
     private String telefone;
     private String dataNasc;
+    private int idCliente;
 
     public ClienteBEAN(String nome, String cpf, String telefone, String dataNasc)
     {
@@ -24,6 +25,22 @@ public class ClienteBEAN
         this.dataNasc = dataNasc;
     }
 
+    public ClienteBEAN()
+    {
+        
+    }
+
+    public int getIdCliente()
+    {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente)
+    {
+        this.idCliente = idCliente;
+    }
+    
+    
     public void setNome(String nome)
     {
         this.nome = nome;

@@ -27,6 +27,7 @@ public class FuncionarioDAO
         this.con = ConexaoBanco.getConexao();
     }
 
+    //Insere funcionario no banco de dados
     public boolean inserirFuncionario(FuncionarioBEAN funcionario)
     {
         //idCliente, Nome, Cpf, Telefone, DataNasc
@@ -52,7 +53,7 @@ public class FuncionarioDAO
     // Executa o login do funcionario e configura o nome e o id do funcionario para o uso durante o programa
     public boolean loginFuncionario(FuncionarioBEAN funcionario)
     {
-        String sql = "select nome from funcionario where Login = ? and Senha = ?";
+        String sql = "select idFuncionario,nome from funcionario where Login = ? and Senha = ?";
         PreparedStatement stmt = null;
         ResultSet res = null;
         try
@@ -64,8 +65,9 @@ public class FuncionarioDAO
             res = stmt.executeQuery();            
             while (res.next())
             {
+                //idFuncionario, Nome, Empresa_idEmpresa, Login, Senha
                 FuncionarioSessaoBEAN.setNome(res.getString("Nome"));
-                FuncionarioSessaoBEAN.setIdFuncionario(res.getInt("IdFuncionario"));
+                FuncionarioSessaoBEAN.setIdFuncionario(res.getInt("idFuncionario"));
                 return true;
             }
             return false;

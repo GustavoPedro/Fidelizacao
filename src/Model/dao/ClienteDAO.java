@@ -9,7 +9,10 @@ import Connection.ConexaoBanco;
 import Model.bean.ClienteBEAN;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -56,4 +59,34 @@ public class ClienteDAO
         
     }
 
+    public List<ClienteBEAN> buscarClientes()
+    {
+        List<ClienteBEAN> clientesList = new ArrayList<>();
+        String sql = "select nome from funcionario where Login = ? and Senha = ?";
+        PreparedStatement stmt = null;
+        ResultSet res = null;
+        try
+        {
+            // create the java statement
+            stmt = con.prepareStatement(sql);            
+            res = stmt.executeQuery();            
+            while (res.next())
+            {                
+                ClienteBEAN cliente = new ClienteBEAN();
+                cliente.setIdCliente(res.getInt("idCliente"));
+                cliente.setCpf(res.getString("Cpf"));
+                cliente.setTelefone(res.getString("Telefone"));
+                cliente.setDataNasc(res.getString("DataNasc"));
+                clientesList.add(cliente);
+            }
+            return clientesList;
+        } catch (SQLException ex)
+        {
+            System.err.println(ex.toString());
+            return null;            
+        } finally
+        {
+            ConexaoBanco.closeConnection(con, stmt, res);
+        }
+    }
 }

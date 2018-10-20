@@ -27,8 +27,9 @@ public class ClienteControl
         ClienteDAO clienteDAO = new ClienteDAO();
         clienteDAO.atualizarCliente(cliente);
     }
-    public List<ClienteBEAN> selecionarClientes()
+    public List<ClienteBEAN> buscarClientes()
     {
-        return null;
+        ClienteDAO clienteDAO = new ClienteDAO();
+        return clienteDAO.buscarClientes();
     }
 }

@@ -5,24 +5,38 @@
  */
 package View;
 
+import Control.ClienteControl;
+import Model.bean.ClienteBEAN;
 import java.awt.Dimension;
-
+import java.util.List;
+import TableModel.ClienteTableModel;
 /**
  *
  * @author gusta
  */
-public class IFrmPesquisarClientes extends javax.swing.JInternalFrame {
+public class IFrmPesquisarClientes extends javax.swing.JInternalFrame
+{
 
     /**
      * Creates new form FrmPesquisarClientes
      */
-    public IFrmPesquisarClientes() {
+    public IFrmPesquisarClientes()
+    {
         initComponents();
+        ClienteTableModel clienteModel = new ClienteTableModel();
+        tblClientes.setModel(clienteModel);
     }
 
-    public void setPosicao() {
+    public void setPosicao()
+    {
         Dimension d = this.getDesktopPane().getSize();
         this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
+    }
+
+    private void atualizarTable()
+    {
+        ClienteControl clienteControl = new ClienteControl();
+        List<ClienteBEAN> clientesList = clienteControl.buscarClientes();     
     }
 
     /**
@@ -32,11 +46,12 @@ public class IFrmPesquisarClientes extends javax.swing.JInternalFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblClientes = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
@@ -45,41 +60,60 @@ public class IFrmPesquisarClientes extends javax.swing.JInternalFrame {
 
         setClosable(true);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+        tblClientes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][]
+            {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
-            new String [] {
-                "Nome", "CPF", "Telefone", "Data de Nascimento"
+            new String []
+            {
+                "Nome", "CPF", "Telefone", "Data de Nascimento", "id"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
+        )
+        {
+            Class[] types = new Class []
+            {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean []
+            {
+                false, false, false, false, false
             };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
+            public Class getColumnClass(int columnIndex)
+            {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex)
+            {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblClientes);
 
         jLabel5.setText("Pesquisar:");
 
         jButton3.setText("Pesquisar");
 
         btnAlterar.setText("Alterar");
-        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnAlterar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnAlterarActionPerformed(evt);
             }
         });
 
         btnCadastrarCliente.setText("Cadastrar");
-        btnCadastrarCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnCadastrarCliente.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnCadastrarClienteActionPerformed(evt);
             }
         });
@@ -159,7 +193,7 @@ public class IFrmPesquisarClientes extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTable tblClientes;
     // End of variables declaration//GEN-END:variables
 }
