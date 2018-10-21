@@ -8,6 +8,7 @@ package Control;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 /**
  *
  * @author gusta
@@ -20,12 +21,26 @@ public class DataConversoes
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         try
         {
-            Date date = formato.parse(data);            
-            
+            Date date = formato.parse(data);
+
             return Integer.toString(date.getYear() + 1900) + '-' + Integer.toString(date.getMonth() + 1) + '-' + Integer.toString(date.getDate());
         } catch (ParseException ex)
         {
-           return "Erro ao converter data";
+            return "Erro ao converter data";
+        }
+    }
+
+    public static String reverterData(String data)
+    {
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        try
+        {
+            Date date = formato.parse(data);
+
+            return Integer.toString(date.getDate()) + '-' + Integer.toString(date.getMonth() + 1) + '-' + Integer.toString(date.getYear() + 1900);
+        } catch (ParseException ex)
+        {
+            return ex.toString();
         }
     }
 }

@@ -6,6 +6,7 @@
 package Model.dao;
 
 import Connection.ConexaoBanco;
+import Control.DataConversoes;
 import Model.bean.ClienteBEAN;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -74,10 +75,10 @@ public class ClienteDAO
             {                
                 ClienteBEAN cliente = new ClienteBEAN();
                 cliente.setIdCliente(res.getInt("idCliente"));
-                cliente.setNome("Nome");
+                cliente.setNome(res.getString("Nome"));
                 cliente.setCpf(res.getString("Cpf"));
                 cliente.setTelefone(res.getString("Telefone"));
-                cliente.setDataNasc(res.getString("DataNasc"));
+                cliente.setDataNasc(DataConversoes.reverterData(res.getString("DataNasc")));
                 clientesList.add(cliente);
             }
             return clientesList;
