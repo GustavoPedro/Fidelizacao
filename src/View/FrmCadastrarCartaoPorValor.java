@@ -73,6 +73,13 @@ public class FrmCadastrarCartaoPorValor extends javax.swing.JFrame
         jLabel7.setText("Adicionar Valor:");
 
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         btnCadastrar.setText("Cadastrar");
 
@@ -223,6 +230,11 @@ public class FrmCadastrarCartaoPorValor extends javax.swing.JFrame
     {//GEN-HEADEREND:event_cbxClienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbxClienteActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCancelarActionPerformed
+    {//GEN-HEADEREND:event_btnCancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments

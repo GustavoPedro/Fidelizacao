@@ -58,7 +58,7 @@ public class FrmGestaoCliente extends javax.swing.JFrame
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txbTelefone = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
         btnGerarCartao = new javax.swing.JButton();
         txbDataNascimento = new javax.swing.JFormattedTextField();
         txbCpf = new javax.swing.JFormattedTextField();
@@ -73,7 +73,14 @@ public class FrmGestaoCliente extends javax.swing.JFrame
 
         jLabel4.setText("Telefone:");
 
-        jButton1.setText("Cancelar");
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         btnGerarCartao.setText("Gerar Cartao");
         btnGerarCartao.addActionListener(new java.awt.event.ActionListener()
@@ -108,7 +115,7 @@ public class FrmGestaoCliente extends javax.swing.JFrame
                 .addContainerGap(311, Short.MAX_VALUE)
                 .addComponent(btnGerarCartao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(btnCancelar)
                 .addGap(29, 29, 29))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
@@ -146,7 +153,7 @@ public class FrmGestaoCliente extends javax.swing.JFrame
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGerarCartao)
-                    .addComponent(jButton1))
+                    .addComponent(btnCancelar))
                 .addGap(26, 26, 26))
         );
 
@@ -170,12 +177,11 @@ public class FrmGestaoCliente extends javax.swing.JFrame
     private void btnGerarCartaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerarCartaoActionPerformed
 
         ClienteBEAN clienteBean = new ClienteBEAN(txbNomeCompleto.getText(), txbCpf.getText(), txbTelefone.getText(), Control.DataConversoes.inverterData(txbDataNascimento.getText()));
-        ClienteControl clienteControl = new ClienteControl();        
-        
+        ClienteControl clienteControl = new ClienteControl();
 
         if (clienteControl.inserirCliente(clienteBean) == true)
         {
-            if (JOptionPane.showConfirmDialog(null, "Cadastro realizado com sucesso! \n Deseja inserir algum valor no cartão do cliente","Cadastro realizado",JOptionPane.YES_NO_OPTION) == 0)
+            if (JOptionPane.showConfirmDialog(null, "Cadastro realizado com sucesso! \n Deseja inserir algum valor no cartão do cliente", "Cadastro realizado", JOptionPane.YES_NO_OPTION) == 0)
             {
                 FrmCadastrarCartaoPorValor frmGestaoCartao = new FrmCadastrarCartaoPorValor(txbNomeCompleto.getText());
                 frmGestaoCartao.show();
@@ -185,17 +191,22 @@ public class FrmGestaoCliente extends javax.swing.JFrame
             }
         } else
         {
-            JOptionPane.showMessageDialog(this, "Não foi possível cadastrar cliente","Erro ao cadastrar",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Não foi possível cadastrar cliente", "Erro ao cadastrar", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnGerarCartaoActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCancelarActionPerformed
+    {//GEN-HEADEREND:event_btnCancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGerarCartao;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

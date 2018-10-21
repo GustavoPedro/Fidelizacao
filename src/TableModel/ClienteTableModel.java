@@ -19,6 +19,7 @@ public class ClienteTableModel extends AbstractTableModel
 {
 
     private List<ClienteBEAN> clientesList = new ArrayList<>();
+    
     private String[] colunas =
     {
         "Codigo Cliente", "Nome", "Cpf", "Telefone", "DataNasc"
@@ -62,9 +63,15 @@ public class ClienteTableModel extends AbstractTableModel
         }
         return null;
     }
-    public void createDatas(List<ClienteBEAN> clientes)
+    public void popularLista(List<ClienteBEAN> clientes)
     {
         this.clientesList = clientes;
+        this.fireTableDataChanged();
+    }
+    public void addRow(ClienteBEAN cliente)
+    {
+        this.clientesList.add(cliente);
+        this.fireTableDataChanged();
     }
 
 }

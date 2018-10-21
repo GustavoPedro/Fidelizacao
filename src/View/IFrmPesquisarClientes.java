@@ -27,7 +27,7 @@ public class IFrmPesquisarClientes extends javax.swing.JInternalFrame
         ClienteTableModel clienteModel = new ClienteTableModel();
         ClienteControl clienteControl = new ClienteControl();
         List<ClienteBEAN> clientes = clienteControl.buscarClientes();
-        clienteModel.createDatas(clientes);
+        clienteModel.popularLista(clientes);
         tblClientes.setModel(clienteModel);        
     }
 

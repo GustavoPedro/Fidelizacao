@@ -20,7 +20,7 @@ public class IFrmGestaoEmpresa extends javax.swing.JInternalFrame
     public IFrmGestaoEmpresa()
     {
         initComponents();
-       
+
     }
 
     public void setPosicao()
@@ -46,7 +46,7 @@ public class IFrmGestaoEmpresa extends javax.swing.JInternalFrame
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jLabel3 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setClosable(true);
@@ -66,7 +66,14 @@ public class IFrmGestaoEmpresa extends javax.swing.JInternalFrame
 
         jLabel3.setText("Telefone:");
 
-        jButton1.setText("Cancelar");
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Cadastrar");
 
@@ -88,7 +95,7 @@ public class IFrmGestaoEmpresa extends javax.swing.JInternalFrame
                 .addContainerGap(195, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(btnCancelar)
                 .addGap(22, 22, 22))
         );
         jPanel1Layout.setVerticalGroup(
@@ -108,7 +115,7 @@ public class IFrmGestaoEmpresa extends javax.swing.JInternalFrame
                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(btnCancelar)
                     .addComponent(jButton2))
                 .addContainerGap())
         );
@@ -127,9 +134,14 @@ public class IFrmGestaoEmpresa extends javax.swing.JInternalFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCancelarActionPerformed
+    {//GEN-HEADEREND:event_btnCancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton jButton2;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
