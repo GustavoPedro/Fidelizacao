@@ -19,7 +19,7 @@ public class IFrmCadastroCliente extends javax.swing.JInternalFrame
 {
 
     private int id;
-    private CRUD crud;
+    private CRUD crud = null;
     private IFrmPesquisarClientes frmPesquisarClientes = null;
 
     /**
@@ -28,9 +28,7 @@ public class IFrmCadastroCliente extends javax.swing.JInternalFrame
     public IFrmCadastroCliente()
     {
         initComponents();
-
     }
-
     public IFrmCadastroCliente(CRUD crud, ClienteBEAN clienteBEAN, IFrmPesquisarClientes frmPesquisarClientes)
     {
         initComponents();
@@ -190,15 +188,14 @@ public class IFrmCadastroCliente extends javax.swing.JInternalFrame
         ClienteBEAN clienteBean = new ClienteBEAN(txbNomeCompleto.getText(), txbCpf.getText(), txbTelefone.getText(), Control.DataConversoes.inverterData(txbDataNascimento.getText()));
         ClienteControl clienteControl = new ClienteControl();
 
-        if (crud == CRUD.Cadastrar)
+        if (crud == CRUD.Cadastrar || crud == null)
         {
             if (clienteControl.inserirCliente(clienteBean) == true)
             {
                 if (frmPesquisarClientes != null)
                 {
                     frmPesquisarClientes.atualizarTable();
-                }
-                
+                }                
                 if (JOptionPane.showConfirmDialog(null, "Cadastro realizado com sucesso! \n Deseja inserir algum valor no cartão do cliente", "Cadastro realizado", JOptionPane.YES_NO_OPTION) == 0)
                 {
                     FrmCadastrarCartaoPorValor frmGestaoCartao = new FrmCadastrarCartaoPorValor(txbNomeCompleto.getText());
@@ -219,6 +216,7 @@ public class IFrmCadastroCliente extends javax.swing.JInternalFrame
             {
                 frmPesquisarClientes.atualizarTable();
                 JOptionPane.showMessageDialog(this, "Cliente alterado com sucesso", "Alteração realizada", JOptionPane.INFORMATION_MESSAGE);
+                this.dispose();
 
             } else
             {
