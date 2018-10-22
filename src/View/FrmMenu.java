@@ -228,7 +228,7 @@ public class FrmMenu extends javax.swing.JFrame
 
     private void MiPesquisarClientesActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_MiPesquisarClientesActionPerformed
     {//GEN-HEADEREND:event_MiPesquisarClientesActionPerformed
-        IFrmPesquisarClientes frmPesquisarClientes = new IFrmPesquisarClientes();
+        IFrmPesquisarClientes frmPesquisarClientes = new IFrmPesquisarClientes(this);
         DpContainer.add(frmPesquisarClientes);
         frmPesquisarClientes.setVisible(true);
         frmPesquisarClientes.setPosicao();        

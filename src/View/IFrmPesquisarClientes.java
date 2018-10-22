@@ -10,6 +10,7 @@ import Model.bean.ClienteBEAN;
 import java.awt.Dimension;
 import java.util.List;
 import TableModel.ClienteTableModel;
+
 /**
  *
  * @author gusta
@@ -20,27 +21,29 @@ public class IFrmPesquisarClientes extends javax.swing.JInternalFrame
     /**
      * Creates new form FrmPesquisarClientes
      */
+    private FrmMenu frmMenu;
+
     public IFrmPesquisarClientes()
     {
         initComponents();
-        
+
         ClienteTableModel clienteModel = new ClienteTableModel();
         ClienteControl clienteControl = new ClienteControl();
         List<ClienteBEAN> clientes = clienteControl.buscarClientes();
         clienteModel.popularLista(clientes);
-        tblClientes.setModel(clienteModel);        
+        tblClientes.setModel(clienteModel);
+    }
+
+    public IFrmPesquisarClientes(FrmMenu frmMenu)
+    {
+        this();        
+        this.frmMenu = frmMenu;
     }
 
     public void setPosicao()
     {
         Dimension d = this.getDesktopPane().getSize();
         this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
-    }
-
-    private void atualizarTable()
-    {
-        ClienteControl clienteControl = new ClienteControl();
-        List<ClienteBEAN> clientesList = clienteControl.buscarClientes();     
     }
 
     /**
@@ -180,13 +183,17 @@ public class IFrmPesquisarClientes extends javax.swing.JInternalFrame
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        FrmGestaoCliente frmGestaoCliente = new FrmGestaoCliente(CRUD.Alterar);
-        frmGestaoCliente.show();
+        IFrmCadastroCliente frmCadastroCliente = new IFrmCadastroCliente(CRUD.Alterar);
+        frmMenu.DpContainer.add(frmCadastroCliente);
+        frmCadastroCliente.setVisible(true);
+        frmCadastroCliente.setPosicao();
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnCadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarClienteActionPerformed
-        FrmGestaoCliente frmGestaoCliente = new FrmGestaoCliente(CRUD.Cadastrar);
-        frmGestaoCliente.show();
+        IFrmCadastroCliente frmCadastroCliente = new IFrmCadastroCliente(CRUD.Cadastrar);
+        frmMenu.DpContainer.add(frmCadastroCliente);
+        frmCadastroCliente.setVisible(true);
+        frmCadastroCliente.setPosicao();
     }//GEN-LAST:event_btnCadastrarClienteActionPerformed
 
 

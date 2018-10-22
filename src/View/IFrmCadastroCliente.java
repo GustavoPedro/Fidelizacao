@@ -5,28 +5,42 @@
  */
 package View;
 
+import Control.ClienteControl;
+import Model.bean.ClienteBEAN;
 import java.awt.Dimension;
-
-
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author gusta
  */
-public class IFrmCadastroCliente extends javax.swing.JInternalFrame {
+public class IFrmCadastroCliente extends javax.swing.JInternalFrame
+{
 
     /**
      * Creates new form FrmCadastroUsuario
      */
-    public IFrmCadastroCliente() {
-        initComponents();    
-        
+    public IFrmCadastroCliente()
+    {
+        initComponents();
+
     }
 
-    IFrmCadastroCliente(CRUD crud) {
+    public IFrmCadastroCliente(CRUD crud)
+    {
         initComponents();
+        if(crud == CRUD.Alterar)
+        {
+            btnAcao.setText("Alterar");
+        }
+        else
+        {
+            btnAcao.setText("Cadastrar");
+        }
     }
-    public void setPosicao(){
+
+    public void setPosicao()
+    {
         Dimension d = this.getDesktopPane().getSize();
         this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
     }
@@ -38,19 +52,20 @@ public class IFrmCadastroCliente extends javax.swing.JInternalFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jPanel1 = new javax.swing.JPanel();
-        jFormattedTextField2 = new javax.swing.JFormattedTextField();
+        txbDataNascimento = new javax.swing.JFormattedTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txbNomeCompleto = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txbTelefone = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        btnGerarCartao = new javax.swing.JButton();
-        jFormattedTextField3 = new javax.swing.JFormattedTextField();
+        btnAcao = new javax.swing.JButton();
+        txbCpf = new javax.swing.JFormattedTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(null);
@@ -58,9 +73,11 @@ public class IFrmCadastroCliente extends javax.swing.JInternalFrame {
         setForeground(java.awt.Color.white);
         setTitle("Cadastrar Cliente");
 
-        try {
-            jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
+        try
+        {
+            txbDataNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex)
+        {
             ex.printStackTrace();
         }
 
@@ -74,16 +91,20 @@ public class IFrmCadastroCliente extends javax.swing.JInternalFrame {
 
         jButton1.setText("Cancelar");
 
-        btnGerarCartao.setText("Cadastrar");
-        btnGerarCartao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGerarCartaoActionPerformed(evt);
+        btnAcao.setText("Cadastrar");
+        btnAcao.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnAcaoActionPerformed(evt);
             }
         });
 
-        try {
-            jFormattedTextField3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
-        } catch (java.text.ParseException ex) {
+        try
+        {
+            txbCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex)
+        {
             ex.printStackTrace();
         }
 
@@ -93,7 +114,7 @@ public class IFrmCadastroCliente extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnGerarCartao)
+                .addComponent(btnAcao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
                 .addGap(29, 29, 29))
@@ -101,14 +122,14 @@ public class IFrmCadastroCliente extends javax.swing.JInternalFrame {
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jFormattedTextField3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
+                        .addComponent(txbCpf, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
                         .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txbTelefone, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jFormattedTextField2, javax.swing.GroupLayout.Alignment.LEADING))
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txbDataNascimento, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(txbNomeCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(250, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -117,22 +138,22 @@ public class IFrmCadastroCliente extends javax.swing.JInternalFrame {
                 .addGap(40, 40, 40)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txbNomeCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jFormattedTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txbCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txbTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txbDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGerarCartao)
+                    .addComponent(btnAcao)
                     .addComponent(jButton1))
                 .addGap(26, 26, 26))
         );
@@ -153,24 +174,40 @@ public class IFrmCadastroCliente extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnGerarCartaoActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnGerarCartaoActionPerformed
-    {//GEN-HEADEREND:event_btnGerarCartaoActionPerformed
-        FrmCadastrarCartaoPorValor frmGestaoCartao = new FrmCadastrarCartaoPorValor();
-        frmGestaoCartao.show();
-    }//GEN-LAST:event_btnGerarCartaoActionPerformed
+    private void btnAcaoActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAcaoActionPerformed
+    {//GEN-HEADEREND:event_btnAcaoActionPerformed
+
+        ClienteBEAN clienteBean = new ClienteBEAN(txbNomeCompleto.getText(), txbCpf.getText(), txbTelefone.getText(), Control.DataConversoes.inverterData(txbDataNascimento.getText()));
+        ClienteControl clienteControl = new ClienteControl();
+
+        if (clienteControl.inserirCliente(clienteBean) == true)
+        {
+            if (JOptionPane.showConfirmDialog(null, "Cadastro realizado com sucesso! \n Deseja inserir algum valor no cartão do cliente", "Cadastro realizado", JOptionPane.YES_NO_OPTION) == 0)
+            {
+                FrmCadastrarCartaoPorValor frmGestaoCartao = new FrmCadastrarCartaoPorValor(txbNomeCompleto.getText());
+                frmGestaoCartao.show();
+            } else
+            {
+                this.dispose();
+            }
+        } else
+        {
+            JOptionPane.showMessageDialog(this, "Não foi possível cadastrar cliente", "Erro ao cadastrar", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnAcaoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnGerarCartao;
+    private javax.swing.JButton btnAcao;
     private javax.swing.JButton jButton1;
-    private javax.swing.JFormattedTextField jFormattedTextField2;
-    private javax.swing.JFormattedTextField jFormattedTextField3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JFormattedTextField txbCpf;
+    private javax.swing.JFormattedTextField txbDataNascimento;
+    private javax.swing.JTextField txbNomeCompleto;
+    private javax.swing.JTextField txbTelefone;
     // End of variables declaration//GEN-END:variables
 }

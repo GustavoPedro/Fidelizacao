@@ -179,9 +179,9 @@ public class IFrmPesquisarFuncionarios extends javax.swing.JInternalFrame
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        FrmGestaoFuncionario frmGestaoFuncionario = new FrmGestaoFuncionario(CRUD.Alterar);
-        frmGestaoFuncionario.show();
-        frmGestaoFuncionario.setVisible(true);
+//        FrmGestaoFuncionario frmGestaoFuncionario = new FrmGestaoFuncionario(CRUD.Alterar);
+//        frmGestaoFuncionario.show();
+//        frmGestaoFuncionario.setVisible(true);
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

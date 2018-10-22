@@ -52,7 +52,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="btnGerarCartao" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnAcao" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
@@ -61,15 +61,15 @@
                   <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="jFormattedTextField3" alignment="0" pref="144" max="32767" attributes="0"/>
+                          <Component id="txbCpf" alignment="0" pref="144" max="32767" attributes="0"/>
                           <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField3" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txbTelefone" alignment="0" max="32767" attributes="0"/>
                           <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jFormattedTextField2" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txbDataNascimento" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="jTextField1" min="-2" pref="215" max="-2" attributes="0"/>
+                      <Component id="txbNomeCompleto" min="-2" pref="215" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="250" max="32767" attributes="0"/>
               </Group>
@@ -81,22 +81,22 @@
                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
+                  <Component id="txbNomeCompleto" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jFormattedTextField3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txbCpf" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jTextField3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txbTelefone" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jFormattedTextField2" min="-2" max="-2" attributes="0"/>
+                  <Component id="txbDataNascimento" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="29" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btnGerarCartao" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnAcao" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
@@ -105,7 +105,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField2">
+        <Component class="javax.swing.JFormattedTextField" name="txbDataNascimento">
           <Properties>
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
               <Format format="##/##/####" subtype="-1" type="5"/>
@@ -122,7 +122,7 @@
             <Property name="text" type="java.lang.String" value="Nome Completo:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField1">
+        <Component class="javax.swing.JTextField" name="txbNomeCompleto">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
@@ -134,22 +134,22 @@
             <Property name="text" type="java.lang.String" value="Telefone:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField3">
+        <Component class="javax.swing.JTextField" name="txbTelefone">
         </Component>
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cancelar"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnGerarCartao">
+        <Component class="javax.swing.JButton" name="btnAcao">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cadastrar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGerarCartaoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAcaoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField3">
+        <Component class="javax.swing.JFormattedTextField" name="txbCpf">
           <Properties>
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
               <Format format="###.###.###-##" subtype="-1" type="5"/>
