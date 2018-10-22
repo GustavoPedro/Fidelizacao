@@ -73,5 +73,8 @@ public class ClienteTableModel extends AbstractTableModel
         this.clientesList.add(cliente);
         this.fireTableDataChanged();
     }
-
+    public ClienteBEAN retornarObjeto(int linha)
+    {
+        return clientesList.get(linha);
+    }
 }

@@ -6,6 +6,7 @@
 package View;
 
 import Control.ClienteControl;
+import Control.DataConversoes;
 import Model.bean.ClienteBEAN;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
@@ -17,6 +18,10 @@ import javax.swing.JOptionPane;
 public class IFrmCadastroCliente extends javax.swing.JInternalFrame
 {
 
+    private int id;
+    private CRUD crud;
+    private IFrmPesquisarClientes frmPesquisarClientes = null;
+
     /**
      * Creates new form FrmCadastroUsuario
      */
@@ -26,14 +31,20 @@ public class IFrmCadastroCliente extends javax.swing.JInternalFrame
 
     }
 
-    public IFrmCadastroCliente(CRUD crud)
+    public IFrmCadastroCliente(CRUD crud, ClienteBEAN clienteBEAN, IFrmPesquisarClientes frmPesquisarClientes)
     {
         initComponents();
-        if(crud == CRUD.Alterar)
+        this.crud = crud;
+        this.frmPesquisarClientes = frmPesquisarClientes;
+        if (this.crud == CRUD.Alterar)
         {
+            txbCpf.setText(clienteBEAN.getCpf());
+            txbDataNascimento.setText(clienteBEAN.getDataNasc());
+            txbNomeCompleto.setText(clienteBEAN.getNome());
+            txbTelefone.setText(clienteBEAN.getTelefone());
+            id = clienteBEAN.getIdCliente();
             btnAcao.setText("Alterar");
-        }
-        else
+        } else
         {
             btnAcao.setText("Cadastrar");
         }
@@ -176,23 +187,44 @@ public class IFrmCadastroCliente extends javax.swing.JInternalFrame
 
     private void btnAcaoActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAcaoActionPerformed
     {//GEN-HEADEREND:event_btnAcaoActionPerformed
-
         ClienteBEAN clienteBean = new ClienteBEAN(txbNomeCompleto.getText(), txbCpf.getText(), txbTelefone.getText(), Control.DataConversoes.inverterData(txbDataNascimento.getText()));
         ClienteControl clienteControl = new ClienteControl();
 
-        if (clienteControl.inserirCliente(clienteBean) == true)
+        if (crud == CRUD.Cadastrar)
         {
-            if (JOptionPane.showConfirmDialog(null, "Cadastro realizado com sucesso! \n Deseja inserir algum valor no cartão do cliente", "Cadastro realizado", JOptionPane.YES_NO_OPTION) == 0)
+            if (clienteControl.inserirCliente(clienteBean) == true)
             {
-                FrmCadastrarCartaoPorValor frmGestaoCartao = new FrmCadastrarCartaoPorValor(txbNomeCompleto.getText());
-                frmGestaoCartao.show();
+                if (frmPesquisarClientes != null)
+                {
+                    frmPesquisarClientes.atualizarTable();
+                }
+                
+                if (JOptionPane.showConfirmDialog(null, "Cadastro realizado com sucesso! \n Deseja inserir algum valor no cartão do cliente", "Cadastro realizado", JOptionPane.YES_NO_OPTION) == 0)
+                {
+                    FrmCadastrarCartaoPorValor frmGestaoCartao = new FrmCadastrarCartaoPorValor(txbNomeCompleto.getText());
+                    frmGestaoCartao.show();
+                } else
+                {
+                    this.dispose();
+                }
             } else
             {
-                this.dispose();
+                JOptionPane.showMessageDialog(this, "Não foi possível cadastrar cliente", "Erro ao cadastrar", JOptionPane.ERROR_MESSAGE);
             }
-        } else
+        } //Caso seja alterar ...
+        else
         {
-            JOptionPane.showMessageDialog(this, "Não foi possível cadastrar cliente", "Erro ao cadastrar", JOptionPane.ERROR_MESSAGE);
+            clienteBean.setIdCliente(id);
+            if (clienteControl.alterarCliente(clienteBean) == true)
+            {
+                frmPesquisarClientes.atualizarTable();
+                JOptionPane.showMessageDialog(this, "Cliente alterado com sucesso", "Alteração realizada", JOptionPane.INFORMATION_MESSAGE);
+
+            } else
+            {
+                JOptionPane.showMessageDialog(this, "Não foi possível alterar cliente", "Erro ao cadastrar", JOptionPane.ERROR_MESSAGE);
+
+            }
         }
     }//GEN-LAST:event_btnAcaoActionPerformed
 

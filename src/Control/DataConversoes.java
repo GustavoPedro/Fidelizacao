@@ -37,7 +37,7 @@ public class DataConversoes
         {
             Date date = formato.parse(data);
 
-            return Integer.toString(date.getDate()) + '-' + Integer.toString(date.getMonth() + 1) + '-' + Integer.toString(date.getYear() + 1900);
+            return Integer.toString(date.getDate()) + '/' + Integer.toString(date.getMonth() + 1) + '/' + Integer.toString(date.getYear() + 1900);
         } catch (ParseException ex)
         {
             return ex.toString();

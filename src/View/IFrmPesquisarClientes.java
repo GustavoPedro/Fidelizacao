@@ -22,22 +22,27 @@ public class IFrmPesquisarClientes extends javax.swing.JInternalFrame
      * Creates new form FrmPesquisarClientes
      */
     private FrmMenu frmMenu;
+    private ClienteTableModel clienteModel = null;
 
     public IFrmPesquisarClientes()
     {
         initComponents();
-
-        ClienteTableModel clienteModel = new ClienteTableModel();
-        ClienteControl clienteControl = new ClienteControl();
-        List<ClienteBEAN> clientes = clienteControl.buscarClientes();
-        clienteModel.popularLista(clientes);
-        tblClientes.setModel(clienteModel);
+        clienteModel = new ClienteTableModel();
+        atualizarTable();
     }
 
     public IFrmPesquisarClientes(FrmMenu frmMenu)
     {
-        this();        
+        this();
         this.frmMenu = frmMenu;
+    }
+
+    public void atualizarTable()
+    {   
+        ClienteControl clienteControl = new ClienteControl();
+        List<ClienteBEAN> clientes = clienteControl.buscarClientes();
+        clienteModel.popularLista(clientes);
+        tblClientes.setModel(clienteModel);
     }
 
     public void setPosicao()
@@ -183,14 +188,19 @@ public class IFrmPesquisarClientes extends javax.swing.JInternalFrame
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        IFrmCadastroCliente frmCadastroCliente = new IFrmCadastroCliente(CRUD.Alterar);
+        ClienteBEAN cli = null;
+        if (tblClientes.getSelectedRow() != -1)
+        {
+            cli = clienteModel.retornarObjeto(tblClientes.getSelectedRow());
+        }
+        IFrmCadastroCliente frmCadastroCliente = new IFrmCadastroCliente(CRUD.Alterar, cli,this);
         frmMenu.DpContainer.add(frmCadastroCliente);
         frmCadastroCliente.setVisible(true);
         frmCadastroCliente.setPosicao();
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnCadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarClienteActionPerformed
-        IFrmCadastroCliente frmCadastroCliente = new IFrmCadastroCliente(CRUD.Cadastrar);
+        IFrmCadastroCliente frmCadastroCliente = new IFrmCadastroCliente(CRUD.Cadastrar, null,this);
         frmMenu.DpContainer.add(frmCadastroCliente);
         frmCadastroCliente.setVisible(true);
         frmCadastroCliente.setPosicao();

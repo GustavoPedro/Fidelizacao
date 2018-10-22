@@ -22,10 +22,10 @@ public class ClienteControl
         return clienteDAO.inserirCliente(cliente);
     }
 
-    public void alterarCliente(ClienteBEAN cliente)
+    public boolean alterarCliente(ClienteBEAN cliente)
     {
         ClienteDAO clienteDAO = new ClienteDAO();
-        clienteDAO.atualizarCliente(cliente);
+        return clienteDAO.atualizarCliente(cliente);
     }
     public List<ClienteBEAN> buscarClientes()
     {

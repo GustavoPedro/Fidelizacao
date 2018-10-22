@@ -55,9 +55,32 @@ public class ClienteDAO
         }
     }
 
-    public void atualizarCliente(ClienteBEAN cliente)
+    public boolean atualizarCliente(ClienteBEAN cliente)
     {
+        //idCliente, Nome, Cpf, Telefone, DataNasc
+        String sql = "UPDATE cliente SET Nome = ? , Cpf = ?, Telefone = ?, DataNasc = ? WHERE idCliente = ?";
+                
+
+        PreparedStatement stmt = null;
         
+        try
+        {
+            stmt = con.prepareStatement(sql);
+            stmt.setString(1, cliente.getNome());
+            stmt.setString(2, cliente.getCpf());
+            stmt.setString(3, cliente.getTelefone());
+            stmt.setString(4, cliente.getDataNasc());
+            stmt.setInt(5, cliente.getIdCliente());
+            stmt.executeUpdate();
+            return true;
+        } catch (SQLException ex)
+        {
+            System.err.println(ex.toString());
+            return false;
+        } finally
+        {
+            ConexaoBanco.closeConnection(con, stmt);
+        }
     }
 
     public List<ClienteBEAN> buscarClientes()
