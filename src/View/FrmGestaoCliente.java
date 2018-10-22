@@ -82,7 +82,7 @@ public class FrmGestaoCliente extends javax.swing.JFrame
             }
         });
 
-        btnGerarCartao.setText("Gerar Cartao");
+        btnGerarCartao.setText("Cadastrar");
         btnGerarCartao.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)

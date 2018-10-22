@@ -41,7 +41,7 @@ public class FrmMenu extends javax.swing.JFrame
     private void initComponents()
     {
 
-        jPanel1 = new javax.swing.JPanel();
+        Painel = new javax.swing.JPanel();
         DpContainer = new javax.swing.JDesktopPane();
         MbMenu = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -71,14 +71,14 @@ public class FrmMenu extends javax.swing.JFrame
             .addGap(0, 385, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout PainelLayout = new javax.swing.GroupLayout(Painel);
+        Painel.setLayout(PainelLayout);
+        PainelLayout.setHorizontalGroup(
+            PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(DpContainer)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        PainelLayout.setVerticalGroup(
+            PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(DpContainer)
         );
 
@@ -191,11 +191,11 @@ public class FrmMenu extends javax.swing.JFrame
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Painel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Painel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         getAccessibleContext().setAccessibleDescription("");
@@ -231,11 +231,11 @@ public class FrmMenu extends javax.swing.JFrame
         IFrmPesquisarClientes frmPesquisarClientes = new IFrmPesquisarClientes();
         DpContainer.add(frmPesquisarClientes);
         frmPesquisarClientes.setVisible(true);
-        frmPesquisarClientes.setPosicao();
+        frmPesquisarClientes.setPosicao();        
     }//GEN-LAST:event_MiPesquisarClientesActionPerformed
 
     private void MiPesquisarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MiPesquisarFuncionarioActionPerformed
-        IFrmPesquisarFuncionarios iFrmPesquisarFuncionarios = new IFrmPesquisarFuncionarios();
+        IFrmPesquisarFuncionarios iFrmPesquisarFuncionarios = new IFrmPesquisarFuncionarios(this);
         DpContainer.add(iFrmPesquisarFuncionarios);
         iFrmPesquisarFuncionarios.setVisible(true);
         iFrmPesquisarFuncionarios.setPosicao();
@@ -275,7 +275,7 @@ public class FrmMenu extends javax.swing.JFrame
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane DpContainer;
+    public static javax.swing.JDesktopPane DpContainer;
     private javax.swing.JMenuBar MbMenu;
     private javax.swing.JMenuItem MiAlterarEmpresa;
     private javax.swing.JMenuItem MiCadastrarCliente;
@@ -285,10 +285,10 @@ public class FrmMenu extends javax.swing.JFrame
     private javax.swing.JMenuItem MiPesquisarClientes;
     private javax.swing.JMenuItem MiPesquisarFuncionario;
     private javax.swing.JMenuItem MiPesquisarPontos;
+    public javax.swing.JPanel Painel;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
-    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

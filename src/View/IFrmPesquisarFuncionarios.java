@@ -5,22 +5,34 @@
  */
 package View;
 
+
+import java.awt.Component;
 import java.awt.Dimension;
 
 /**
  *
  * @author gusta
  */
-public class IFrmPesquisarFuncionarios extends javax.swing.JInternalFrame {
+public class IFrmPesquisarFuncionarios extends javax.swing.JInternalFrame
+{
 
+    FrmMenu frm;
     /**
      * Creates new form FrmPesquisarFuncionarios
      */
-    public IFrmPesquisarFuncionarios() {
+    public IFrmPesquisarFuncionarios()
+    {
         initComponents();
     }
 
-    public void setPosicao() {
+    public IFrmPesquisarFuncionarios(FrmMenu frmMenu)
+    {
+        frm = frmMenu;
+        initComponents();
+    }
+
+    public void setPosicao()
+    {
         Dimension d = this.getDesktopPane().getSize();
         this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
     }
@@ -177,8 +189,14 @@ public class IFrmPesquisarFuncionarios extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void btnCadastrarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarFuncionarioActionPerformed
-        FrmGestaoFuncionario frmGestaoFuncionario = new FrmGestaoFuncionario(CRUD.Cadastrar);
-        frmGestaoFuncionario.show();
+        //FrmGestaoFuncionario frmGestaoFuncionario = new FrmGestaoFuncionario(CRUD.Cadastrar);
+        //frmGestaoFuncionario.show();
+        IFrmCadastroFuncionario frmCadastroFuncionario = new IFrmCadastroFuncionario();
+        FrmMenu.DpContainer.add(frmCadastroFuncionario);
+        frmCadastroFuncionario.setVisible(true);
+        //DpContainer.add(frmCadastroFuncionario);
+//        frmCadastroFuncionario.setVisible(true);
+//        frmCadastroFuncionario.setPosicao();
     }//GEN-LAST:event_btnCadastrarFuncionarioActionPerformed
 
 
