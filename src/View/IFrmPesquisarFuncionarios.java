@@ -189,14 +189,12 @@ public class IFrmPesquisarFuncionarios extends javax.swing.JInternalFrame
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void btnCadastrarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarFuncionarioActionPerformed
-        //FrmGestaoFuncionario frmGestaoFuncionario = new FrmGestaoFuncionario(CRUD.Cadastrar);
-        //frmGestaoFuncionario.show();
+       
         IFrmCadastroFuncionario frmCadastroFuncionario = new IFrmCadastroFuncionario();
-        FrmMenu.DpContainer.add(frmCadastroFuncionario);
+        frm.DpContainer.add(frmCadastroFuncionario);
+        
         frmCadastroFuncionario.setVisible(true);
-        //DpContainer.add(frmCadastroFuncionario);
-//        frmCadastroFuncionario.setVisible(true);
-//        frmCadastroFuncionario.setPosicao();
+        
     }//GEN-LAST:event_btnCadastrarFuncionarioActionPerformed
 
 

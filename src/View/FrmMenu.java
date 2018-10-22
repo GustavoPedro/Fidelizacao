@@ -275,7 +275,7 @@ public class FrmMenu extends javax.swing.JFrame
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JDesktopPane DpContainer;
+    public javax.swing.JDesktopPane DpContainer;
     private javax.swing.JMenuBar MbMenu;
     private javax.swing.JMenuItem MiAlterarEmpresa;
     private javax.swing.JMenuItem MiCadastrarCliente;
