@@ -29,6 +29,7 @@ public class IFrmCadastroCliente extends javax.swing.JInternalFrame
     {
         initComponents();
     }
+
     public IFrmCadastroCliente(CRUD crud, ClienteBEAN clienteBEAN, IFrmPesquisarClientes frmPesquisarClientes)
     {
         initComponents();
@@ -72,7 +73,7 @@ public class IFrmCadastroCliente extends javax.swing.JInternalFrame
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txbTelefone = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
         btnAcao = new javax.swing.JButton();
         txbCpf = new javax.swing.JFormattedTextField();
 
@@ -98,7 +99,14 @@ public class IFrmCadastroCliente extends javax.swing.JInternalFrame
 
         jLabel4.setText("Telefone:");
 
-        jButton1.setText("Cancelar");
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         btnAcao.setText("Cadastrar");
         btnAcao.addActionListener(new java.awt.event.ActionListener()
@@ -125,7 +133,7 @@ public class IFrmCadastroCliente extends javax.swing.JInternalFrame
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnAcao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(btnCancelar)
                 .addGap(29, 29, 29))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
@@ -163,7 +171,7 @@ public class IFrmCadastroCliente extends javax.swing.JInternalFrame
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAcao)
-                    .addComponent(jButton1))
+                    .addComponent(btnCancelar))
                 .addGap(26, 26, 26))
         );
 
@@ -195,11 +203,12 @@ public class IFrmCadastroCliente extends javax.swing.JInternalFrame
                 if (frmPesquisarClientes != null)
                 {
                     frmPesquisarClientes.atualizarTable();
-                }                
+                }
                 if (JOptionPane.showConfirmDialog(null, "Cadastro realizado com sucesso! \n Deseja inserir algum valor no cartão do cliente", "Cadastro realizado", JOptionPane.YES_NO_OPTION) == 0)
                 {
                     FrmCadastrarCartaoPorValor frmGestaoCartao = new FrmCadastrarCartaoPorValor(txbNomeCompleto.getText());
                     frmGestaoCartao.show();
+                    this.dispose();
                 } else
                 {
                     this.dispose();
@@ -226,10 +235,15 @@ public class IFrmCadastroCliente extends javax.swing.JInternalFrame
         }
     }//GEN-LAST:event_btnAcaoActionPerformed
 
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCancelarActionPerformed
+    {//GEN-HEADEREND:event_btnCancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAcao;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

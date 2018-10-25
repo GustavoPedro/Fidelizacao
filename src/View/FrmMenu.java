@@ -220,7 +220,7 @@ public class FrmMenu extends javax.swing.JFrame
 
     private void MiCadastrarEmpresaActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_MiCadastrarEmpresaActionPerformed
     {//GEN-HEADEREND:event_MiCadastrarEmpresaActionPerformed
-        IFrmGestaoEmpresa frmCadastroEmpresa = new IFrmGestaoEmpresa();
+        IFrmCadastroEmpresa frmCadastroEmpresa = new IFrmCadastroEmpresa(CRUD.Cadastrar);
         DpContainer.add(frmCadastroEmpresa);
         frmCadastroEmpresa.setVisible(true);
         frmCadastroEmpresa.setPosicao();

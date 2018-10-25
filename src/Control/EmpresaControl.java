@@ -5,6 +5,7 @@
  */
 package Control;
 
+import Model.bean.EmpresaBEAN;
 import Model.dao.EmpresaDAO;
 
 /**
@@ -18,5 +19,10 @@ public class EmpresaControl
     {
         EmpresaDAO empresaDAO = new EmpresaDAO();
         return empresaDAO.getIdEmpresa();
+    }
+    public boolean inserir(EmpresaBEAN empresa){
+          EmpresaDAO empresaDAO = new EmpresaDAO();
+        return empresaDAO.inserirEmpresa(empresa);
+        
     }
 }

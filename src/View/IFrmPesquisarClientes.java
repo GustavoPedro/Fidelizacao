@@ -61,14 +61,17 @@ public class IFrmPesquisarClientes extends javax.swing.JInternalFrame
     private void initComponents()
     {
 
+        GrupoRadioButtonPesquisar = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblClientes = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        txbPesquisar = new javax.swing.JTextField();
+        btnPesquisar = new javax.swing.JButton();
         btnAlterar = new javax.swing.JButton();
         btnCadastrarCliente = new javax.swing.JButton();
+        rbrPorNome = new javax.swing.JRadioButton();
+        rbrPorCpf = new javax.swing.JRadioButton();
 
         setClosable(true);
 
@@ -110,7 +113,14 @@ public class IFrmPesquisarClientes extends javax.swing.JInternalFrame
 
         jLabel5.setText("Pesquisar:");
 
-        jButton3.setText("Pesquisar");
+        btnPesquisar.setText("Pesquisar");
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnPesquisarActionPerformed(evt);
+            }
+        });
 
         btnAlterar.setText("Alterar");
         btnAlterar.addActionListener(new java.awt.event.ActionListener()
@@ -130,6 +140,12 @@ public class IFrmPesquisarClientes extends javax.swing.JInternalFrame
             }
         });
 
+        GrupoRadioButtonPesquisar.add(rbrPorNome);
+        rbrPorNome.setText("Pesquisar por Nome");
+
+        GrupoRadioButtonPesquisar.add(rbrPorCpf);
+        rbrPorCpf.setText("Pesquisar por Cpf");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -138,19 +154,23 @@ public class IFrmPesquisarClientes extends javax.swing.JInternalFrame
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 607, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton3)))
-                        .addGap(0, 170, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnAlterar)
                         .addGap(18, 18, 18)
-                        .addComponent(btnCadastrarCliente)))
+                        .addComponent(btnCadastrarCliente))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(rbrPorNome)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rbrPorCpf))
+                            .addComponent(jLabel5)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txbPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 607, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnPesquisar)))
+                        .addGap(0, 170, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -160,10 +180,14 @@ public class IFrmPesquisarClientes extends javax.swing.JInternalFrame
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3))
-                .addGap(23, 23, 23)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txbPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPesquisar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rbrPorNome)
+                    .addComponent(rbrPorCpf))
+                .addGap(8, 8, 8)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAlterar)
@@ -206,15 +230,30 @@ public class IFrmPesquisarClientes extends javax.swing.JInternalFrame
         frmCadastroCliente.setPosicao();
     }//GEN-LAST:event_btnCadastrarClienteActionPerformed
 
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnPesquisarActionPerformed
+    {//GEN-HEADEREND:event_btnPesquisarActionPerformed
+        if (rbrPorCpf.isSelected())
+        {
+            
+        }
+        else
+        {
+            
+        }
+    }//GEN-LAST:event_btnPesquisarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup GrupoRadioButtonPesquisar;
     private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnCadastrarCliente;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnPesquisar;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JRadioButton rbrPorCpf;
+    private javax.swing.JRadioButton rbrPorNome;
     private javax.swing.JTable tblClientes;
+    private javax.swing.JTextField txbPesquisar;
     // End of variables declaration//GEN-END:variables
 }
