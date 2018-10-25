@@ -7,7 +7,7 @@ package Model.dao;
 
 import Connection.ConexaoBanco;
 import Model.bean.EmpresaBEAN;
-import Model.bean.FuncionarioSessaoBEAN;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

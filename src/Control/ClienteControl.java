@@ -32,4 +32,16 @@ public class ClienteControl
         ClienteDAO clienteDAO = new ClienteDAO();
         return clienteDAO.buscarClientes();
     }
+    
+    public List<ClienteBEAN>buscarPorCpf(String cpf)
+    {
+          ClienteDAO clienteDAO = new ClienteDAO();
+          return clienteDAO.buscarPorCpf(cpf);
+    }
+
+    public List<ClienteBEAN> buscarPorNome(String nome)
+    {
+       ClienteDAO clienteDAO = new ClienteDAO();
+       return clienteDAO.buscarPorNome(nome);
+    }
 }

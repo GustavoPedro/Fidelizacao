@@ -27,6 +27,7 @@ public class IFrmPesquisarClientes extends javax.swing.JInternalFrame
     public IFrmPesquisarClientes()
     {
         initComponents();
+        rbrPorNome.setSelected(true);
         clienteModel = new ClienteTableModel();
         atualizarTable();
     }
@@ -41,6 +42,20 @@ public class IFrmPesquisarClientes extends javax.swing.JInternalFrame
     {   
         ClienteControl clienteControl = new ClienteControl();
         List<ClienteBEAN> clientes = clienteControl.buscarClientes();
+        clienteModel.popularLista(clientes);
+        tblClientes.setModel(clienteModel);
+    }
+    private void atualizarTablePorNome(String nome)
+    {   
+        ClienteControl clienteControl = new ClienteControl();
+        List<ClienteBEAN> clientes = clienteControl.buscarPorNome(nome);
+        clienteModel.popularLista(clientes);
+        tblClientes.setModel(clienteModel);
+    }
+    private void atualizarTablePorCpf(String cpf)
+    {   
+        ClienteControl clienteControl = new ClienteControl();
+        List<ClienteBEAN> clientes = clienteControl.buscarPorCpf(cpf);
         clienteModel.popularLista(clientes);
         tblClientes.setModel(clienteModel);
     }
@@ -234,11 +249,11 @@ public class IFrmPesquisarClientes extends javax.swing.JInternalFrame
     {//GEN-HEADEREND:event_btnPesquisarActionPerformed
         if (rbrPorCpf.isSelected())
         {
-            
+            atualizarTablePorCpf(txbPesquisar.getText());
         }
         else
         {
-            
+            atualizarTablePorNome(txbPesquisar.getText());
         }
     }//GEN-LAST:event_btnPesquisarActionPerformed
 

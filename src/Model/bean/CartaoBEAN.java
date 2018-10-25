@@ -11,20 +11,21 @@ package Model.bean;
  */
 public class CartaoBEAN
 {
+
     //NumeroCartao, DataVencimento, IdCliente, IdFuncionario, IdEmpresa
     private int numeroCartao;
     private String dataVencimento;
-    private int idCliente;
-    private int idFuncionario;
-    private int idEmpresa;
+    private ClienteBEAN cliente;
+    private FuncionarioBEAN funcionario;
+    private EmpresaBEAN empresa;
 
-    public CartaoBEAN(int numeroCartao, String dataVencimento, int idCliente, int idFuncionario, int idEmpresa)
+    public CartaoBEAN(int numeroCartao, String dataVencimento, ClienteBEAN cliente, FuncionarioBEAN funcionario, EmpresaBEAN empresa)
     {
         this.numeroCartao = numeroCartao;
         this.dataVencimento = dataVencimento;
-        this.idCliente = idCliente;
-        this.idFuncionario = idFuncionario;
-        this.idEmpresa = idEmpresa;
+        this.cliente = cliente;
+        this.funcionario = funcionario;
+        this.empresa = empresa;
     }
 
     public int getNumeroCartao()
@@ -47,35 +48,34 @@ public class CartaoBEAN
         this.dataVencimento = dataVencimento;
     }
 
-    public int getIdCliente()
+    public ClienteBEAN getCliente()
     {
-        return idCliente;
+        return cliente;
     }
 
-    public void setIdCliente(int idCliente)
+    public void setCliente(ClienteBEAN cliente)
     {
-        this.idCliente = idCliente;
+        this.cliente = cliente;
     }
 
-    public int getIdFuncionario()
+    public FuncionarioBEAN getFuncionario()
     {
-        return idFuncionario;
+        return funcionario;
     }
 
-    public void setIdFuncionario(int idFuncionario)
+    public void setFuncionario(FuncionarioBEAN funcionario)
     {
-        this.idFuncionario = idFuncionario;
+        this.funcionario = funcionario;
     }
 
-    public int getIdEmpresa()
+    public EmpresaBEAN getEmpresa()
     {
-        return idEmpresa;
+        return empresa;
     }
 
-    public void setIdEmpresa(int idEmpresa)
+    public void setEmpresa(EmpresaBEAN empresa)
     {
-        this.idEmpresa = idEmpresa;
+        this.empresa = empresa;
     }
-    
-    
+
 }

@@ -12,16 +12,34 @@ package Model.bean;
 public class FuncionarioBEAN
 {
     //idFuncionario, Nome, Empresa_idEmpresa, Login, Senha
-    
+
     private int idFuncionario;
     private String nome;
-     private int idEmpresa;
+    private EmpresaBEAN empresa;
     private String login;
     private String senha;
-    
+
+    public FuncionarioBEAN(String nome, EmpresaBEAN empresa, String login, String senha)
+    {
+        this.nome = nome;
+        this.empresa = empresa;
+        this.login = login;
+        this.senha = senha;
+    }   
+
     public FuncionarioBEAN()
     {
-        
+
+    }
+
+    public EmpresaBEAN getEmpresa()
+    {
+        return empresa;
+    }
+
+    public void setEmpresa(EmpresaBEAN empresa)
+    {
+        this.empresa = empresa;
     }
 
     public void setIdFuncionario(int idFuncionario)
@@ -32,11 +50,6 @@ public class FuncionarioBEAN
     public void setNome(String nome)
     {
         this.nome = nome;
-    }
-
-    public void setIdEmpresa(int idEmpresa)
-    {
-        this.idEmpresa = idEmpresa;
     }
 
     public void setLogin(String login)
@@ -58,12 +71,6 @@ public class FuncionarioBEAN
     {
         return nome;
     }
-
-    public int getIdEmpresa()
-    {
-        return idEmpresa;
-    }
-
     public String getLogin()
     {
         return login;
@@ -74,13 +81,4 @@ public class FuncionarioBEAN
         return senha;
     }
 
-    public FuncionarioBEAN(int idFuncionario, String nome, int idEmpresa, String login, String senha)
-    {
-        this.idFuncionario = idFuncionario;
-        this.nome = nome;
-        this.idEmpresa = idEmpresa;
-        this.login = login;
-        this.senha = senha;
-    }
-   
 }
