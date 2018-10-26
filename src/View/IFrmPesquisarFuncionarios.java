@@ -5,9 +5,11 @@
  */
 package View;
 
-
-import java.awt.Component;
+import Control.FuncionarioControl;
+import Model.bean.FuncionarioBEAN;
+import TableModel.FuncionarioTableModel;
 import java.awt.Dimension;
+import java.util.List;
 
 /**
  *
@@ -17,9 +19,8 @@ public class IFrmPesquisarFuncionarios extends javax.swing.JInternalFrame
 {
 
     FrmMenu frm;
-    /**
-     * Creates new form FrmPesquisarFuncionarios
-     */
+    private FuncionarioTableModel funcionarioModel = null;
+
     public IFrmPesquisarFuncionarios()
     {
         initComponents();
@@ -29,6 +30,16 @@ public class IFrmPesquisarFuncionarios extends javax.swing.JInternalFrame
     {
         frm = frmMenu;
         initComponents();
+        funcionarioModel = new FuncionarioTableModel();
+        atualizarTable();
+    }
+
+    public void atualizarTable()
+    {
+        FuncionarioControl funcionarioControl = new FuncionarioControl();
+        List<FuncionarioBEAN> funcionariosList = funcionarioControl.selecionarFuncionarios();
+        funcionarioModel.popularLista(funcionariosList);
+        tblFuncionarios.setModel(funcionarioModel);
     }
 
     public void setPosicao()
@@ -49,7 +60,7 @@ public class IFrmPesquisarFuncionarios extends javax.swing.JInternalFrame
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblFuncionarios = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
@@ -62,7 +73,7 @@ public class IFrmPesquisarFuncionarios extends javax.swing.JInternalFrame
         setToolTipText("");
         setPreferredSize(new java.awt.Dimension(895, 475));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblFuncionarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][]
             {
                 {null, null},
@@ -86,7 +97,7 @@ public class IFrmPesquisarFuncionarios extends javax.swing.JInternalFrame
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblFuncionarios);
 
         jLabel5.setText("Pesquisar:");
 
@@ -189,12 +200,12 @@ public class IFrmPesquisarFuncionarios extends javax.swing.JInternalFrame
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void btnCadastrarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarFuncionarioActionPerformed
-       
+
         IFrmCadastroFuncionario frmCadastroFuncionario = new IFrmCadastroFuncionario();
         frm.DpContainer.add(frmCadastroFuncionario);
-        
+
         frmCadastroFuncionario.setVisible(true);
-        
+
     }//GEN-LAST:event_btnCadastrarFuncionarioActionPerformed
 
 
@@ -206,8 +217,8 @@ public class IFrmPesquisarFuncionarios extends javax.swing.JInternalFrame
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTable tblFuncionarios;
     // End of variables declaration//GEN-END:variables
 
 }

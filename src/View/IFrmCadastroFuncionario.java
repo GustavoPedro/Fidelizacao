@@ -5,7 +5,11 @@
  */
 package View;
 
+import Control.FuncionarioControl;
+import Model.bean.EmpresaBEAN;
+import Model.bean.FuncionarioBEAN;
 import java.awt.Dimension;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -14,13 +18,29 @@ import java.awt.Dimension;
 public class IFrmCadastroFuncionario extends javax.swing.JInternalFrame
 {
 
-    /**
-     * Creates new form FrmCadastroFuncionario
-     */
+    private CRUD crud;
+    private FuncionarioBEAN funcionario;
+
     public IFrmCadastroFuncionario()
     {
         initComponents();
     }
+
+    public IFrmCadastroFuncionario(CRUD crud,FuncionarioBEAN funcionario)
+    {
+        this();
+        this.crud = crud;
+        if (crud == CRUD.Cadastrar)
+        {
+            btnCadastroFuncionario.setText("Cadastrar");
+        } else
+        {
+            btnCadastroFuncionario.setText("Alterar");
+            txbNomeCompleto.setText(funcionario.getNome());
+            txbLogin.setText(funcionario.getLogin());
+            txbSenha.setText(funcionario.getSenha());
+        }
+    }    
 
     public void setPosicao()
     {
@@ -40,20 +60,27 @@ public class IFrmCadastroFuncionario extends javax.swing.JInternalFrame
 
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        txbNomeCompleto = new javax.swing.JTextField();
+        btnCadastroFuncionario = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        jTextField4 = new javax.swing.JTextField();
+        txbLogin = new javax.swing.JTextField();
         lblLogin = new javax.swing.JLabel();
         lblSenha = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        txbSenha = new javax.swing.JPasswordField();
 
         setClosable(true);
         setTitle("Cadastrar Funcionário");
 
         jLabel1.setText("Nome Completo:");
 
-        jButton1.setText("Cadastrar");
+        btnCadastroFuncionario.setText("Cadastrar");
+        btnCadastroFuncionario.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnCadastroFuncionarioActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener()
@@ -76,20 +103,20 @@ public class IFrmCadastroFuncionario extends javax.swing.JInternalFrame
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+                        .addComponent(txbSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
                         .addGap(235, 235, 235))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblSenha)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jLabel1)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+                                .addComponent(txbNomeCompleto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
                                 .addComponent(lblLogin)
-                                .addComponent(jTextField4)))
+                                .addComponent(txbLogin)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btnCadastroFuncionario)
                 .addGap(18, 18, 18)
                 .addComponent(btnCancelar)
                 .addGap(15, 15, 15))
@@ -100,20 +127,20 @@ public class IFrmCadastroFuncionario extends javax.swing.JInternalFrame
                 .addGap(23, 23, 23)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txbNomeCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblLogin)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txbLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13)
                 .addComponent(lblSenha)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txbSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(108, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(btnCadastroFuncionario)
                     .addComponent(btnCancelar)))
         );
 
@@ -138,17 +165,40 @@ public class IFrmCadastroFuncionario extends javax.swing.JInternalFrame
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
+    private void btnCadastroFuncionarioActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCadastroFuncionarioActionPerformed
+    {//GEN-HEADEREND:event_btnCadastroFuncionarioActionPerformed
+        EmpresaBEAN empresaBEAN = new EmpresaBEAN();
+        empresaBEAN.setIdEmpresa(1);
+        FuncionarioBEAN funcionarioBEAN = new FuncionarioBEAN(txbNomeCompleto.getText(), empresaBEAN, txbLogin.getText(), txbSenha.getText());
+        FuncionarioControl funcionarioControl = new FuncionarioControl();
+
+        if (crud == CRUD.Cadastrar)
+        {
+
+            if (funcionarioControl.inserirFuncionario(funcionarioBEAN))
+            {
+                JOptionPane.showMessageDialog(this, "Funcionario cadastrado com sucesso", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            } else
+            {
+                JOptionPane.showMessageDialog(this, "Funcionario cadastrado com sucesso", "Sucesso", JOptionPane.ERROR_MESSAGE);
+            }
+        }else
+        {
+            funcionarioBEAN.setIdFuncionario(funcionario.getIdFuncionario());
+        }
+    }//GEN-LAST:event_btnCadastroFuncionarioActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCadastroFuncionario;
     private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JLabel lblLogin;
     private javax.swing.JLabel lblSenha;
+    private javax.swing.JTextField txbLogin;
+    private javax.swing.JTextField txbNomeCompleto;
+    private javax.swing.JPasswordField txbSenha;
     // End of variables declaration//GEN-END:variables
 
 }

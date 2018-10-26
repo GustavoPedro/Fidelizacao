@@ -7,6 +7,7 @@ package Control;
 
 import Model.bean.FuncionarioBEAN;
 import Model.dao.FuncionarioDAO;
+import java.util.List;
 
 /**
  *
@@ -14,9 +15,21 @@ import Model.dao.FuncionarioDAO;
  */
 public class FuncionarioControl
 {
+
     public boolean login(FuncionarioBEAN funcionario)
     {
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
         return funcionarioDAO.loginFuncionario(funcionario);
+    }
+
+    public boolean inserirFuncionario(FuncionarioBEAN funcionario)
+    {
+        FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+        return funcionarioDAO.inserirFuncionario(funcionario);
+    }
+    public List<FuncionarioBEAN>selecionarFuncionarios()
+    {
+         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+         return funcionarioDAO.selecionarFuncionarios();
     }
 }
