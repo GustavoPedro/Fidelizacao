@@ -22,7 +22,7 @@ public class ClienteTableModel extends AbstractTableModel
     
     private String[] colunas =
     {
-        "Codigo Cliente", "Nome", "Cpf", "Telefone", "DataNasc"
+        "Nome", "Cpf", "Telefone", "DataNasc"
     };
 
     
@@ -49,16 +49,14 @@ public class ClienteTableModel extends AbstractTableModel
     public Object getValueAt(int linha, int coluna)
     {
         switch (coluna)
-        {
+        {            
             case 0:
-                return clientesList.get(linha).getIdCliente();
-            case 1:
                 return clientesList.get(linha).getNome();
-            case 2:
+            case 1:
                 return clientesList.get(linha).getCpf();
-            case 3:
+            case 2:
                 return clientesList.get(linha).getTelefone();
-            case 4:
+            case 3:
                 return clientesList.get(linha).getDataNasc();
         }
         return null;

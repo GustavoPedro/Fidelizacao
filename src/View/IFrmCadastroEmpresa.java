@@ -9,6 +9,7 @@ public class IFrmCadastroEmpresa extends javax.swing.JInternalFrame
 {
 
     private CRUD crud;
+    private EmpresaBEAN empresa;
 
     public IFrmCadastroEmpresa()
     {
@@ -18,10 +19,35 @@ public class IFrmCadastroEmpresa extends javax.swing.JInternalFrame
     public IFrmCadastroEmpresa(CRUD crud)
     {
         initComponents();
+
         this.crud = crud;
+
+        EmpresaControl empresaControl = new EmpresaControl();
+        empresa = empresaControl.selecionarEmpresa();
+
+        if (empresa != null)
+        {
+            txbRazaoSocial.setText(empresa.getRazaoSocial());
+            txbTelefone.setText(empresa.getTelefone());
+            txbCNPJ.setText(empresa.getCNPJ());
+            cbxTipo.setSelectedItem(empresa.getTipoCartao());
+            if (this.crud == CRUD.Cadastrar)
+            {
+                txbRazaoSocial.setEnabled(false);
+                txbTelefone.setEnabled(false);
+                txbCNPJ.setEnabled(false);
+                cbxTipo.setEnabled(false);
+                btnCadastrarEmpresa.setEnabled(false);
+            }
+        }
         if (this.crud == CRUD.Alterar)
         {
             btnCadastrarEmpresa.setText("Alterar");
+            if (empresa == null)
+            {
+                JOptionPane.showMessageDialog(this, "Não há empresas cadastradas para alterá-las", "Aviso", JOptionPane.ERROR_MESSAGE);
+                btnCadastrarEmpresa.setEnabled(false);
+            }
         }
     }
 
@@ -152,8 +178,10 @@ public class IFrmCadastroEmpresa extends javax.swing.JInternalFrame
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnCadastrarEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarEmpresaActionPerformed
-        EmpresaBEAN empresaBean = new EmpresaBEAN(txbRazaoSocial.getText(), txbCNPJ.getText(), txbTelefone.getText(), cbxTipo.getSelectedIndex());
+        EmpresaBEAN empresaBean = new EmpresaBEAN(txbRazaoSocial.getText(), txbCNPJ.getText(), txbTelefone.getText(), (String) cbxTipo.getSelectedItem());
+        
         EmpresaControl empresaControl = new EmpresaControl();
+
         if (crud == CRUD.Cadastrar)
         {
             if (empresaControl.inserir(empresaBean))
@@ -165,7 +193,15 @@ public class IFrmCadastroEmpresa extends javax.swing.JInternalFrame
             }
         } else
         {
-            
+            empresaBean.setIdEmpresa(empresa.getIdEmpresa());
+            if (empresaControl.alterar(empresaBean))
+            {
+                
+                JOptionPane.showMessageDialog(this, "Empresa alterada com sucesso", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            } else
+            {
+                JOptionPane.showMessageDialog(this, "Erro ao alterar empresa", "Erro", JOptionPane.ERROR_MESSAGE);
+            }
         }
 
     }//GEN-LAST:event_btnCadastrarEmpresaActionPerformed

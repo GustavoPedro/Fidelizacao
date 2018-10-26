@@ -11,48 +11,65 @@ package Model.bean;
  */
 public class EmpresaBEAN
 {
-    private String RazaoSocial;
-    private String CNPJ;
-    private String Telefone;
-    private int Tipo_Cartao;
+    private int idEmpresa;
+    private String razaoSocial;
+    private String cnpj;
+    private String telefone;
+    private String tipoCartao;
 
-    public EmpresaBEAN(String RazaoSocial, String CNPJ, String Telefone, int Tipo_Cartao) {
-        this.RazaoSocial = RazaoSocial;
-        this.CNPJ = CNPJ;
-        this.Telefone = Telefone;
-        this.Tipo_Cartao=Tipo_Cartao;
+    public EmpresaBEAN(String razaoSocial, String cnpj, String telefone, String tipoCartao) {
+        this.razaoSocial = razaoSocial;
+        this.cnpj = cnpj;
+        this.telefone = telefone;
+        this.tipoCartao = tipoCartao;
     }
+
+    public EmpresaBEAN()
+    {
+        
+    }
+
+    public int getIdEmpresa()
+    {
+        return idEmpresa;
+    }
+
+    public void setIdEmpresa(int idEmpresa)
+    {
+        this.idEmpresa = idEmpresa;
+    }
+    
 
     public String getRazaoSocial() {
-        return RazaoSocial;
+        return razaoSocial;
     }
 
-    public void setRazaoSocial(String RazaoSocial) {
-        this.RazaoSocial = RazaoSocial;
+    public void setRazaoSocial(String razaoSocial) {
+        this.razaoSocial = razaoSocial;
     }
 
     public String getCNPJ() {
-        return CNPJ;
+        return cnpj;
     }
 
-    public void setCNPJ(String CNPJ) {
-        this.CNPJ = CNPJ;
+    public void setCNPJ(String cnpj) {
+        this.cnpj = cnpj;
     }
 
     public String getTelefone() {
-        return Telefone;
+        return telefone;
     }
 
-    public void setTelefone(String Telefone) {
-        this.Telefone = Telefone;
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
-    public int getTipo_Cartao() {
-    return Tipo_Cartao;
+    public String getTipoCartao() {
+    return tipoCartao;
     }
 
-    public void setTipo_Cartao(int Tipo_Cartao) {
-        this.Tipo_Cartao = Tipo_Cartao;
+    public void setTipoCartao(String tipoCartao) {
+        this.tipoCartao = tipoCartao;
     }
     
 }

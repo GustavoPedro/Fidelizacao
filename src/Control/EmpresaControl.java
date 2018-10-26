@@ -15,14 +15,19 @@ import Model.dao.EmpresaDAO;
 public class EmpresaControl
 {
 
-    public int getIdEmpresa()
+    public EmpresaBEAN selecionarEmpresa()
     {
         EmpresaDAO empresaDAO = new EmpresaDAO();
-        return empresaDAO.getIdEmpresa();
+        return empresaDAO.selecionarEmpresa();
     }
     public boolean inserir(EmpresaBEAN empresa){
           EmpresaDAO empresaDAO = new EmpresaDAO();
         return empresaDAO.inserirEmpresa(empresa);
         
+    }
+    public boolean alterar(EmpresaBEAN empresa)
+    {
+        EmpresaDAO empresaDAO = new EmpresaDAO();
+        return empresaDAO.alterarEmpresa(empresa);
     }
 }
