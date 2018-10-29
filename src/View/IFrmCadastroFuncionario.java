@@ -20,26 +20,36 @@ public class IFrmCadastroFuncionario extends javax.swing.JInternalFrame
 
     private CRUD crud;
     private FuncionarioBEAN funcionario;
+    private IFrmPesquisarFuncionarios frmPesquisar;
 
     public IFrmCadastroFuncionario()
     {
         initComponents();
     }
 
-    public IFrmCadastroFuncionario(CRUD crud,FuncionarioBEAN funcionario)
+    public IFrmCadastroFuncionario(CRUD crud)
     {
         this();
-        this.crud = crud;
+        this.crud = crud;        
+    }    
+    public IFrmCadastroFuncionario(CRUD crud,FuncionarioBEAN funcionario,IFrmPesquisarFuncionarios frmPesquisarFuncionarios)
+    {        
+        this(crud);
+        this.funcionario = funcionario;
+        frmPesquisar = frmPesquisarFuncionarios;
         if (crud == CRUD.Cadastrar)
         {
             btnCadastroFuncionario.setText("Cadastrar");
         } else
         {
+            
             btnCadastroFuncionario.setText("Alterar");
             txbNomeCompleto.setText(funcionario.getNome());
             txbLogin.setText(funcionario.getLogin());
             txbSenha.setText(funcionario.getSenha());
         }
+        
+        
     }    
 
     public void setPosicao()
@@ -178,13 +188,27 @@ public class IFrmCadastroFuncionario extends javax.swing.JInternalFrame
             if (funcionarioControl.inserirFuncionario(funcionarioBEAN))
             {
                 JOptionPane.showMessageDialog(this, "Funcionario cadastrado com sucesso", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                frmPesquisar.atualizarTable();                
             } else
             {
-                JOptionPane.showMessageDialog(this, "Funcionario cadastrado com sucesso", "Sucesso", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Não foi possível cadastrar funcionário", "Erro", JOptionPane.ERROR_MESSAGE);
             }
         }else
         {
             funcionarioBEAN.setIdFuncionario(funcionario.getIdFuncionario());
+            if (funcionarioControl.alterarFuncionario(funcionarioBEAN))
+            {
+                JOptionPane.showMessageDialog(this, "Funcionario alterado com sucesso", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                frmPesquisar.atualizarTable();
+                this.dispose();
+            }
+            else
+            {
+                 JOptionPane.showMessageDialog(this, "Não foi possivel alterar funcionario", "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+
+            
+            
         }
     }//GEN-LAST:event_btnCadastroFuncionarioActionPerformed
 

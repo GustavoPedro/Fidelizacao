@@ -10,6 +10,7 @@ import Model.bean.FuncionarioBEAN;
 import TableModel.FuncionarioTableModel;
 import java.awt.Dimension;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,7 +19,7 @@ import java.util.List;
 public class IFrmPesquisarFuncionarios extends javax.swing.JInternalFrame
 {
 
-    FrmMenu frm;
+    FrmMenu frmMenu;
     private FuncionarioTableModel funcionarioModel = null;
 
     public IFrmPesquisarFuncionarios()
@@ -28,7 +29,7 @@ public class IFrmPesquisarFuncionarios extends javax.swing.JInternalFrame
 
     public IFrmPesquisarFuncionarios(FrmMenu frmMenu)
     {
-        frm = frmMenu;
+        this.frmMenu = frmMenu;
         initComponents();
         funcionarioModel = new FuncionarioTableModel();
         atualizarTable();
@@ -64,7 +65,7 @@ public class IFrmPesquisarFuncionarios extends javax.swing.JInternalFrame
         jLabel5 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnDeletar = new javax.swing.JButton();
         btnAlterar = new javax.swing.JButton();
         btnCadastrarFuncionario = new javax.swing.JButton();
 
@@ -110,7 +111,14 @@ public class IFrmPesquisarFuncionarios extends javax.swing.JInternalFrame
             }
         });
 
-        jButton4.setText("Deletar");
+        btnDeletar.setText("Deletar");
+        btnDeletar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnDeletarActionPerformed(evt);
+            }
+        });
 
         btnAlterar.setText("Alterar");
         btnAlterar.addActionListener(new java.awt.event.ActionListener()
@@ -149,7 +157,7 @@ public class IFrmPesquisarFuncionarios extends javax.swing.JInternalFrame
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton4)
+                .addComponent(btnDeletar)
                 .addGap(18, 18, 18)
                 .addComponent(btnAlterar)
                 .addGap(18, 18, 18)
@@ -169,7 +177,7 @@ public class IFrmPesquisarFuncionarios extends javax.swing.JInternalFrame
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
+                    .addComponent(btnDeletar)
                     .addComponent(btnAlterar)
                     .addComponent(btnCadastrarFuncionario))
                 .addGap(29, 29, 29))
@@ -190,9 +198,19 @@ public class IFrmPesquisarFuncionarios extends javax.swing.JInternalFrame
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-//        FrmGestaoFuncionario frmGestaoFuncionario = new FrmGestaoFuncionario(CRUD.Alterar);
-//        frmGestaoFuncionario.show();
-//        frmGestaoFuncionario.setVisible(true);
+        FuncionarioBEAN func = null;
+        if (tblFuncionarios.getSelectedRow() != -1)
+        {
+            func = funcionarioModel.retornarObjeto(tblFuncionarios.getSelectedRow());
+            IFrmCadastroFuncionario frmCadastroFuncionario = new IFrmCadastroFuncionario(CRUD.Alterar, func, this);
+            frmMenu.DpContainer.add(frmCadastroFuncionario);
+            frmCadastroFuncionario.setVisible(true);
+            frmCadastroFuncionario.setPosicao();
+        } else
+        {
+            JOptionPane.showMessageDialog(this, "Selecione um item para que seja alterado", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+        }
+
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -201,19 +219,38 @@ public class IFrmPesquisarFuncionarios extends javax.swing.JInternalFrame
 
     private void btnCadastrarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarFuncionarioActionPerformed
 
-        IFrmCadastroFuncionario frmCadastroFuncionario = new IFrmCadastroFuncionario();
-        frm.DpContainer.add(frmCadastroFuncionario);
+        IFrmCadastroFuncionario frmCadastroFuncionario = new IFrmCadastroFuncionario(CRUD.Cadastrar, null, this);
+        frmMenu.DpContainer.add(frmCadastroFuncionario);
 
         frmCadastroFuncionario.setVisible(true);
+        frmCadastroFuncionario.setPosicao();
 
     }//GEN-LAST:event_btnCadastrarFuncionarioActionPerformed
+
+    private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnDeletarActionPerformed
+    {//GEN-HEADEREND:event_btnDeletarActionPerformed
+        FuncionarioBEAN funcionarioSelecionado = null;
+        FuncionarioControl funcionarioControl = new FuncionarioControl();
+        if (tblFuncionarios.getSelectedRow() != -1)
+        {
+            funcionarioSelecionado = funcionarioModel.retornarObjeto(tblFuncionarios.getSelectedRow());
+            if (funcionarioControl.deletarFuncionario(funcionarioSelecionado))
+            {
+                JOptionPane.showMessageDialog(this, "Funcionario deletado com sucesso", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                atualizarTable();
+            }
+        } else
+        {
+            JOptionPane.showMessageDialog(this, "Não foi possível deletar funcionário", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnDeletarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnCadastrarFuncionario;
+    private javax.swing.JButton btnDeletar;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

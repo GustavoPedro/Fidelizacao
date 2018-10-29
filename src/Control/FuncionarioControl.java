@@ -32,4 +32,14 @@ public class FuncionarioControl
          FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
          return funcionarioDAO.selecionarFuncionarios();
     }
+    public boolean alterarFuncionario(FuncionarioBEAN funcionario)
+    {
+         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+         return funcionarioDAO.alterarFuncionario(funcionario);
+    }
+    public boolean deletarFuncionario(FuncionarioBEAN funcionario)
+    {
+         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+         return funcionarioDAO.deletarFuncionario(funcionario);
+    }
 }
