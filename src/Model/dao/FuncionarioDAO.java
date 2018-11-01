@@ -15,8 +15,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 
 /**
@@ -26,11 +24,11 @@ import java.util.logging.Logger;
 public class FuncionarioDAO extends CRUD
 {
 
-    private Connection con = null;
+    
 
     public FuncionarioDAO()
     {
-        this.con = ConexaoBanco.getConexao();
+        
     }
 
     //Insere funcionario no banco de dados
@@ -62,13 +60,14 @@ public class FuncionarioDAO extends CRUD
     // Executa o login do funcionario e configura o nome e o id do funcionario para o uso durante o programa
     public boolean loginFuncionario(FuncionarioBEAN funcionario)
     {
+        
         String sql = "select idFuncionario,nome from funcionario where Login = ? and Senha = ?";
         PreparedStatement stmt = null;
         ResultSet res = null;
         try
         {
             // create the java statement
-            stmt = con.prepareStatement(sql);
+            stmt = getConnection().prepareStatement(sql);
             stmt.setString(1, funcionario.getLogin());
             stmt.setString(2, funcionario.getSenha());
             res = stmt.executeQuery();
@@ -86,12 +85,13 @@ public class FuncionarioDAO extends CRUD
             return false;
         } finally
         {
-            ConexaoBanco.closeConnection(con, stmt, res);
+            ConexaoBanco.closeConnection(getConnection(), stmt, res);
         }
     }
 
     public List<FuncionarioBEAN> selecionarFuncionarios()
     {
+        
         String sql = "select * from fidelizacao.funcionario inner join fidelizacao.empresa on fidelizacao.empresa.idEmpresa = fidelizacao.funcionario.Empresa_idEmpresa";
 
         List<FuncionarioBEAN> funcionariosList = new ArrayList();
@@ -103,7 +103,7 @@ public class FuncionarioDAO extends CRUD
         try
         {
             // create the java statement
-            stmt = con.prepareStatement(sql);
+            stmt = getConnection().prepareStatement(sql);
             res = stmt.executeQuery();
             while (res.next())
             {
@@ -133,7 +133,7 @@ public class FuncionarioDAO extends CRUD
             return null;
         } finally
         {
-            ConexaoBanco.closeConnection(con, stmt, res);
+            ConexaoBanco.closeConnection(getConnection(), stmt, res);
         }
     }
     

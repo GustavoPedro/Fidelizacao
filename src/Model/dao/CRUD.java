@@ -38,9 +38,8 @@ public abstract class CRUD
             pstmt.setObject(i + 1, parametros[i]);
         }
 
-        pstmt.execute();
-        pstmt.close();
-        connection.close();
+        pstmt.execute();        
+        ConexaoBanco.closeConnection(connection, pstmt);
     }
 
     protected void update(String updateSql, Object id, Object... parametros) throws SQLException
@@ -52,9 +51,8 @@ public abstract class CRUD
             pstmt.setObject(i + 1, parametros[i]);
         }
         pstmt.setObject(parametros.length + 1, id);
-        pstmt.execute();
-        pstmt.close();
-        connection.close();
+        pstmt.execute();        
+        ConexaoBanco.closeConnection(connection, pstmt);
     }
 
     protected void delete(String deleteSql, Object... parametros) throws SQLException
@@ -67,7 +65,6 @@ public abstract class CRUD
         }
 
         pstmt.execute();
-        pstmt.close();
-        connection.close();
+        ConexaoBanco.closeConnection(connection, pstmt);
     }
 }
