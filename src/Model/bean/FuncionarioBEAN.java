@@ -12,7 +12,6 @@ package Model.bean;
 public class FuncionarioBEAN
 {
     //idFuncionario, Nome, Empresa_idEmpresa, Login, Senha
-
     private int idFuncionario;
     private String nome;
     private EmpresaBEAN empresa;

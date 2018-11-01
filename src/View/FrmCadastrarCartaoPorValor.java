@@ -6,6 +6,7 @@
 package View;
 
 import Control.EmpresaControl;
+import Model.bean.EmpresaBEAN;
 import Model.bean.FuncionarioSessaoBEAN;
 
 /**
@@ -14,19 +15,18 @@ import Model.bean.FuncionarioSessaoBEAN;
  */
 public class FrmCadastrarCartaoPorValor extends javax.swing.JFrame
 {
+    private EmpresaBEAN empresa;
     
-    /**
-     * Creates new form FrmGestaoCartao
-     */
     public FrmCadastrarCartaoPorValor()
     {
         initComponents();
     }
 
-    public FrmCadastrarCartaoPorValor(String text)
+    public FrmCadastrarCartaoPorValor(String text,EmpresaBEAN empresa)
     {
         initComponents();
         String funcNome = FuncionarioSessaoBEAN.getNome();
+        this.empresa = empresa;
         cbxCliente.addItem(text);
         cbxCliente.setSelectedItem(text);
         cbxCliente.enable(false);

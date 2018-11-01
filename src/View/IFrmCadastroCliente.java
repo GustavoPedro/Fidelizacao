@@ -7,7 +7,9 @@ package View;
 
 import Control.ClienteControl;
 import Control.DataConversoes;
+import Control.EmpresaControl;
 import Model.bean.ClienteBEAN;
+import Model.bean.EmpresaBEAN;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
 
@@ -21,6 +23,7 @@ public class IFrmCadastroCliente extends javax.swing.JInternalFrame
     private int id;
     private CRUD crud = null;
     private IFrmPesquisarClientes frmPesquisarClientes = null;
+    private EmpresaBEAN empresa;
 
     /**
      * Creates new form FrmCadastroUsuario
@@ -28,13 +31,16 @@ public class IFrmCadastroCliente extends javax.swing.JInternalFrame
     public IFrmCadastroCliente()
     {
         initComponents();
+        EmpresaControl empresaControl = new EmpresaControl();
+        empresa = empresaControl.selecionarEmpresa();
     }
 
     public IFrmCadastroCliente(CRUD crud, ClienteBEAN clienteBEAN, IFrmPesquisarClientes frmPesquisarClientes)
     {
-        initComponents();
+        this();
         this.crud = crud;
         this.frmPesquisarClientes = frmPesquisarClientes;
+        
         if (this.crud == CRUD.Alterar)
         {
             txbCpf.setText(clienteBEAN.getCpf());
@@ -206,8 +212,15 @@ public class IFrmCadastroCliente extends javax.swing.JInternalFrame
                 }
                 if (JOptionPane.showConfirmDialog(null, "Cadastro realizado com sucesso! \n Deseja inserir algum valor no cartão do cliente", "Cadastro realizado", JOptionPane.YES_NO_OPTION) == 0)
                 {
-                    FrmCadastrarCartaoPorValor frmGestaoCartao = new FrmCadastrarCartaoPorValor(txbNomeCompleto.getText());
-                    frmGestaoCartao.show();
+                    if (empresa.getTipoCartao() == "Valor")
+                    {
+                        FrmCadastrarCartaoPorValor frmCadastrarCartaoPorValor = new FrmCadastrarCartaoPorValor(txbNomeCompleto.getText());
+                        frmCadastrarCartaoPorValor.show();
+                    } else
+                    {
+                        FrmCadastroCartaoPorQuantidade frmCadastroCartaoPorQuantidade = new FrmCadastroCartaoPorQuantidade();
+                        frmCadastroCartaoPorQuantidade.show();
+                    }
                     this.dispose();
                 } else
                 {
