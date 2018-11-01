@@ -9,7 +9,6 @@ import Connection.ConexaoBanco;
 import Model.bean.EmpresaBEAN;
 import Model.bean.FuncionarioBEAN;
 import Model.bean.FuncionarioSessaoBEAN;
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,43 +23,27 @@ import java.util.List;
 public class FuncionarioDAO extends CRUD
 {
 
-    
-
     public FuncionarioDAO()
     {
-        
+
     }
 
     //Insere funcionario no banco de dados
     public boolean inserirFuncionario(FuncionarioBEAN funcionario)
     {
-        //idFuncionario, Nome, Empresa_idEmpresa, Login, Senha
-        String sql = "INSERT INTO funcionario(Nome,Empresa_idEmpresa,Login,Senha) values(?,?,?,?)";
-        PreparedStatement stmt = null;
+        return super.inserir("INSERT INTO funcionario(Nome,Empresa_idEmpresa,Login,Senha) values(?,?,?,?)", 
+                funcionario.getNome(), 
+                funcionario.getEmpresa().getIdEmpresa(), 
+                funcionario.getLogin(), 
+                funcionario.getSenha()
+        );
 
-        try
-        {
-            stmt = con.prepareStatement(sql);
-            stmt.setString(1, funcionario.getNome());
-            stmt.setInt(2, funcionario.getEmpresa().getIdEmpresa());
-            stmt.setString(3, funcionario.getLogin());
-            stmt.setString(4, funcionario.getSenha());
-            stmt.executeUpdate();
-            return true;
-        } catch (SQLException ex)
-        {
-            System.err.println(ex.toString());
-            return false;
-        } finally
-        {
-            ConexaoBanco.closeConnection(con, stmt);
-        }
     }
 
     // Executa o login do funcionario e configura o nome e o id do funcionario para o uso durante o programa
     public boolean loginFuncionario(FuncionarioBEAN funcionario)
     {
-        
+
         String sql = "select idFuncionario,nome from funcionario where Login = ? and Senha = ?";
         PreparedStatement stmt = null;
         ResultSet res = null;
@@ -91,12 +74,11 @@ public class FuncionarioDAO extends CRUD
 
     public List<FuncionarioBEAN> selecionarFuncionarios()
     {
-        
+
         String sql = "select * from fidelizacao.funcionario inner join fidelizacao.empresa on fidelizacao.empresa.idEmpresa = fidelizacao.funcionario.Empresa_idEmpresa";
 
         List<FuncionarioBEAN> funcionariosList = new ArrayList();
-        
-        
+
         PreparedStatement stmt = null;
         ResultSet res = null;
 
@@ -110,7 +92,7 @@ public class FuncionarioDAO extends CRUD
                 //idFuncionario, Nome, Empresa_idEmpresa, Login, Senha, idEmpresa, RazaoSocial, CNPJ, Telefone, Tipo_Cartao
                 FuncionarioBEAN funcionarioBEAN = new FuncionarioBEAN();
                 EmpresaBEAN empresaBEAN = new EmpresaBEAN();
-                
+
                 funcionarioBEAN.setIdFuncionario(res.getInt("idFuncionario"));
                 funcionarioBEAN.setNome(res.getString("Nome"));
                 funcionarioBEAN.setLogin(res.getString("Login"));
@@ -136,33 +118,23 @@ public class FuncionarioDAO extends CRUD
             ConexaoBanco.closeConnection(getConnection(), stmt, res);
         }
     }
-    
-    
+
     public boolean alterarFuncionario(FuncionarioBEAN funcionario)
     {
-        try
-        {
-            //idFuncionario, Nome, Empresa_idEmpresa, Login, Senha
-            update("UPDATE funcionario SET Nome = ?, Empresa_idEmpresa = ?, Login = ?, Senha = ? WHERE idFuncionario = ? ", funcionario.getIdFuncionario(), funcionario.getNome(),funcionario.getEmpresa().getIdEmpresa(),funcionario.getLogin(),funcionario.getSenha());
-            return true;
-        } catch (SQLException ex)
-        {
-            System.out.println(ex.toString());
-            return false;
-        }
+        //idFuncionario, Nome, Empresa_idEmpresa, Login, Senha
+        return super.alterar(
+                "UPDATE funcionario SET Nome = ?, Empresa_idEmpresa = ?, Login = ?, Senha = ? WHERE idFuncionario = ? ", 
+                funcionario.getIdFuncionario(), 
+                funcionario.getNome(), 
+                funcionario.getEmpresa().getIdEmpresa(), 
+                funcionario.getLogin(), 
+                funcionario.getSenha()
+        );
     }
 
     public boolean deletarFuncionario(FuncionarioBEAN funcionario)
-    {
-        try
-        {
-            delete("DELETE FROM funcionario WHERE idFuncionario = ?",funcionario.getIdFuncionario());
-            return true;
-        } catch (SQLException ex)
-        {
-            System.out.println(ex.toString());
-            return false;
-        }
+    {        
+        return super.deletar("DELETE FROM funcionario WHERE idFuncionario = ?", funcionario.getIdFuncionario());        
     }
-    
+
 }

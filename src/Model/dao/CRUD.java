@@ -9,6 +9,8 @@ import Connection.ConexaoBanco;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -17,7 +19,7 @@ import java.sql.SQLException;
 public abstract class CRUD
 {
 
-    private Connection connection;
+    private Connection connection = null;
 
     protected CRUD()
     {
@@ -29,42 +31,67 @@ public abstract class CRUD
         return connection;
     }
 
-    protected void save(String insertSql, Object... parametros) throws SQLException
+    protected boolean inserir(String insertSql, Object... parametros)
     {
-        PreparedStatement pstmt = getConnection().prepareStatement(insertSql);
-
-        for (int i = 0; i < parametros.length; i++)
+        PreparedStatement pstmt = null;
+        try
         {
-            pstmt.setObject(i + 1, parametros[i]);
+            pstmt = connection.prepareStatement(insertSql);
+            for (int i = 0; i < parametros.length; i++)
+            {
+                pstmt.setObject(i + 1, parametros[i]);
+            }
+            pstmt.execute();
+            return true;
+        } catch (SQLException ex)
+        {
+            return false;
+        } finally
+        {
+            ConexaoBanco.closeConnection(connection, pstmt);
         }
-
-        pstmt.execute();        
-        ConexaoBanco.closeConnection(connection, pstmt);
     }
 
-    protected void update(String updateSql, Object id, Object... parametros) throws SQLException
+    protected boolean alterar(String updateSql, Object id, Object... parametros)
     {
-        PreparedStatement pstmt = getConnection().prepareStatement(updateSql);
-
-        for (int i = 0; i < parametros.length; i++)
+        PreparedStatement pstmt = null;
+        try
         {
-            pstmt.setObject(i + 1, parametros[i]);
+            pstmt = connection.prepareStatement(updateSql);
+            for (int i = 0; i < parametros.length; i++)
+            {
+                pstmt.setObject(i + 1, parametros[i]);
+            }
+            pstmt.setObject(parametros.length + 1, id);
+            pstmt.execute();
+            return true;
+        } catch (SQLException ex)
+        {
+            return false;
+        } finally
+        {
+            ConexaoBanco.closeConnection(connection, pstmt);
         }
-        pstmt.setObject(parametros.length + 1, id);
-        pstmt.execute();        
-        ConexaoBanco.closeConnection(connection, pstmt);
     }
 
-    protected void delete(String deleteSql, Object... parametros) throws SQLException
+    protected boolean deletar(String deleteSql, Object... parametros)
     {
-        PreparedStatement pstmt = getConnection().prepareStatement(deleteSql);
-
-        for (int i = 0; i < parametros.length; i++)
+        PreparedStatement pstmt = null;
+        try
         {
-            pstmt.setObject(i + 1, parametros[i]);
+            pstmt = connection.prepareStatement(deleteSql);
+            for (int i = 0; i < parametros.length; i++)
+            {
+                pstmt.setObject(i + 1, parametros[i]);
+            }
+            pstmt.execute();
+            return true;
+        } catch (SQLException ex)
+        {
+            return false;
+        } finally
+        {
+            ConexaoBanco.closeConnection(connection, pstmt);
         }
-
-        pstmt.execute();
-        ConexaoBanco.closeConnection(connection, pstmt);
     }
 }
