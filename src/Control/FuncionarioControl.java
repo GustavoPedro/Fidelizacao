@@ -21,6 +21,11 @@ public class FuncionarioControl
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
         return funcionarioDAO.loginFuncionario(funcionario);
     }
+    public List<FuncionarioBEAN>selecionarFuncionariosPorNome(String nome)
+    {
+        FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+        return funcionarioDAO.selecionarFuncionariosPorNome(nome);
+    }
 
     public boolean inserirFuncionario(FuncionarioBEAN funcionario)
     {

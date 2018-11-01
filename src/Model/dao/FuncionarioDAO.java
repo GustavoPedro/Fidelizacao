@@ -137,4 +137,50 @@ public class FuncionarioDAO extends CRUD
         return super.deletar("DELETE FROM funcionario WHERE idFuncionario = ?", funcionario.getIdFuncionario());        
     }
 
+    public List<FuncionarioBEAN> selecionarFuncionariosPorNome(String nome)
+    {
+         String sql = " select * from fidelizacao.funcionario inner join fidelizacao.empresa on fidelizacao.empresa.idEmpresa = fidelizacao.funcionario.Empresa_idEmpresa where Nome like concat('%',?,'%')";
+
+        List<FuncionarioBEAN> funcionariosList = new ArrayList();
+
+        PreparedStatement stmt = null;
+        ResultSet res = null;
+
+        try
+        {
+            // create the java statement
+            stmt = getConnection().prepareStatement(sql);
+            stmt.setString(1, nome);
+            res = stmt.executeQuery();
+            while (res.next())
+            {
+                //idFuncionario, Nome, Empresa_idEmpresa, Login, Senha, idEmpresa, RazaoSocial, CNPJ, Telefone, Tipo_Cartao
+                FuncionarioBEAN funcionarioBEAN = new FuncionarioBEAN();
+                EmpresaBEAN empresaBEAN = new EmpresaBEAN();
+
+                funcionarioBEAN.setIdFuncionario(res.getInt("idFuncionario"));
+                funcionarioBEAN.setNome(res.getString("Nome"));
+                funcionarioBEAN.setLogin(res.getString("Login"));
+                funcionarioBEAN.setSenha(res.getString("Senha"));
+                //Populando o objeto empresa referente ao funcionario
+                empresaBEAN.setIdEmpresa(res.getInt("idEmpresa"));
+                empresaBEAN.setRazaoSocial(res.getString("RazaoSocial"));
+                empresaBEAN.setCNPJ(res.getString("CNPJ"));
+                empresaBEAN.setTelefone(res.getString("Telefone"));
+                empresaBEAN.setTipoCartao(res.getString("Tipo_Cartao"));
+                //Adicionando no objeto funcionario
+                funcionarioBEAN.setEmpresa(empresaBEAN);
+                //Adicionando na lista
+                funcionariosList.add(funcionarioBEAN);
+            }
+            return funcionariosList;
+        } catch (SQLException ex)
+        {
+            System.err.println(ex.toString());
+            return null;
+        } finally
+        {
+            ConexaoBanco.closeConnection(getConnection(), stmt, res);
+        }
+    }
 }

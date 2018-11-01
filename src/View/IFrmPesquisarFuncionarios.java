@@ -63,8 +63,8 @@ public class IFrmPesquisarFuncionarios extends javax.swing.JInternalFrame
         jScrollPane1 = new javax.swing.JScrollPane();
         tblFuncionarios = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        txbNomeFuncionario = new javax.swing.JTextField();
+        btnPesquisarFuncionario = new javax.swing.JButton();
         btnDeletar = new javax.swing.JButton();
         btnAlterar = new javax.swing.JButton();
         btnCadastrarFuncionario = new javax.swing.JButton();
@@ -102,12 +102,12 @@ public class IFrmPesquisarFuncionarios extends javax.swing.JInternalFrame
 
         jLabel5.setText("Pesquisar:");
 
-        jButton3.setText("Pesquisar");
-        jButton3.addActionListener(new java.awt.event.ActionListener()
+        btnPesquisarFuncionario.setText("Pesquisar");
+        btnPesquisarFuncionario.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton3ActionPerformed(evt);
+                btnPesquisarFuncionarioActionPerformed(evt);
             }
         });
 
@@ -150,9 +150,9 @@ public class IFrmPesquisarFuncionarios extends javax.swing.JInternalFrame
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 607, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txbNomeFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 607, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton3)))
+                                .addComponent(btnPesquisarFuncionario)))
                         .addGap(0, 148, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -171,8 +171,8 @@ public class IFrmPesquisarFuncionarios extends javax.swing.JInternalFrame
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3))
+                    .addComponent(txbNomeFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPesquisarFuncionario))
                 .addGap(23, 23, 23)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
@@ -213,9 +213,11 @@ public class IFrmPesquisarFuncionarios extends javax.swing.JInternalFrame
 
     }//GEN-LAST:event_btnAlterarActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void btnPesquisarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarFuncionarioActionPerformed
+        FuncionarioControl funcionarioControl = new FuncionarioControl();        
+        List<FuncionarioBEAN> funcionariosList = funcionarioControl.selecionarFuncionariosPorNome(txbNomeFuncionario.getText());        funcionarioModel.popularLista(funcionariosList);
+        tblFuncionarios.setModel(funcionarioModel);
+    }//GEN-LAST:event_btnPesquisarFuncionarioActionPerformed
 
     private void btnCadastrarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarFuncionarioActionPerformed
 
@@ -250,12 +252,12 @@ public class IFrmPesquisarFuncionarios extends javax.swing.JInternalFrame
     private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnCadastrarFuncionario;
     private javax.swing.JButton btnDeletar;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnPesquisarFuncionario;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTable tblFuncionarios;
+    private javax.swing.JTextField txbNomeFuncionario;
     // End of variables declaration//GEN-END:variables
 
 }
