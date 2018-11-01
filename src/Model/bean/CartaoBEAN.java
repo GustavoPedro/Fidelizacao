@@ -13,15 +13,15 @@ public class CartaoBEAN
 {
 
     //NumeroCartao, DataVencimento, IdCliente, IdFuncionario, IdEmpresa
-    private int numeroCartao;
-    private String dataVencimento;
-    private ClienteBEAN cliente;
-    private FuncionarioBEAN funcionario;
-    private EmpresaBEAN empresa;
+    protected int numeroCartao;
+    protected String dataVencimento;
+    protected ClienteBEAN cliente;
+    protected FuncionarioBEAN funcionario;
+    protected EmpresaBEAN empresa;
 
-    public CartaoBEAN(int numeroCartao, String dataVencimento, ClienteBEAN cliente, FuncionarioBEAN funcionario, EmpresaBEAN empresa)
+    public CartaoBEAN(String dataVencimento, ClienteBEAN cliente, FuncionarioBEAN funcionario, EmpresaBEAN empresa)
     {
-        this.numeroCartao = numeroCartao;
+        
         this.dataVencimento = dataVencimento;
         this.cliente = cliente;
         this.funcionario = funcionario;

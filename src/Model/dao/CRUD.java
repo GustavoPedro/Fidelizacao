@@ -9,8 +9,7 @@ import Connection.ConexaoBanco;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 /**
  *
@@ -45,6 +44,7 @@ public abstract class CRUD
             return true;
         } catch (SQLException ex)
         {
+            System.err.println(ex.toString());
             return false;
         } finally
         {
@@ -67,6 +67,7 @@ public abstract class CRUD
             return true;
         } catch (SQLException ex)
         {
+            System.err.println(ex.toString());
             return false;
         } finally
         {
@@ -88,6 +89,7 @@ public abstract class CRUD
             return true;
         } catch (SQLException ex)
         {
+            System.err.println(ex.toString());
             return false;
         } finally
         {

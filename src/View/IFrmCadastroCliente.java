@@ -214,11 +214,11 @@ public class IFrmCadastroCliente extends javax.swing.JInternalFrame
                 {
                     if (empresa.getTipoCartao() == "Valor")
                     {
-                        FrmCadastrarCartaoPorValor frmCadastrarCartaoPorValor = new FrmCadastrarCartaoPorValor(txbNomeCompleto.getText());
-                        frmCadastrarCartaoPorValor.show();
+//                        FrmCadastrarCartaoPorValor frmCadastrarCartaoPorValor = new FrmCadastrarCartaoPorValor(txbNomeCompleto.getText(),empresa);
+//                        frmCadastrarCartaoPorValor.show();
                     } else
                     {
-                        FrmCadastroCartaoPorQuantidade frmCadastroCartaoPorQuantidade = new FrmCadastroCartaoPorQuantidade();
+                        FrmCadastroCartaoPorQuantidade frmCadastroCartaoPorQuantidade = new FrmCadastroCartaoPorQuantidade(clienteBean,empresa);
                         frmCadastroCartaoPorQuantidade.show();
                     }
                     this.dispose();
