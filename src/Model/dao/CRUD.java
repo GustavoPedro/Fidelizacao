@@ -8,8 +8,8 @@ package Model.dao;
 import Connection.ConexaoBanco;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-
 
 /**
  *
@@ -19,6 +19,7 @@ public abstract class CRUD
 {
 
     private Connection connection = null;
+    private PreparedStatement pstmt = null;
 
     protected CRUD()
     {
@@ -30,9 +31,13 @@ public abstract class CRUD
         return connection;
     }
 
+    protected PreparedStatement getStatement()
+    {
+        return pstmt;
+    }
+
     protected boolean inserir(String insertSql, Object... parametros)
     {
-        PreparedStatement pstmt = null;
         try
         {
             pstmt = connection.prepareStatement(insertSql);
@@ -54,7 +59,6 @@ public abstract class CRUD
 
     protected boolean alterar(String updateSql, Object id, Object... parametros)
     {
-        PreparedStatement pstmt = null;
         try
         {
             pstmt = connection.prepareStatement(updateSql);
@@ -77,7 +81,6 @@ public abstract class CRUD
 
     protected boolean deletar(String deleteSql, Object... parametros)
     {
-        PreparedStatement pstmt = null;
         try
         {
             pstmt = connection.prepareStatement(deleteSql);
@@ -95,5 +98,20 @@ public abstract class CRUD
         {
             ConexaoBanco.closeConnection(connection, pstmt);
         }
+    }
+
+    protected ResultSet selecionar(String selectSql, Object... parametros) throws SQLException
+    {
+        ResultSet res = null;
+        pstmt = getConnection().prepareStatement(selectSql);
+        if (parametros != null)
+        {
+            for (int i = 0; i < parametros.length; i++)
+            {
+                pstmt.setObject(i + 1, parametros[i]);
+            }
+        }
+        res = pstmt.executeQuery();
+        return res;
     }
 }

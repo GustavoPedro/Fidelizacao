@@ -19,7 +19,7 @@ public class FuncionarioControl
     public boolean login(FuncionarioBEAN funcionario)
     {
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-        return funcionarioDAO.loginFuncionario(funcionario);
+        return funcionarioDAO.login(funcionario);
     }
     public List<FuncionarioBEAN>selecionarFuncionariosPorNome(String nome)
     {

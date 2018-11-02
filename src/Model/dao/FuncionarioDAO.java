@@ -15,7 +15,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
  *
  * @author gusta
@@ -31,65 +30,48 @@ public class FuncionarioDAO extends CRUD
     //Insere funcionario no banco de dados
     public boolean inserirFuncionario(FuncionarioBEAN funcionario)
     {
-        return super.inserir("INSERT INTO funcionario(Nome,Empresa_idEmpresa,Login,Senha) values(?,?,?,?)", 
-                funcionario.getNome(), 
-                funcionario.getEmpresa().getIdEmpresa(), 
-                funcionario.getLogin(), 
+        return super.inserir("INSERT INTO funcionario(Nome,Empresa_idEmpresa,Login,Senha) values(?,?,?,?)",
+                funcionario.getNome(),
+                funcionario.getEmpresa().getIdEmpresa(),
+                funcionario.getLogin(),
                 funcionario.getSenha()
         );
 
     }
-
-    // Executa o login do funcionario e configura o nome e o id do funcionario para o uso durante o programa
-    public boolean loginFuncionario(FuncionarioBEAN funcionario)
+    
+    public boolean login(FuncionarioBEAN funcionario)
     {
-
-        String sql = "select idFuncionario,nome from funcionario where Login = ? and Senha = ?";
-        PreparedStatement stmt = null;
         ResultSet res = null;
         try
         {
-            // create the java statement
-            stmt = getConnection().prepareStatement(sql);
-            stmt.setString(1, funcionario.getLogin());
-            stmt.setString(2, funcionario.getSenha());
-            res = stmt.executeQuery();
+           res = super.selecionar("select idFuncionario,nome from funcionario where Login = ? and Senha = ?", funcionario.getLogin(),funcionario.getSenha());
             while (res.next())
             {
                 //idFuncionario, Nome, Empresa_idEmpresa, Login, Senha
                 FuncionarioSessaoBEAN.setNome(res.getString("Nome"));
-                FuncionarioSessaoBEAN.setIdFuncionario(res.getInt("idFuncionario"));
-                return true;
+                FuncionarioSessaoBEAN.setIdFuncionario(res.getInt("idFuncionario"));                
             }
-            return false;
+            return true;
         } catch (SQLException ex)
         {
-            System.err.println(ex.toString());
-            return false;
-        } finally
+           return false;
+        }
+        finally
         {
-            ConexaoBanco.closeConnection(getConnection(), stmt, res);
+            ConexaoBanco.closeConnection(getConnection(), getStatement(), res);
         }
     }
-
+    
     public List<FuncionarioBEAN> selecionarFuncionarios()
     {
-
-        String sql = "select * from fidelizacao.funcionario inner join fidelizacao.empresa on fidelizacao.empresa.idEmpresa = fidelizacao.funcionario.Empresa_idEmpresa";
-
-        List<FuncionarioBEAN> funcionariosList = new ArrayList();
-
-        PreparedStatement stmt = null;
         ResultSet res = null;
-
         try
         {
-            // create the java statement
-            stmt = getConnection().prepareStatement(sql);
-            res = stmt.executeQuery();
+            List<FuncionarioBEAN>funcionariosList = new ArrayList();
+            res = super.selecionar("select * from fidelizacao.funcionario inner join fidelizacao.empresa on fidelizacao.empresa.idEmpresa = fidelizacao.funcionario.Empresa_idEmpresa", (Object[]) null);
+            
             while (res.next())
             {
-                //idFuncionario, Nome, Empresa_idEmpresa, Login, Senha, idEmpresa, RazaoSocial, CNPJ, Telefone, Tipo_Cartao
                 FuncionarioBEAN funcionarioBEAN = new FuncionarioBEAN();
                 EmpresaBEAN empresaBEAN = new EmpresaBEAN();
 
@@ -111,11 +93,11 @@ public class FuncionarioDAO extends CRUD
             return funcionariosList;
         } catch (SQLException ex)
         {
-            System.err.println(ex.toString());
             return null;
-        } finally
+        }
+        finally
         {
-            ConexaoBanco.closeConnection(getConnection(), stmt, res);
+            ConexaoBanco.closeConnection(getConnection(),getStatement(),res);
         }
     }
 
@@ -123,38 +105,30 @@ public class FuncionarioDAO extends CRUD
     {
         //idFuncionario, Nome, Empresa_idEmpresa, Login, Senha
         return super.alterar(
-                "UPDATE funcionario SET Nome = ?, Empresa_idEmpresa = ?, Login = ?, Senha = ? WHERE idFuncionario = ? ", 
-                funcionario.getIdFuncionario(), 
-                funcionario.getNome(), 
-                funcionario.getEmpresa().getIdEmpresa(), 
-                funcionario.getLogin(), 
+                "UPDATE funcionario SET Nome = ?, Empresa_idEmpresa = ?, Login = ?, Senha = ? WHERE idFuncionario = ? ",
+                funcionario.getIdFuncionario(),
+                funcionario.getNome(),
+                funcionario.getEmpresa().getIdEmpresa(),
+                funcionario.getLogin(),
                 funcionario.getSenha()
         );
     }
 
     public boolean deletarFuncionario(FuncionarioBEAN funcionario)
-    {        
-        return super.deletar("DELETE FROM funcionario WHERE idFuncionario = ?", funcionario.getIdFuncionario());        
-    }
-
+    {
+        return super.deletar("DELETE FROM funcionario WHERE idFuncionario = ?", funcionario.getIdFuncionario());
+    }    
+    
     public List<FuncionarioBEAN> selecionarFuncionariosPorNome(String nome)
     {
-         String sql = " select * from fidelizacao.funcionario inner join fidelizacao.empresa on fidelizacao.empresa.idEmpresa = fidelizacao.funcionario.Empresa_idEmpresa where Nome like concat('%',?,'%')";
-
-        List<FuncionarioBEAN> funcionariosList = new ArrayList();
-
-        PreparedStatement stmt = null;
-        ResultSet res = null;
-
+         ResultSet res = null;
         try
         {
-            // create the java statement
-            stmt = getConnection().prepareStatement(sql);
-            stmt.setString(1, nome);
-            res = stmt.executeQuery();
+            List<FuncionarioBEAN>funcionariosList = new ArrayList();
+            res = super.selecionar("select * from fidelizacao.funcionario inner join fidelizacao.empresa on fidelizacao.empresa.idEmpresa = fidelizacao.funcionario.Empresa_idEmpresa where Nome like concat('%',?,'%')",nome);
+            
             while (res.next())
             {
-                //idFuncionario, Nome, Empresa_idEmpresa, Login, Senha, idEmpresa, RazaoSocial, CNPJ, Telefone, Tipo_Cartao
                 FuncionarioBEAN funcionarioBEAN = new FuncionarioBEAN();
                 EmpresaBEAN empresaBEAN = new EmpresaBEAN();
 
@@ -176,11 +150,11 @@ public class FuncionarioDAO extends CRUD
             return funcionariosList;
         } catch (SQLException ex)
         {
-            System.err.println(ex.toString());
             return null;
-        } finally
+        }
+        finally
         {
-            ConexaoBanco.closeConnection(getConnection(), stmt, res);
+            ConexaoBanco.closeConnection(getConnection(),getStatement(),res);
         }
     }
 }

@@ -19,80 +19,36 @@ import java.util.List;
  *
  * @author gusta
  */
-public class ClienteDAO
+public class ClienteDAO extends CRUD
 {
-
-    private Connection con = null;
 
     public ClienteDAO()
     {
-        this.con = ConexaoBanco.getConexao();
+
     }
 
     public boolean inserirCliente(ClienteBEAN cliente)
     {
         //idCliente, Nome, Cpf, Telefone, DataNasc
-        String sql = "INSERT INTO cliente(Nome,Cpf,Telefone,DataNasc) values(?,?,?,?)";
-
-        PreparedStatement stmt = null;
-
-        try
-        {
-            stmt = con.prepareStatement(sql);
-            stmt.setString(1, cliente.getNome());
-            stmt.setString(2, cliente.getCpf());
-            stmt.setString(3, cliente.getTelefone());
-            stmt.setString(4, cliente.getDataNasc());
-            stmt.executeUpdate();
-            return true;
-        } catch (SQLException ex)
-        {
-            System.err.println(ex.toString());
-            return false;
-        } finally
-        {
-            ConexaoBanco.closeConnection(con, stmt);
-        }
+        return super.inserir("INSERT INTO cliente(Nome,Cpf,Telefone,DataNasc) values(?,?,?,?)", cliente.getNome(), cliente.getCpf(), cliente.getTelefone(), cliente.getDataNasc());
     }
 
     public boolean atualizarCliente(ClienteBEAN cliente)
     {
         //idCliente, Nome, Cpf, Telefone, DataNasc
-        String sql = "UPDATE cliente SET Nome = ? , Cpf = ?, Telefone = ?, DataNasc = ? WHERE idCliente = ?";
-
-        PreparedStatement stmt = null;
-
-        try
-        {
-            stmt = con.prepareStatement(sql);
-            stmt.setString(1, cliente.getNome());
-            stmt.setString(2, cliente.getCpf());
-            stmt.setString(3, cliente.getTelefone());
-            stmt.setString(4, cliente.getDataNasc());
-            stmt.setInt(5, cliente.getIdCliente());
-            stmt.executeUpdate();
-            return true;
-        } catch (SQLException ex)
-        {
-            System.err.println(ex.toString());
-            return false;
-        } finally
-        {
-            ConexaoBanco.closeConnection(con, stmt);
-        }
+        return super.alterar("UPDATE cliente SET Nome = ? , Cpf = ?, Telefone = ?, DataNasc = ? WHERE idCliente = ?", cliente.getIdCliente(), cliente.getNome(), cliente.getCpf(), cliente.getTelefone(), cliente.getDataNasc());
     }
 
     public List<ClienteBEAN> buscarClientes()
     {
-        List<ClienteBEAN> clientesList = new ArrayList<>();
-        String sql = "select * from cliente";
-        PreparedStatement stmt = null;
+
         ResultSet res = null;
+        List<ClienteBEAN> clientesList = new ArrayList();
+
         try
         {
-            // create the java statement
-            stmt = con.prepareStatement(sql);
-            res = stmt.executeQuery();
+            res = super.selecionar("select * from cliente", (Object[]) null);
+
             while (res.next())
             {
                 ClienteBEAN cliente = new ClienteBEAN();
@@ -106,26 +62,22 @@ public class ClienteDAO
             return clientesList;
         } catch (SQLException ex)
         {
-            System.err.println(ex.toString());
             return null;
         } finally
         {
-            ConexaoBanco.closeConnection(con, stmt, res);
+            ConexaoBanco.closeConnection(getConnection(), getStatement(), res);
         }
     }
 
     public List<ClienteBEAN> buscarPorCpf(String cpf)
     {
         List<ClienteBEAN> clientesList = new ArrayList<>();
-        String sql = "select * from fidelizacao.cliente where Cpf like concat(\"%\",?,\"%\")";
-        PreparedStatement stmt = null;
         ResultSet res = null;
+
         try
         {
-            // create the java statement            
-            stmt = con.prepareStatement(sql);
-            stmt.setString(1, cpf);
-            res = stmt.executeQuery();
+            res = super.selecionar("select * from fidelizacao.cliente where Cpf like concat(\"%\",?,\"%\")", cpf);
+
             while (res.next())
             {
                 ClienteBEAN cliente = new ClienteBEAN();
@@ -143,23 +95,19 @@ public class ClienteDAO
             return null;
         } finally
         {
-            ConexaoBanco.closeConnection(con, stmt, res);
+            ConexaoBanco.closeConnection(getConnection(), getStatement(), res);
         }
     }
 
     public List<ClienteBEAN> buscarPorNome(String nome)
     {
         List<ClienteBEAN> clientesList = new ArrayList<>();
-        String sql = "select * from fidelizacao.cliente where Nome like concat(\"%\",?,\"%\")";
-        PreparedStatement stmt = null;
         ResultSet res = null;
+
         try
         {
-            // create the java statement
-            
-            stmt = con.prepareStatement(sql);
-            stmt.setString(1, nome);
-            res = stmt.executeQuery();
+            res = super.selecionar("select * from fidelizacao.cliente where Nome like concat(\"%\",?,\"%\")", nome);
+
             while (res.next())
             {
                 ClienteBEAN cliente = new ClienteBEAN();
@@ -177,7 +125,7 @@ public class ClienteDAO
             return null;
         } finally
         {
-            ConexaoBanco.closeConnection(con, stmt, res);
+            ConexaoBanco.closeConnection(getConnection(), getStatement(), res);
         }
     }
 }
