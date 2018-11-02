@@ -9,4 +9,8 @@ public class CartaoDAO extends CRUD
    {
     return super.inserir("INSERT INTO cartao (DataVencimento,IdCliente,IdFuncionario,IdEmpresa) values (?,?,?,?)",cartaoBEAN.getDataVencimento(),cartaoBEAN.getCliente().getIdCliente(),cartaoBEAN.getFuncionario().getIdFuncionario(),cartaoBEAN.getEmpresa().getIdEmpresa());
    }
+   private void configurarId()
+   {
+       //super.selecionar("select max(idCliente) FROM fidelizacao.cliente;", parametros)
+   }
 }
