@@ -1,7 +1,7 @@
 package Model.dao;
 
 import Model.bean.CartaoBEAN;
-import Model.bean.CartaoTipoSeloBEAN;
+
 
 public class CartaoDAO extends CRUD
 {

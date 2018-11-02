@@ -17,30 +17,24 @@ import java.sql.SQLException;
  *
  * @author gusta
  */
-public class EmpresaDAO
+public class EmpresaDAO extends CRUD
 {
 
-    Connection con = null;
 
     public EmpresaDAO()
     {
-        con = ConexaoBanco.getConexao();
+
     }
 
     //Pega o numero do id da empresa para a criação do cartão
     public EmpresaBEAN selecionarEmpresa()
     {
-        // idEmpresa, RazaoSocial, CNPJ, Telefone, Tipo_Cartao
-        String sql = "select*from Empresa";
-        PreparedStatement stmt = null;
+        // idEmpresa, RazaoSocial, CNPJ, Telefone, Tipo_Cartao        
         ResultSet res = null;
         EmpresaBEAN empresaBEAN = null;
         try
         {
-            // create the java statement
-            stmt = con.prepareStatement(sql);
-            res = stmt.executeQuery();
-
+            res = super.selecionar("select*from Empresa", (Object[]) null);
             while (res.next())
             {
                 empresaBEAN = new EmpresaBEAN();
@@ -57,61 +51,28 @@ public class EmpresaDAO
             return null;
         } finally
         {
-            ConexaoBanco.closeConnection(con, stmt, res);
+            ConexaoBanco.closeConnection(getConnection(), getStatement(), res);
         }
     }
 
     public boolean inserirEmpresa(EmpresaBEAN empresa)
     {
-        // idEmpresa, RazaoSocial, CNPJ, Telefone, Tipo_Cartao
-        String sql = "INSERT INTO Empresa(RazaoSocial,CNPJ,Telefone,Tipo_Cartao) values(?,?,?,?)";
-
-        PreparedStatement stmt = null;
-
-        try
-        {
-            stmt = con.prepareStatement(sql);
-            stmt.setString(1, empresa.getRazaoSocial());
-            stmt.setString(2, empresa.getCNPJ());
-            stmt.setString(3, empresa.getTelefone());
-            stmt.setString(4, empresa.getTipoCartao());
-            stmt.executeUpdate();
-            return true;
-        } catch (SQLException ex)
-        {
-            System.err.println(ex.toString());
-            return false;
-        } finally
-        {
-            ConexaoBanco.closeConnection(con, stmt);
-        }
+        // idEmpresa, RazaoSocial, CNPJ, Telefone, Tipo_Cartao        
+        return super.inserir("INSERT INTO Empresa(RazaoSocial,CNPJ,Telefone,Tipo_Cartao) values(?,?,?,?)",
+                empresa.getRazaoSocial(),
+                empresa.getCNPJ(),
+                empresa.getTelefone(),
+                empresa.getTipoCartao());
     }
 
     public boolean alterarEmpresa(EmpresaBEAN empresa)
     {
         // idEmpresa, RazaoSocial, CNPJ, Telefone, Tipo_Cartao
-        String sql = "UPDATE empresa SET RazaoSocial = ?, CNPJ = ?,Telefone = ?, Tipo_Cartao = ? where idEmpresa = ?";
-
-        PreparedStatement stmt = null;
-
-        try
-        {
-            stmt = con.prepareStatement(sql);
-            stmt.setString(1, empresa.getRazaoSocial());
-            stmt.setString(2, empresa.getCNPJ());
-            stmt.setString(3, empresa.getTelefone());
-            stmt.setString(4, empresa.getTipoCartao());
-            stmt.setInt(5, empresa.getIdEmpresa());
-            stmt.executeUpdate();
-            return true;
-        } catch (SQLException ex)
-        {
-            System.err.println(ex.toString());
-            return false;
-        } finally
-        {
-            ConexaoBanco.closeConnection(con, stmt);
-        }
+        return super.alterar("UPDATE empresa SET RazaoSocial = ?, CNPJ = ?,Telefone = ?, Tipo_Cartao = ? where idEmpresa = ?", empresa.getIdEmpresa(),
+                empresa.getRazaoSocial(),
+                empresa.getCNPJ(),
+                empresa.getTelefone(),
+                empresa.getTipoCartao());
     }
 
 }

@@ -8,8 +8,6 @@ package Model.dao;
 import Connection.ConexaoBanco;
 import Control.DataConversoes;
 import Model.bean.ClienteBEAN;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
