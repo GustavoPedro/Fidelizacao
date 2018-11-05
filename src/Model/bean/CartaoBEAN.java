@@ -27,6 +27,10 @@ public class CartaoBEAN
         this.funcionario = funcionario;
         this.empresa = empresa;
     }
+    public CartaoBEAN()
+    {
+        
+    }
 
     public int getNumeroCartao()
     {

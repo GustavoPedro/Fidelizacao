@@ -19,4 +19,5 @@ public class CartaoTipoSeloDAO extends CartaoDAO
         //NumeroCartao qnt        
         return super.inserir("INSERT INTO selo(NumeroCartao,Frequencia) values (?,?)", cartaoSeloBEAN.getNumeroCartao(), cartaoSeloBEAN.getQnt());
     }
+    
 }

@@ -10,6 +10,10 @@ public class CartaoTipoValorBEAN extends CartaoBEAN
         super(dataVencimento, cliente, funcionario, empresa);
         this.valor = valor;
     }
+    public CartaoTipoValorBEAN()
+    {
+     
+    }
 
     public double getValor()
     {

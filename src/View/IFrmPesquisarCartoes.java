@@ -5,7 +5,10 @@
  */
 package View;
 
+import Model.bean.CartaoTipoValorBEAN;
+import Model.dao.CartaoTipoValorDAO;
 import java.awt.Dimension;
+import java.util.List;
 
 /**
  *
@@ -18,6 +21,9 @@ public class IFrmPesquisarCartoes extends javax.swing.JInternalFrame {
      */
     public IFrmPesquisarCartoes() {
         initComponents();
+        CartaoTipoValorDAO c = new CartaoTipoValorDAO();
+        List<CartaoTipoValorBEAN> cartoes = c.selecionarCartoes();
+        System.out.println(cartoes);
     }
      public void setPosicao()
     {
