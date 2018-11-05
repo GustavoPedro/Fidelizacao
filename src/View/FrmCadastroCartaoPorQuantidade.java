@@ -1,43 +1,35 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package View;
 
+
 import Control.CartaoSeloControl;
-import Control.DataConversoes;
 import Model.bean.CartaoTipoSeloBEAN;
-import Model.bean.ClienteBEAN;
-import Model.bean.EmpresaBEAN;
-import Model.bean.FuncionarioBEAN;
 import Model.bean.FuncionarioSessaoBEAN;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author 31825961
- */
+
+
 public class FrmCadastroCartaoPorQuantidade extends javax.swing.JFrame
 {
     
-    private EmpresaBEAN empresaBEAN;
-    private ClienteBEAN clienteBEAN;
-    
-    public FrmCadastroCartaoPorQuantidade(ClienteBEAN cliente, EmpresaBEAN empresa)
+    private CartaoTipoSeloBEAN cartaoSeloBEAN;
+
+    public FrmCadastroCartaoPorQuantidade(CartaoTipoSeloBEAN cartaoSeloBEAN)
     {
-        initComponents();
-        empresaBEAN = empresa;
-        clienteBEAN = cliente;
-        String funcNome = FuncionarioSessaoBEAN.getNome();        
-        cbxCliente.addItem(cliente.getNome());
-        cbxCliente.setSelectedItem(cliente.getNome());
+        initComponents();        
+        this.cartaoSeloBEAN = cartaoSeloBEAN;
+        
+        String funcNome = FuncionarioSessaoBEAN.getNome();
+        String clienteNome = cartaoSeloBEAN.getCliente().getNome();
+        
+        cbxCliente.addItem(clienteNome);
+        cbxCliente.setSelectedItem(clienteNome);        
         cbxCliente.enable(false);
         cbxFuncionario.addItem(funcNome);
-        cbxFuncionario.setSelectedItem(funcNome);        
-        cbxFuncionario.enable(false);
+        cbxFuncionario.setSelectedItem(funcNome);
+        cbxFuncionario.enable(false);        
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents()
@@ -199,19 +191,13 @@ public class FrmCadastroCartaoPorQuantidade extends javax.swing.JFrame
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCadastrarActionPerformed
     {//GEN-HEADEREND:event_btnCadastrarActionPerformed
-        FuncionarioBEAN funcionarioBEAN = new FuncionarioBEAN();
-        funcionarioBEAN.setIdFuncionario(FuncionarioSessaoBEAN.getIdFuncionario());        
-        CartaoTipoSeloBEAN cartaoSelo = new CartaoTipoSeloBEAN(DataConversoes.inverterData(txbDataVencimento.getText()), clienteBEAN, funcionarioBEAN, empresaBEAN,Integer.parseInt(lblTotalValor.getText()));
         CartaoSeloControl cartaoSeloControl = new CartaoSeloControl();
-        
-        if (cartaoSeloControl.inserirCartaoSelo(cartaoSelo))
+        cartaoSeloBEAN.setQnt(Integer.parseInt(lblTotalValor.getText()));
+        if (cartaoSeloControl.inserirCartaoSelo(cartaoSeloBEAN))
         {
-            JOptionPane.showMessageDialog(this,"oi");
+            JOptionPane.showMessageDialog(this, "Valor em cartao inserido com sucesso", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
         }
-        else
-        {
-            JOptionPane.showMessageDialog(this,"erou");        
-        }
+
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnCarimbarCartaoActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCarimbarCartaoActionPerformed

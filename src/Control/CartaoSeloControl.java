@@ -12,11 +12,15 @@ import Model.dao.CartaoTipoSeloDAO;
  *
  * @author gusta
  */
-public class CartaoSeloControl
+public class CartaoSeloControl extends CartaoControl
 {
- public boolean inserirCartaoSelo(CartaoTipoSeloBEAN cartaoSeloBEAN)
- {
-     CartaoTipoSeloDAO cartaoDAO = new CartaoTipoSeloDAO();
-     return cartaoDAO.criarCartaoTipoSelo(cartaoSeloBEAN);
- }   
+    public boolean inserirCartaoSelo(CartaoTipoSeloBEAN cartaoSeloBEAN)
+    {        
+        int numeroCartao = super.criarCartao(cartaoSeloBEAN);
+        
+        CartaoTipoSeloDAO cartaoDAO = new CartaoTipoSeloDAO();
+        cartaoSeloBEAN.setNumeroCartao(numeroCartao);
+        return cartaoDAO.criarCartaoTipoSelo(cartaoSeloBEAN);
+    }
+    
 }

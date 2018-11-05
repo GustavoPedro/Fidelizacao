@@ -5,10 +5,7 @@
  */
 package Model.dao;
 
-import Control.ClienteControl;
 import Model.bean.CartaoTipoSeloBEAN;
-import Model.bean.ClienteBEAN;
-import java.util.List;
 
 /**
  *
@@ -19,23 +16,8 @@ public class CartaoTipoSeloDAO extends CartaoDAO
 
     public boolean criarCartaoTipoSelo(CartaoTipoSeloBEAN cartaoSeloBEAN)
     {
-        ClienteControl clienteControl = new ClienteControl();
-        //NumeroCartao, DataVencimento, IdCliente, IdFuncionario, IdEmpresa
-        List<ClienteBEAN> cliente = clienteControl.buscarPorCpf(cartaoSeloBEAN.getCliente().getCpf());
-
-        for(ClienteBEAN cli : cliente)
-        {
-            cartaoSeloBEAN.getCliente().setIdCliente(cli.getIdCliente());
-        }
-
-        boolean x;
-        x = super.criarCartao(cartaoSeloBEAN);        
-        if (x)
-        {
-            return super.inserir("INSERT INTO selo(NumeroCartao,Frequencia) values (?,?)", cartaoSeloBEAN.getNumeroCartao(), cartaoSeloBEAN.getQnt());
-        } else
-        {
-            return false;
-        }
+        //NumeroCartao qnt             
+        //CRUD crud = new CRUD();
+        return super.inserir("INSERT INTO selo(NumeroCartao,Frequencia) values (?,?)", cartaoSeloBEAN.getNumeroCartao(), cartaoSeloBEAN.getQnt());
     }
 }

@@ -15,7 +15,7 @@ import java.sql.SQLException;
  *
  * @author 31825961
  */
-public abstract class CRUD
+public class CRUD
 {
 
     private Connection connection = null;

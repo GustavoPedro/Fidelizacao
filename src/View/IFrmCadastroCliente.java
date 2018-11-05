@@ -5,11 +5,17 @@
  */
 package View;
 
+import Control.CartaoSeloControl;
+
 import Control.ClienteControl;
-import Control.DataConversoes;
+
 import Control.EmpresaControl;
+
+import Model.bean.CartaoTipoSeloBEAN;
 import Model.bean.ClienteBEAN;
 import Model.bean.EmpresaBEAN;
+import Model.bean.FuncionarioBEAN;
+import Model.bean.FuncionarioSessaoBEAN;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
 
@@ -40,7 +46,7 @@ public class IFrmCadastroCliente extends javax.swing.JInternalFrame
         this();
         this.crud = crud;
         this.frmPesquisarClientes = frmPesquisarClientes;
-        
+
         if (this.crud == CRUD.Alterar)
         {
             txbCpf.setText(clienteBEAN.getCpf());
@@ -210,15 +216,37 @@ public class IFrmCadastroCliente extends javax.swing.JInternalFrame
                 {
                     frmPesquisarClientes.atualizarTable();
                 }
+                //Ta errado
+                String tipoCartao = empresa.getTipoCartao();
+                CartaoSeloControl cartaoControl = new CartaoSeloControl();
+                CartaoTipoSeloBEAN cartaoSeloBEAN = null;
+
+                FuncionarioBEAN funcionarioBEAN = new FuncionarioBEAN();
+                funcionarioBEAN.setIdFuncionario(FuncionarioSessaoBEAN.getIdFuncionario());
+                funcionarioBEAN.setNome(FuncionarioSessaoBEAN.getNome());
+
+                if (tipoCartao == "Valor")
+                {
+
+                } else
+                {
+                    cartaoSeloBEAN = new CartaoTipoSeloBEAN("1999-11-30",
+                            clienteBean,
+                            funcionarioBEAN,
+                            empresa,
+                            0
+                    );
+                    cartaoControl.inserirCartaoSelo(cartaoSeloBEAN);
+                }
+
                 if (JOptionPane.showConfirmDialog(null, "Cadastro realizado com sucesso! \n Deseja inserir algum valor no cartão do cliente", "Cadastro realizado", JOptionPane.YES_NO_OPTION) == 0)
                 {
-                    if (empresa.getTipoCartao() == "Valor")
+                    if (tipoCartao == "Valor")
                     {
-//                        FrmCadastrarCartaoPorValor frmCadastrarCartaoPorValor = new FrmCadastrarCartaoPorValor(txbNomeCompleto.getText(),empresa);
-//                        frmCadastrarCartaoPorValor.show();
+
                     } else
                     {
-                        FrmCadastroCartaoPorQuantidade frmCadastroCartaoPorQuantidade = new FrmCadastroCartaoPorQuantidade(clienteBean,empresa);
+                        FrmCadastroCartaoPorQuantidade frmCadastroCartaoPorQuantidade = new FrmCadastroCartaoPorQuantidade(cartaoSeloBEAN);
                         frmCadastroCartaoPorQuantidade.show();
                     }
                     this.dispose();
