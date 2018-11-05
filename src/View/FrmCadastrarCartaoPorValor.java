@@ -5,7 +5,7 @@
  */
 package View;
 
-import Control.EmpresaControl;
+import Model.bean.CartaoTipoValorBEAN;
 import Model.bean.EmpresaBEAN;
 import Model.bean.FuncionarioSessaoBEAN;
 
@@ -15,26 +15,29 @@ import Model.bean.FuncionarioSessaoBEAN;
  */
 public class FrmCadastrarCartaoPorValor extends javax.swing.JFrame
 {
-    private EmpresaBEAN empresa;
-    
+
+    private CartaoTipoValorBEAN cartaoValor;
+
     public FrmCadastrarCartaoPorValor()
     {
         initComponents();
     }
 
-    public FrmCadastrarCartaoPorValor(String text,EmpresaBEAN empresa)
+    public FrmCadastrarCartaoPorValor(CartaoTipoValorBEAN cartaoValor)
     {
         initComponents();
         String funcNome = FuncionarioSessaoBEAN.getNome();
-        this.empresa = empresa;
-        cbxCliente.addItem(text);
-        cbxCliente.setSelectedItem(text);
+        this.cartaoValor = cartaoValor;        
+        String clienteNome = cartaoValor.getCliente().getNome();
+        
+        cbxCliente.addItem(clienteNome);
+        cbxCliente.setSelectedItem(clienteNome);
         cbxCliente.enable(false);
         cbxFuncionario.addItem(funcNome);
         cbxFuncionario.setSelectedItem(funcNome);
         cbxFuncionario.enable(false);
     }
-
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -239,7 +242,6 @@ public class FrmCadastrarCartaoPorValor extends javax.swing.JFrame
     /**
      * @param args the command line arguments
      */
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdicionar;

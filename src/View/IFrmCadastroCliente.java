@@ -6,12 +6,14 @@
 package View;
 
 import Control.CartaoSeloControl;
+import Control.CartaoValorControl;
 
 import Control.ClienteControl;
 
 import Control.EmpresaControl;
 
 import Model.bean.CartaoTipoSeloBEAN;
+import Model.bean.CartaoTipoValorBEAN;
 import Model.bean.ClienteBEAN;
 import Model.bean.EmpresaBEAN;
 import Model.bean.FuncionarioBEAN;
@@ -210,7 +212,7 @@ public class IFrmCadastroCliente extends javax.swing.JInternalFrame
 
         if (crud == CRUD.Cadastrar || crud == null)
         {
-            if (clienteControl.inserirCliente(clienteBean) == true)
+            if (clienteControl.inserirCliente(clienteBean))
             {
                 if (frmPesquisarClientes != null)
                 {
@@ -218,41 +220,59 @@ public class IFrmCadastroCliente extends javax.swing.JInternalFrame
                 }
                 //Ta errado
                 String tipoCartao = empresa.getTipoCartao();
-                CartaoSeloControl cartaoControl = new CartaoSeloControl();
+                boolean cadastrou = true;
                 CartaoTipoSeloBEAN cartaoSeloBEAN = null;
+                CartaoTipoValorBEAN cartaoValorBEAN = null;
 
                 FuncionarioBEAN funcionarioBEAN = new FuncionarioBEAN();
                 funcionarioBEAN.setIdFuncionario(FuncionarioSessaoBEAN.getIdFuncionario());
                 funcionarioBEAN.setNome(FuncionarioSessaoBEAN.getNome());
 
-                if (tipoCartao == "Valor")
+                if (tipoCartao.equals("Valor"))
                 {
-
+                    CartaoValorControl cartaoControl = new CartaoValorControl();
+                    cartaoValorBEAN = new CartaoTipoValorBEAN(
+                            "1999-11-30",
+                            clienteBean,
+                            funcionarioBEAN,
+                            empresa,
+                            0.00
+                    );
+                    cadastrou = cartaoControl.inserirCartaoValor(cartaoValorBEAN);
                 } else
                 {
+
+                    CartaoSeloControl cartaoControl = new CartaoSeloControl();
                     cartaoSeloBEAN = new CartaoTipoSeloBEAN("1999-11-30",
                             clienteBean,
                             funcionarioBEAN,
                             empresa,
                             0
                     );
-                    cartaoControl.inserirCartaoSelo(cartaoSeloBEAN);
+                    cadastrou = cartaoControl.inserirCartaoSelo(cartaoSeloBEAN);
                 }
-
-                if (JOptionPane.showConfirmDialog(null, "Cadastro realizado com sucesso! \n Deseja inserir algum valor no cartão do cliente", "Cadastro realizado", JOptionPane.YES_NO_OPTION) == 0)
+                if (cadastrou)
                 {
-                    if (tipoCartao == "Valor")
-                    {
 
+                    if (JOptionPane.showConfirmDialog(null, "Cadastro realizado com sucesso! \n Deseja inserir algum valor no cartão do cliente", "Cadastro realizado", JOptionPane.YES_NO_OPTION) == 0)
+                    {
+                        if (tipoCartao.equals("Valor"))
+                        {
+                            FrmCadastrarCartaoPorValor frmCadastrarCartaoPorValor = new FrmCadastrarCartaoPorValor(cartaoValorBEAN);
+                            frmCadastrarCartaoPorValor.show();
+                        } else
+                        {
+                            FrmCadastroCartaoPorQuantidade frmCadastroCartaoPorQuantidade = new FrmCadastroCartaoPorQuantidade(cartaoSeloBEAN);
+                            frmCadastroCartaoPorQuantidade.show();
+                        }
+                        this.dispose();
                     } else
                     {
-                        FrmCadastroCartaoPorQuantidade frmCadastroCartaoPorQuantidade = new FrmCadastroCartaoPorQuantidade(cartaoSeloBEAN);
-                        frmCadastroCartaoPorQuantidade.show();
+                        this.dispose();
                     }
-                    this.dispose();
                 } else
                 {
-                    this.dispose();
+                    JOptionPane.showMessageDialog(this, "Não foi possível criar o cartão", "Erro ao criar cartão", JOptionPane.ERROR_MESSAGE);
                 }
             } else
             {

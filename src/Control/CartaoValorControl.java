@@ -5,11 +5,21 @@
  */
 package Control;
 
+import Model.bean.CartaoTipoValorBEAN;
+import Model.dao.CartaoTipoValorDAO;
+
 /**
  *
  * @author gusta
  */
-public class CartaoValorControl
+public class CartaoValorControl extends CartaoControl
 {
-    
+    public boolean inserirCartaoValor(CartaoTipoValorBEAN cartaoValorBEAN)
+    {        
+        int numeroCartao = super.criarCartao(cartaoValorBEAN);
+        
+        CartaoTipoValorDAO cartaoDAO = new CartaoTipoValorDAO();
+        cartaoValorBEAN.setNumeroCartao(numeroCartao);
+        return cartaoDAO.criarCartaoTipoValor(cartaoValorBEAN);
+    }
 }

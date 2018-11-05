@@ -17,6 +17,6 @@ public class CartaoControl
     public int criarCartao(CartaoBEAN cartaoBEAN)
     {
         CartaoDAO cartao = new CartaoDAO();
-        return  cartao.criarCartao(cartaoBEAN);
+        return cartao.criarCartao(cartaoBEAN);
     }
 }

@@ -5,11 +5,17 @@
  */
 package Model.dao;
 
+import Model.bean.CartaoTipoValorBEAN;
+
 /**
  *
  * @author gusta
  */
-public class CartaoTipoValorDAO
+public class CartaoTipoValorDAO extends CartaoDAO
 {
-    
+    public boolean criarCartaoTipoValor(CartaoTipoValorBEAN cartaoValorBEAN)
+    {
+        //NumeroCartao qnt        
+        return super.inserir("INSERT INTO valor(NumeroCartao,Valor) values (?,?)", cartaoValorBEAN.getNumeroCartao(), cartaoValorBEAN.getValor());
+    }
 }

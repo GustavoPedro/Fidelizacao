@@ -16,8 +16,7 @@ public class CartaoTipoSeloDAO extends CartaoDAO
 
     public boolean criarCartaoTipoSelo(CartaoTipoSeloBEAN cartaoSeloBEAN)
     {
-        //NumeroCartao qnt             
-        //CRUD crud = new CRUD();
+        //NumeroCartao qnt        
         return super.inserir("INSERT INTO selo(NumeroCartao,Frequencia) values (?,?)", cartaoSeloBEAN.getNumeroCartao(), cartaoSeloBEAN.getQnt());
     }
 }
