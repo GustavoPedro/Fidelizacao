@@ -202,7 +202,7 @@ public class IFrmPesquisarFuncionarios extends javax.swing.JInternalFrame
         if (tblFuncionarios.getSelectedRow() != -1)
         {
             func = funcionarioModel.retornarObjeto(tblFuncionarios.getSelectedRow());
-            IFrmCadastroFuncionario frmCadastroFuncionario = new IFrmCadastroFuncionario(CRUD.Alterar, func, this);
+            IFrmCadastroFuncionario frmCadastroFuncionario = new IFrmCadastroFuncionario(EnumCRUD.Alterar, func, this);
             frmMenu.DpContainer.add(frmCadastroFuncionario);
             frmCadastroFuncionario.setVisible(true);
             frmCadastroFuncionario.setPosicao();
@@ -221,7 +221,7 @@ public class IFrmPesquisarFuncionarios extends javax.swing.JInternalFrame
 
     private void btnCadastrarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarFuncionarioActionPerformed
 
-        IFrmCadastroFuncionario frmCadastroFuncionario = new IFrmCadastroFuncionario(CRUD.Cadastrar, null, this);
+        IFrmCadastroFuncionario frmCadastroFuncionario = new IFrmCadastroFuncionario(EnumCRUD.Cadastrar, null, this);
         frmMenu.DpContainer.add(frmCadastroFuncionario);
 
         frmCadastroFuncionario.setVisible(true);

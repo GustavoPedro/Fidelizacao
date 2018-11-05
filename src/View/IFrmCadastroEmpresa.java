@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 public class IFrmCadastroEmpresa extends javax.swing.JInternalFrame
 {
 
-    private CRUD crud;
+    private EnumCRUD crud;
     private EmpresaBEAN empresa;
 
     public IFrmCadastroEmpresa()
@@ -16,7 +16,7 @@ public class IFrmCadastroEmpresa extends javax.swing.JInternalFrame
         initComponents();
     }
 
-    public IFrmCadastroEmpresa(CRUD crud)
+    public IFrmCadastroEmpresa(EnumCRUD crud)
     {
         initComponents();
 
@@ -31,7 +31,7 @@ public class IFrmCadastroEmpresa extends javax.swing.JInternalFrame
             txbTelefone.setText(empresa.getTelefone());
             txbCNPJ.setText(empresa.getCNPJ());
             cbxTipo.setSelectedItem(empresa.getTipoCartao());
-            if (this.crud == CRUD.Cadastrar)
+            if (this.crud == EnumCRUD.Cadastrar)
             {
                 txbRazaoSocial.setEnabled(false);
                 txbTelefone.setEnabled(false);
@@ -40,7 +40,7 @@ public class IFrmCadastroEmpresa extends javax.swing.JInternalFrame
                 btnCadastrarEmpresa.setEnabled(false);
             }
         }
-        if (this.crud == CRUD.Alterar)
+        if (this.crud == EnumCRUD.Alterar)
         {
             btnCadastrarEmpresa.setText("Alterar");
             if (empresa == null)
@@ -182,7 +182,7 @@ public class IFrmCadastroEmpresa extends javax.swing.JInternalFrame
         
         EmpresaControl empresaControl = new EmpresaControl();
 
-        if (crud == CRUD.Cadastrar)
+        if (crud == EnumCRUD.Cadastrar)
         {
             if (empresaControl.inserir(empresaBean))
             {

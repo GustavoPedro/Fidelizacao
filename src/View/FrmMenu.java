@@ -212,7 +212,7 @@ public class FrmMenu extends javax.swing.JFrame
     }//GEN-LAST:event_MiCadastrarClienteActionPerformed
 
     private void MiCadastrarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MiCadastrarFuncionarioActionPerformed
-        IFrmCadastroFuncionario frmCadastroFuncionario = new IFrmCadastroFuncionario(CRUD.Cadastrar);
+        IFrmCadastroFuncionario frmCadastroFuncionario = new IFrmCadastroFuncionario(EnumCRUD.Cadastrar);
         DpContainer.add(frmCadastroFuncionario);
         frmCadastroFuncionario.setVisible(true);
         frmCadastroFuncionario.setPosicao();
@@ -220,7 +220,7 @@ public class FrmMenu extends javax.swing.JFrame
 
     private void MiCadastrarEmpresaActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_MiCadastrarEmpresaActionPerformed
     {//GEN-HEADEREND:event_MiCadastrarEmpresaActionPerformed
-        IFrmCadastroEmpresa frmCadastroEmpresa = new IFrmCadastroEmpresa(CRUD.Cadastrar);
+        IFrmCadastroEmpresa frmCadastroEmpresa = new IFrmCadastroEmpresa(EnumCRUD.Cadastrar);
         DpContainer.add(frmCadastroEmpresa);
         frmCadastroEmpresa.setVisible(true);
         frmCadastroEmpresa.setPosicao();
@@ -248,7 +248,7 @@ public class FrmMenu extends javax.swing.JFrame
 
     private void MiAlterarEmpresaActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_MiAlterarEmpresaActionPerformed
     {//GEN-HEADEREND:event_MiAlterarEmpresaActionPerformed
-        IFrmCadastroEmpresa gestaoEmpresa = new IFrmCadastroEmpresa(CRUD.Alterar);
+        IFrmCadastroEmpresa gestaoEmpresa = new IFrmCadastroEmpresa(EnumCRUD.Alterar);
         DpContainer.add(gestaoEmpresa);
         gestaoEmpresa.setVisible(true);
         gestaoEmpresa.setPosicao();
@@ -256,7 +256,7 @@ public class FrmMenu extends javax.swing.JFrame
 
     private void MiPesquisarCartoesActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_MiPesquisarCartoesActionPerformed
     {//GEN-HEADEREND:event_MiPesquisarCartoesActionPerformed
-        IFrmPesquisarCartoes iFrmPesquisarCartoes = new IFrmPesquisarCartoes();
+        IFrmPesquisarCartoes iFrmPesquisarCartoes = new IFrmPesquisarCartoes(EnumTipoCartao.Selo);
         DpContainer.add(iFrmPesquisarCartoes);
         iFrmPesquisarCartoes.setVisible(true);
         iFrmPesquisarCartoes.setPosicao();

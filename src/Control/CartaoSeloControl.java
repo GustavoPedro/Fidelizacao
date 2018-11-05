@@ -7,6 +7,7 @@ package Control;
 
 import Model.bean.CartaoTipoSeloBEAN;
 import Model.dao.CartaoTipoSeloDAO;
+import java.util.List;
 
 /**
  *
@@ -22,5 +23,9 @@ public class CartaoSeloControl extends CartaoControl
         cartaoSeloBEAN.setNumeroCartao(numeroCartao);
         return cartaoDAO.criarCartaoTipoSelo(cartaoSeloBEAN);
     }
-    
+    public List<CartaoTipoSeloBEAN> buscarCartoes()
+    {
+        CartaoTipoSeloDAO cartaoDAO = new CartaoTipoSeloDAO();
+        return cartaoDAO.selecionarCartoes();
+    }
 }

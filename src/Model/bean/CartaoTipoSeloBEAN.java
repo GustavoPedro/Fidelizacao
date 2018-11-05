@@ -19,6 +19,11 @@ public class CartaoTipoSeloBEAN extends CartaoBEAN
         super(dataVencimento, cliente, funcionario, empresa);
         this.qnt = qnt;
     }    
+    public CartaoTipoSeloBEAN()
+    {
+        
+    }
+    
      public int getQnt()
     {
         return qnt;

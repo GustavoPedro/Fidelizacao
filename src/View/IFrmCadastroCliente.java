@@ -29,7 +29,7 @@ public class IFrmCadastroCliente extends javax.swing.JInternalFrame
 {
 
     private int id;
-    private CRUD crud = null;
+    private EnumCRUD crud = null;
     private IFrmPesquisarClientes frmPesquisarClientes = null;
     private EmpresaBEAN empresa;
 
@@ -43,13 +43,13 @@ public class IFrmCadastroCliente extends javax.swing.JInternalFrame
         empresa = empresaControl.selecionarEmpresa();
     }
 
-    public IFrmCadastroCliente(CRUD crud, ClienteBEAN clienteBEAN, IFrmPesquisarClientes frmPesquisarClientes)
+    public IFrmCadastroCliente(EnumCRUD crud, ClienteBEAN clienteBEAN, IFrmPesquisarClientes frmPesquisarClientes)
     {
         this();
         this.crud = crud;
         this.frmPesquisarClientes = frmPesquisarClientes;
 
-        if (this.crud == CRUD.Alterar)
+        if (this.crud == EnumCRUD.Alterar)
         {
             txbCpf.setText(clienteBEAN.getCpf());
             txbDataNascimento.setText(clienteBEAN.getDataNasc());
@@ -210,7 +210,7 @@ public class IFrmCadastroCliente extends javax.swing.JInternalFrame
         ClienteBEAN clienteBean = new ClienteBEAN(txbNomeCompleto.getText(), txbCpf.getText(), txbTelefone.getText(), Control.DataConversoes.inverterData(txbDataNascimento.getText()));
         ClienteControl clienteControl = new ClienteControl();
 
-        if (crud == CRUD.Cadastrar || crud == null)
+        if (crud == EnumCRUD.Cadastrar || crud == null)
         {
             if (clienteControl.inserirCliente(clienteBean))
             {

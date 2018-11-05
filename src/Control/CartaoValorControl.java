@@ -7,6 +7,7 @@ package Control;
 
 import Model.bean.CartaoTipoValorBEAN;
 import Model.dao.CartaoTipoValorDAO;
+import java.util.List;
 
 /**
  *
@@ -21,5 +22,10 @@ public class CartaoValorControl extends CartaoControl
         CartaoTipoValorDAO cartaoDAO = new CartaoTipoValorDAO();
         cartaoValorBEAN.setNumeroCartao(numeroCartao);
         return cartaoDAO.criarCartaoTipoValor(cartaoValorBEAN);
+    }
+    public List<CartaoTipoValorBEAN> buscarCartoes()
+    {
+        CartaoTipoValorDAO cartaoValorDAO = new CartaoTipoValorDAO();
+        return cartaoValorDAO.selecionarCartoes();
     }
 }

@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
 public class IFrmCadastroFuncionario extends javax.swing.JInternalFrame
 {
 
-    private CRUD crud;
+    private EnumCRUD crud;
     private FuncionarioBEAN funcionario;
     private IFrmPesquisarFuncionarios frmPesquisar;
 
@@ -27,17 +27,17 @@ public class IFrmCadastroFuncionario extends javax.swing.JInternalFrame
         initComponents();
     }
 
-    public IFrmCadastroFuncionario(CRUD crud)
+    public IFrmCadastroFuncionario(EnumCRUD crud)
     {
         this();
         this.crud = crud;        
     }    
-    public IFrmCadastroFuncionario(CRUD crud,FuncionarioBEAN funcionario,IFrmPesquisarFuncionarios frmPesquisarFuncionarios)
+    public IFrmCadastroFuncionario(EnumCRUD crud,FuncionarioBEAN funcionario,IFrmPesquisarFuncionarios frmPesquisarFuncionarios)
     {        
         this(crud);
         this.funcionario = funcionario;
         frmPesquisar = frmPesquisarFuncionarios;
-        if (crud == CRUD.Cadastrar)
+        if (crud == EnumCRUD.Cadastrar)
         {
             btnCadastroFuncionario.setText("Cadastrar");
         } else
@@ -182,7 +182,7 @@ public class IFrmCadastroFuncionario extends javax.swing.JInternalFrame
         FuncionarioBEAN funcionarioBEAN = new FuncionarioBEAN(txbNomeCompleto.getText(), empresaBEAN, txbLogin.getText(), txbSenha.getText());
         FuncionarioControl funcionarioControl = new FuncionarioControl();
 
-        if (crud == CRUD.Cadastrar)
+        if (crud == EnumCRUD.Cadastrar)
         {
 
             if (funcionarioControl.inserirFuncionario(funcionarioBEAN))

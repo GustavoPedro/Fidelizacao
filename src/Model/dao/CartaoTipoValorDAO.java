@@ -5,8 +5,7 @@
  */
 package Model.dao;
 
-import Model.bean.CartaoBEAN;
-import Model.bean.CartaoTipoSeloBEAN;
+
 import Model.bean.CartaoTipoValorBEAN;
 import Model.bean.ClienteBEAN;
 import Model.bean.EmpresaBEAN;

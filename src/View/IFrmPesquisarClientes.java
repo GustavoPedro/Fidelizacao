@@ -232,14 +232,14 @@ public class IFrmPesquisarClientes extends javax.swing.JInternalFrame
         {
             cli = clienteModel.retornarObjeto(tblClientes.getSelectedRow());
         }
-        IFrmCadastroCliente frmCadastroCliente = new IFrmCadastroCliente(CRUD.Alterar, cli,this);
+        IFrmCadastroCliente frmCadastroCliente = new IFrmCadastroCliente(EnumCRUD.Alterar, cli,this);
         frmMenu.DpContainer.add(frmCadastroCliente);
         frmCadastroCliente.setVisible(true);
         frmCadastroCliente.setPosicao();
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnCadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarClienteActionPerformed
-        IFrmCadastroCliente frmCadastroCliente = new IFrmCadastroCliente(CRUD.Cadastrar, null,this);
+        IFrmCadastroCliente frmCadastroCliente = new IFrmCadastroCliente(EnumCRUD.Cadastrar, null,this);
         frmMenu.DpContainer.add(frmCadastroCliente);
         frmCadastroCliente.setVisible(true);
         frmCadastroCliente.setPosicao();

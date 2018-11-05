@@ -5,8 +5,16 @@
  */
 package View;
 
+import Control.CartaoControl;
+import Control.CartaoSeloControl;
+import Control.CartaoValorControl;
+import Control.ClienteControl;
+import Model.bean.CartaoTipoSeloBEAN;
 import Model.bean.CartaoTipoValorBEAN;
+import Model.bean.ClienteBEAN;
 import Model.dao.CartaoTipoValorDAO;
+import TableModel.CartaoSeloTableModel;
+import TableModel.CartaoValorTableModel;
 import java.awt.Dimension;
 import java.util.List;
 
@@ -14,23 +22,39 @@ import java.util.List;
  *
  * @author 31825961
  */
-public class IFrmPesquisarCartoes extends javax.swing.JInternalFrame {
+public class IFrmPesquisarCartoes extends javax.swing.JInternalFrame
+{
 
-    /**
-     * Creates new form IFrmPesquisarCartoes
-     */
-    public IFrmPesquisarCartoes() {
+    public IFrmPesquisarCartoes(EnumTipoCartao enumTipoCartao)
+    {
         initComponents();
-        CartaoTipoValorDAO c = new CartaoTipoValorDAO();
-        List<CartaoTipoValorBEAN> cartoes = c.selecionarCartoes();
-        System.out.println(cartoes);
+        atualizarTable(enumTipoCartao);
     }
-     public void setPosicao()
+
+    public void atualizarTable(EnumTipoCartao tipoCartao)
+    {
+        if (tipoCartao == EnumTipoCartao.Selo)
+        {
+            CartaoSeloTableModel cartaoSeloModel = new CartaoSeloTableModel();
+            CartaoSeloControl cartaoSeloControl = new CartaoSeloControl();
+             List<CartaoTipoSeloBEAN> cartoes = cartaoSeloControl.buscarCartoes();
+            cartaoSeloModel.popularLista(cartoes);
+            tblCartoes.setModel(cartaoSeloModel);
+        } else
+        {
+            CartaoValorTableModel cartaoValorModel = new CartaoValorTableModel();
+            CartaoValorControl cartaoValorControl = new CartaoValorControl();
+            List<CartaoTipoValorBEAN> cartoes = cartaoValorControl.buscarCartoes();
+            cartaoValorModel.popularLista(cartoes);
+            tblCartoes.setModel(cartaoValorModel);
+        }
+    }
+
+    public void setPosicao()
     {
         Dimension d = this.getDesktopPane().getSize();
         this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,7 +68,7 @@ public class IFrmPesquisarCartoes extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblCartoes = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
@@ -53,7 +77,7 @@ public class IFrmPesquisarCartoes extends javax.swing.JInternalFrame {
 
         setClosable(true);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblCartoes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][]
             {
                 {null, null, null},
@@ -76,7 +100,7 @@ public class IFrmPesquisarCartoes extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblCartoes);
 
         jLabel5.setText("Pesquisar:");
 
@@ -152,9 +176,8 @@ public class IFrmPesquisarCartoes extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTable tblCartoes;
     // End of variables declaration//GEN-END:variables
 
-    
 }

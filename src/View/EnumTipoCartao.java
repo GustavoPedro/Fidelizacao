@@ -1,20 +1,20 @@
-package View;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package View;
 
 /**
  *
- * @author 31825961
+ * @author gusta
  */
-public enum CRUD {
-    Cadastrar(1),Alterar(2);
-    public int valor;
+public enum EnumTipoCartao
+{
+    Selo(1),Valor(2);
+    public int tipo;
 
-    CRUD(int valor) {
-        this.valor = valor;
+    EnumTipoCartao(int tipo) {
+        this.tipo = tipo;
     }
 }
